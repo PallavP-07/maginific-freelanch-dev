@@ -30,7 +30,7 @@ export default function CustomNavbar() {
         (isScrolled || isHovered) ? "bg-white text-black shadow-lg" : "bg-transparent text-white"
       )}
     >
-      <div className="mx-auto flex items-center gap-[220px] justify-center py-4">
+      <div className="lg:mx-auto flex items-center lg:gap-[220px] justify-between mx-4 lg:justify-center py-4">
         {/* Logo */}
         <Link href="/" legacyBehavior className="lg:w-1/4">
           <Image
@@ -49,7 +49,7 @@ export default function CustomNavbar() {
             <Link
               href="#"
               className={cn(
-                "hover:font-semibold hover:text-white font-normal text-[16px] pr-4",
+                "hover:font-semibold  font-normal text-[16px] pr-4",
                 isScrolled || isHovered && "hover:text-black hover:font-semibold font-normal text-[16px]"
               )}
             >
@@ -65,7 +65,7 @@ export default function CustomNavbar() {
           >
             <a
               className={cn(
-                "bg-transparent flex items-center font-normal text-[16px] hover:bg-transparent hover:text-white hover:font-semibold",
+                "bg-transparent flex items-center font-normal text-[16px] hover:bg-transparent  hover:font-semibold",
                 isScrolled || isHovered && "hover:text-black hover:font-semibold"
               )}
             >
@@ -121,7 +121,7 @@ export default function CustomNavbar() {
           >
             <a
               className={cn(
-                "bg-transparent flex items-center font-normal text-[16px] hover:bg-transparent hover:text-white hover:font-semibold",
+                "bg-transparent flex items-center font-normal text-[16px] hover:bg-transparent  hover:font-semibold",
                 isScrolled || isHovered && "hover:text-black hover:font-semibold"
               )}
             >
@@ -194,10 +194,10 @@ export default function CustomNavbar() {
           <Link href="#" legacyBehavior>
             <a
               className={cn(
-                "px-5 py-3 rounded-3xl tracking-[2px] font-semibold border-2 transition-all duration-300 leading-5 ",
+                "px-4 py-2 rounded-3xl tracking-[2px] font-semibold border-2 transition-all duration-300 leading-5 ",
                 isScrolled || isHovered
-                  ? "bg-[#026534] text-white border-transparent hover:bg-[#025e32] hover:border-white"
-                  : "bg-[#026534] text-white border-[#026534] hover:bg-[#025e32] hover:text-white hover:border-white"
+                  ? "bg-[#026534] text-white border-transparent hover:bg-[#0e3a25] hover:border-white"
+                  : "bg-[#026534] text-white border-[#026534] hover:bg-[#0e3b25] hover:text-white hover:border-white"
               )}
             >
               Contact

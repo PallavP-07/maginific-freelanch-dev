@@ -11,7 +11,6 @@ function Solutions() {
         "Interim Talent",
         "Projects & Contracts",
         "Professional Search",
-     
     ];
 
     return (
@@ -45,16 +44,17 @@ function Solutions() {
 
 function IndustryExpertise() {
     const solutions = [
-        "Financial Services ",
         "Technology",
         "Healthcare",
-        "Pharmaceuticals & Medical Devices",
         "Non Profit",
+        "Private Equity ",
+        "Financial Services ",
+        "Pharmaceuticals & Medical Devices",
+        "Professional Services",
         "Consumer",
         "Real Estate",
         "Venture Capital",
-        "Private Equity ",
-        "Professional Services",
+
     ];
 
     return (
@@ -71,7 +71,7 @@ function IndustryExpertise() {
                     </a>
                 </div>
                 {/* Solutions Buttons */}
-                <div className="flex w-[400px]  md:w-[800px]  gap-4 items-center flex-wrap">
+                <div className="flex w-[380px]  md:w-[800px]  gap-4 items-center flex-wrap">
                     {solutions.map((solution, index) => (
                         <p
                             key={index}
