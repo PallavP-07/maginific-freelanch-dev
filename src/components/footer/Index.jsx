@@ -15,16 +15,16 @@ const renderMobileFooter = () => {
     <div className="flex flex-col justify-center items-center">
       <Image src='/Logo-2.svg' alt="logo" width={240} height={240} />
       <div className="flex flex-wrap justify-center items-center md:gap-5 gap-4 w-80 md:w-[45%] p-2 text-gray-400 my-4">
-      <p>Home</p>
-      <p>About</p>
-      <p>Solutions</p>
-      <p>Expertise</p>
-      <p>Functions</p>
-      <p>Job Search</p>
-      <p>Insights</p>
-      <p>Contacts</p>
+        <p>Home</p>
+        <p>About</p>
+        <p>Solutions</p>
+        <p>Expertise</p>
+        <p>Functions</p>
+        <p>Job Search</p>
+        <p>Insights</p>
+        <p>Contacts</p>
       </div>
- 
+
       {renderSocialContent()}
     </div>
   );
@@ -33,7 +33,7 @@ const renderMobileFooter = () => {
 const renderDesktopFooter = () => {
   return (
     <>
-      <div className="flex max-w-5xl items-center border-b-2 border-gray-400 mb-8 mx-auto py-4 justify-between">
+      <div className="flex mx-4 items-center border-b-2 border-gray-400 mb-8  py-4 justify-between">
         <div>
           <Image src='/Logo.svg' alt="logo" width={150} height={150} />
         </div>
@@ -41,7 +41,7 @@ const renderDesktopFooter = () => {
           {renderSocialContent()}
         </div>
       </div>
-      <div className="max-w-5xl mx-auto lg:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      <div className="mx-4  lg:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-10">
         {/* Home Section */}
         <div>
           <h3 className="text-xl leading-8 font-bold mb-4 text-[#01331A]">Home</h3>
@@ -86,6 +86,10 @@ const renderDesktopFooter = () => {
             <li><a href="#" className="text-gray-600 hover:text-green-800">Technology</a></li>
             <li><a href="#" className="text-gray-600 hover:text-green-800">Healthcare</a></li>
             <li><a href="#" className="text-gray-600 hover:text-green-800">Pharmaceuticals</a></li>
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Financial Services</a></li>
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Technology</a></li>
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Healthcare</a></li>
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Pharmaceuticals</a></li>
           </ul>
         </div>
 
@@ -96,10 +100,26 @@ const renderDesktopFooter = () => {
             <li><a href="#" className="text-gray-600 hover:text-green-800">Legal & Compliance</a></li>
             <li><a href="#" className="text-gray-600 hover:text-green-800">Human Resources</a></li>
             <li><a href="#" className="text-gray-600 hover:text-green-800">Accounting</a></li>
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Financial Services</a></li>
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Technology</a></li>
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Healthcare</a></li>
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Pharmaceuticals</a></li>
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Financial Services</a></li>
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Technology</a></li>
+     
           </ul>
         </div>
 
         {/* Browse Jobs Section */}
+    
+        <div>
+          <h3 className="text-xl leading-8 font-bold mb-4 text-[#01331A]">Insights</h3>
+          <ul className="space-y-2">
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Pharmaceuticals</a></li>
+            <li><a href="#" className="text-gray-600 hover:text-green-800">Financial Services</a></li>
+        
+          </ul>
+        </div>
         <div>
           <h3 className="text-xl leading-8 font-bold mb-4 text-[#01331A]">Browse Jobs</h3>
           <ul className="space-y-2">
@@ -126,7 +146,7 @@ export default function Footer() {
         {renderDesktopFooter()}
       </div>
 
-      <div className="lg:max-w-5xl lg:mx-auto text-center mt-6 lg:mt-10 text-sm md:mx-[40px]  text-gray-600 border-t-2 border-gray-300  pt-4 lg:pt-8">
+      <div className="lg:lg:container   text-center mt-6 lg:mt-10 text-sm   text-gray-600 border-t-2 border-gray-300  pt-4 lg:pt-8">
         Copyright © 2024 Magnific | All Rights Reserved
       </div>
     </footer>

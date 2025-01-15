@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -26,13 +25,13 @@ export default function CustomNavbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 z-50 transition-all duration-300 w-full",
+        "fixed top-0   z-50 transition-all duration-300 w-full",
         (isScrolled || isHovered) ? "bg-white text-black shadow-lg" : "bg-transparent text-white"
       )}
     >
-      <div className="lg:mx-auto flex items-center lg:gap-[220px] justify-between mx-4 lg:justify-center py-4">
+      <div className="lg:container lg:mx-auto mx-6 flex items-center justify-between py-5">
         {/* Logo */}
-        <Link href="/" legacyBehavior className="lg:w-1/4">
+        <Link href="/" legacyBehavior className="lg:w-1/3">
           <Image
             src={isScrolled || isHovered ? "/navblogo.svg" : "/navwlogo.svg"}
             alt="nav-logo"
@@ -42,14 +41,14 @@ export default function CustomNavbar() {
         </Link>
 
         {/* Navigation Menu */}
-     <div className="lg:w-2/4 lg:flex lg:justify-between lg:items-center lg:gap-5">
-     <ul className="hidden lg:flex lg:justify-between lg:items-center lg:gap-5  ">
+     <div className="lg:w-2/3 lg:flex lg:justify-between lg:items-center lg:gap-5">
+     <ul className="hidden lg:flex lg:justify-between lg:items-center lg:gap-6  ">
           {/* About */}
           <li>
             <Link
               href="#"
               className={cn(
-                "hover:font-semibold  font-normal text-[16px] pr-4",
+                "hover:font-semibold  font-normal text-[16px] ",
                 isScrolled || isHovered && "hover:text-black hover:font-semibold font-normal text-[16px]"
               )}
             >
@@ -71,7 +70,7 @@ export default function CustomNavbar() {
             >
               Solutions
               <svg
-                className="ml-2 w-4 h-4 transform group-hover:rotate-180 transition-all duration-300"
+                className="ml-1 w-4 h-4 transform group-hover:rotate-180 transition-all duration-300"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -121,13 +120,13 @@ export default function CustomNavbar() {
           >
             <a
               className={cn(
-                "bg-transparent flex items-center font-normal text-[16px] hover:bg-transparent  hover:font-semibold",
+                "bg-transparent tracking-[1px] flex items-center font-normal text-[16px] hover:bg-transparent  hover:font-semibold",
                 isScrolled || isHovered && "hover:text-black hover:font-semibold"
               )}
             >
               Expertise
               <svg
-                className="ml-2 w-4 h-4 transform group-hover:rotate-180 transition-all duration-300"
+                className="ml-1 w-4 h-4 transform group-hover:rotate-180 transition-all duration-300"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -179,31 +178,31 @@ export default function CustomNavbar() {
 
         {/* Right Actions */}
         <div className="hidden lg:flex items-center gap-3">
-          <Link href="#" legacyBehavior>
-            <a
-              className={cn(
-                "px-5 py-3 rounded-[60px] border-2 hover:bg-white hover:border-gray-900 hover:text-black tracking-[1px] font-medium leading-3",
-                isScrolled || isHovered
-                  ? "bg-transparent text-black border-gray-700"
-                  : "bg-gray-100 bg-opacity-20 border-white"
-              )}
-            >
-              Browse Jobs
-            </a>
-          </Link>
-          <Link href="#" legacyBehavior>
-            <a
-              className={cn(
-                "px-4 py-2 rounded-3xl tracking-[2px] font-semibold border-2 transition-all duration-300 leading-5 ",
-                isScrolled || isHovered
-                  ? "bg-[#026534] text-white border-transparent hover:bg-[#0e3a25] hover:border-white"
-                  : "bg-[#026534] text-white border-[#026534] hover:bg-[#0e3b25] hover:text-white hover:border-white"
-              )}
-            >
-              Contact
-            </a>
-          </Link>
-        </div>
+  <Link href="#" legacyBehavior>
+    <a
+      className={cn(
+        "px-3 py-[8px] rounded-[60px] text-[16px] border hover:bg-white hover:border-gray-900 hover:text-black tracking-[1px] font-medium leading-5",
+        isScrolled || isHovered
+          ? "bg-transparent text-black border-gray-700"
+          : "bg-gray-100 bg-opacity-20 border-white"
+      )}
+    >
+      Browse Jobs
+    </a>
+  </Link>
+  <Link href="#" legacyBehavior>
+    <a
+      className={cn(
+        "px-3 py-[8px] rounded-3xl tracking-[1px] text-[16px] font-semibold border transition-all duration-300 leading-5 ",
+        isScrolled || isHovered
+          ? "bg-[#026534] text-white border-transparent hover:bg-[#0e3a25] hover:border-white"
+          : "bg-[#026534] text-white border-[#026534] hover:bg-[#0e3b25] hover:text-white hover:border-white"
+      )}
+    >
+      Contact
+    </a>
+  </Link>
+</div>
      </div>
 
         {/* Mobile Hamburger */}
