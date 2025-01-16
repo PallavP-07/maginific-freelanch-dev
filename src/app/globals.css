@@ -5,3 +5,39 @@
 body {
   @apply font-sans; 
 }
+.bars {
+  width: 80px;
+  cursor: pointer;
+}
+.bars .line {
+  fill: none;
+ 
+  stroke-width: 4;
+  stroke-linecap: square;
+  transition: stroke-dasharray 400ms,  stroke-dashoffset 400ms;
+}
+.bars .line.top {
+  stroke-dasharray: 40 172;
+}
+.bars .line.middle {
+  stroke-dasharray: 40 111;
+}
+.bars .line.bottom {
+  stroke-dasharray: 40 172;
+}
+.bars.active .top {
+  stroke-dashoffset: -132px;
+}
+.bars.active .middle {
+  stroke-dashoffset: -71px;
+}
+.bars.active .bottom {
+  stroke-dashoffset: -132px;
+}
+.stroke-black {
+  stroke: black;
+}
+
+.stroke-white {
+  stroke: white;
+}
