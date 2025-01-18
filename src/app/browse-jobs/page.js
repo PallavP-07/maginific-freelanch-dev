@@ -158,13 +158,13 @@ const BrowseJobs = () => {
             {/* Wrapper for the JobSearchBar */}
             <div className="relative lg:container w-full flex justify-center items-center lg:mx-auto">
                 {/* Positioning the search bar in the bottom half of the HeroBanner */}
-                <div className="absolute w-[400px] md:w-[820px] lg:w-[998px] -bottom-[26rem] md:-bottom-32">
+                <div className="absolute w-[400px] -bottom-44 md:w-[820px] lg:w-[998px]  md:-bottom-36 lg:-bottom-32">
                     <JobSearchBox />
                 </div>
             </div>
 
             {/* Main Content Section */}
-            <div className="lg:container lg:mx-auto mt-120 md:mt-40">
+            <div className="lg:container lg:mx-auto mt-[186px] md:mt-40">
                 <h1 className="mx-4 lg:mx-0 text-[#006633] font-bold text-xl leading-[66px] my-8">
                     Recent Job Postings
                 </h1>

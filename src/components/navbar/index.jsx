@@ -42,7 +42,8 @@ export default function CustomNavbar() {
    const [showMobileSubMenu, setShowMobileSubMenu] = React.useState(false);
   const toggleMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
-
+    setIsHovered(!isHovered)
+    setIsScrolled(!isScrolled)
     setShowMobileSubMenu(false);
   };
   React.useEffect(() => {
@@ -65,7 +66,7 @@ export default function CustomNavbar() {
         (isScrolled || isHovered) ? "bg-white text-black shadow-lg" : "bg-transparent text-white"
       )}
     >
-      <div className="lg:container lg:mx-auto mx-6 flex items-center justify-between py-5">
+      <div className="lg:container lg:mx-auto mx-6 flex items-center justify-between lg:py-5">
         {/* Logo */}
         <Link href="/" legacyBehavior className="lg:w-1/3">
           <Image
@@ -235,12 +236,12 @@ export default function CustomNavbar() {
           </svg>
           <div
               className={clsx(
-                "fixed inset-0 z-50 overflow-y-auto bg-gray-100 w-full  md:w-1/2  top-[80px] left-0  transition-transform ease-in-out duration-500 flex flex-col justify-between",
+                "fixed inset-0 z-50 overflow-y-auto bg-gray-100 w-full   md:w-1/2  top-[80px] left-0  transition-transform ease-in-out duration-500 flex flex-col justify-between",
                 
                 showMobileMenu ? 'translate-x-0 md:w-1/2' : '-translate-x-full md:1/2 '
               )}
             >
-           <div className="px-8 py-20">
+           <div className="px-8 py-10  max-h-[100vh] flex flex-col gap-16">
             <ul className="text-[24px]  leading-10 text-[#01331A] font-semibold">
               <li>About</li>
               <li>Solution &gt; </li>

@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button'
 const JobSearchBox = () => {
     return (
         <>
-            <div className='flex flex-col  justify-between items-center gap-5   md:flex-row bg-white px-10 pt-5 pb-10   rounded-md  drop-shadow-[0_0px_10px_rgba(0,0,0,0.25)] '>
+            <div className='flex flex-col  justify-between items-center gap-5 p-6   md:flex-row bg-white md:px-10 md:pt-5 md:pb-10   rounded-md  drop-shadow-[0_0px_10px_rgba(0,0,0,0.25)] '>
                 <div className='flex flex-col gap-4  w-full '>
                     <div className='flex flex-col md:flex-row justify-between  w-full gap-4'>
                         <div className='w-full'>
@@ -28,7 +28,7 @@ const JobSearchBox = () => {
                         </div>
 
                     </div>
-                    <div className='flex flex-col md:flex-row justify-between items-end gap-4'>
+                    <div className=' hidden md:flex  md:flex-row justify-between items-end gap-4'>
                         <div className='w-full'>
                             <Label htmlFor="Filter" className="font-semibold text-lg leading-10 text-gray-800">Filter</Label>
                             <Select className='z-50 bg-white'>
@@ -98,15 +98,15 @@ const JobSearchBox = () => {
 
                     </div>
                 </div>
-                <div className='flex md:flex-col space-y-8  gap-6  h-full'>
+                <div className='flex md:flex-col md:space-y-8  md:gap-6  md:h-full'>
 
 
-                    <Button className="px-8 py-2 mt-8 md:mt-10 w-2/3  md:w-full  bg-[#026534] text-white rounded-[3px] text-[16px] leading-5 font-semibold">
+                    <Button className="px-8 py-2  md:mt-10 w-full  md:w-full  bg-[#026534] text-white rounded-[3px] text-[16px] leading-5 font-semibold">
                         Search Job
                     </Button>
 
 
-                    <Button className=" md:w-full px-6 w-1/3  py-2 bg-transparent  text-[#01331A] border-[#01331A] border rounded-[3px] text-[18px] leading-5 font-normal">
+                    <Button className=" hidden md:block md:w-full px-6 w-1/3  py-2 bg-transparent  text-[#01331A] border-[#01331A] border rounded-[3px] text-[18px] leading-5 font-normal">
                         Reset Filters
                     </Button>
 

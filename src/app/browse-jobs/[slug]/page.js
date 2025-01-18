@@ -7,17 +7,16 @@ import Footer from '@/components/footer/Index'
 function SubPage() {
 	return (
 		<>
-			<div className='lg:container w-full mx-4    lg:mx-auto'>
-				<div className=' py-14 mx-4 border-b-2 border-[#006633]'>
+			<div className='lg:container w-full overflow-hidden    lg:mx-auto'>
+				<div className=' py-14 border-b-2 mx-4 border-[#006633]'>
 				<JobSearchBox/>
 				</div>
-				
-			</div>
-			<div className=' lg:container w-full max-w-full mx-6 lg:mx-auto mt-12 overflow-hidden'>
-					<h1 className='font-bold text-[32px] leading-[44px] text-[#006633]'>
+				<div className='mx-4'>
+						<h1 className='font-bold text-[32px] leading-[44px] text-[#006633]'>
 						Associate Director - Emerging Businesses
 					</h1>
-					<div className='flex  md:gap-10 lg:gap-0 lg:justify-between lg:w-full  flex-col md:flex-row items-center mt-8   '>
+
+					<div className='flex flex-wrap  md:gap-10 lg:gap-0 lg:justify-between lg:w-full  flex-col md:flex-row items-center mt-8   '>
 						<div className='flex md:justify-between flex-wrap items-center gap-5 lg:gap-14'>
 							<div >
 							<p className='text-[#737475] font-normal leading-6 mb-2'>Date Posted</p>
@@ -47,7 +46,7 @@ function SubPage() {
 					</div>
 					<div>
 
-						<div className="text-gray-800 mt-40">
+						<div className="text-gray-800 mt-10 md:mt-40">
 							<h2 className="text-2xl text-[#47494e] font-semibold mb-4">Overview</h2>
 							<p className="text-[#737475]  mb-12 ">
 								Wonder is on a mission to simplify access to high-quality, affordable mental health care. We do this by making it easy and financially rewarding for therapists to accept insurance and offer in-network care. When a provider joins Wonder, they gain access to a suite of tools that not only help them better run their business, but also grow it sustainably and develop as a provider. Alma is available in all 50 states, with over 20,000 therapists in our growing network. Anyone looking for a therapist can browse Alma’s free directory. Alma has raised $220.5M in funding from Insight Partners, Optum Ventures, Tusk Venture Partners, Primary Venture Partners, First Round Capital, Sound Ventures, BoxGroup, Cigna Ventures, and Rainfall Ventures. Alma was also named one of Inc’s Best Workplaces in 2022 and 2023.
@@ -122,7 +121,8 @@ function SubPage() {
 					<Button className="px-8 py-2 w-full md:w-40   my-8  bg-[#026534] text-white rounded-[3px] text-[16px] leading-5 font-semibold">
 						Apply
 					</Button>
-				</div>
+				</div>				
+			</div>
 			<ContactUs />
             <Footer />
 		</>
