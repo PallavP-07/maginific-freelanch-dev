@@ -1,4 +1,6 @@
 import { Badge } from "@/components/ui/badge"
+import TypeSelection from "../typeSelection/Index";
+import DualColorHeader from "../dualColorHeader/Index";
 function Solutions() {
     const solutions = [
         "Executive Search",
@@ -27,8 +29,8 @@ function Solutions() {
                 {/* Solutions Buttons */}
                 <div className="flex    gap-4 items-center flex-wrap">
                     {solutions.map((solution, index) => (
-                
-                        <Badge  key={index} variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>{solution}</Badge>
+
+                        <Badge key={index} variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>{solution}</Badge>
                     ))}
                 </div>
             </div>
@@ -67,7 +69,7 @@ function IndustryExpertise() {
                 {/* Solutions Buttons */}
                 <div className="flex w-[380px]  md:w-full  gap-4 items-center flex-wrap">
                     {solutions.map((solution, index) => (
-                     <Badge  key={index} variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>{solution}</Badge>
+                        <Badge key={index} variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>{solution}</Badge>
                     ))}
                 </div>
             </div>
@@ -96,53 +98,19 @@ export default function CategoryList() {
 
             <div>
                 <div className="lg:container  mx-4  lg:mx-auto mt-12 mb-4">
-                    <h2 className="text-2xl  md:text-3xl leading-9  font-semibold  text-[#373A40] border-b-2 border-[#CCE0D6] pb-3 mb-7 sm:mb-2 w-full sm:w-full">
-                        Industries We <span className=" font-bold text-2xl md:text-3xl leading-9 text-[#01331A]">Serve</span>
-                    </h2>
+                    <div className=" border-b-2 border-[#CCE0D6] ">
+
+                        <DualColorHeader first={"Industries We"} second={"Serve"} />
+                    </div>
 
                 </div>
                 <div className="min-h-screen   md:mx-0  p-4 sm:p-6 lg:py-8 lg:px-0">
                     <div className="mx-auto space-y-2">
                         {categories.map((category, index) => (
-                          <div
-                          key={index}
-                          className="group hover:bg-[#01331A] transition-colors duration-300"
-                        >
-                          <div className="flex gap-6 md:gap-4 items-center justify-between py-6 sm:space-y-0 lg:container lg:mx-auto">
-                            <div className="max-w-5xl group-hover:text-white">
-                              <h2 className="leading-6 text-xl font-bold text-[#01331A] group-hover:text-white border-b-2 border-[#CCE0D6] pb-3 mb-4 sm:mb-4 w-full sm:w-96">
-                                {category.title}
-                              </h2>
-                              <p className="text-[16px] font-normal md:w-[50rem] leading-5 text-[#737475] group-hover:text-white">
-                                {category.description}
-                              </p>
-                            </div>
-                        
-                            {/* SVG Icon */}
-                            <div className="self-start sm:self-center group-hover:text-white">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-10 h-10 text-[#01331A] group-hover:text-white transition-colors duration-300 mt-4 lg:mt-2"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                                />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                        
+                            <TypeSelection title={category.title} discription={category.description} key={index} />
                         ))}
                     </div>
                 </div>
-
-
                 {Solutions()}
                 {IndustryExpertise()}
             </div>

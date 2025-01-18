@@ -2,7 +2,19 @@ import React from 'react'
 
 function SubPage() {
   return (
-    <div>SubPage</div>
+   <>
+   <div>
+    <div>
+
+    </div>
+<div>
+
+</div>
+   </div>
+   <div>
+    
+   </div>
+   </>
   )
 }
 

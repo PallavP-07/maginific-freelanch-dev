@@ -2,11 +2,23 @@ import CategoryList from '@/components/accordion/Index'
 import ContactUs from '@/components/contact/Index'
 import Footer from '@/components/footer/Index'
 import HeroBanner from '@/components/herobanner/Index'
-import { Button } from '@/components/ui/button'
+
 import Image from 'next/image'
 import React from 'react'
 import DualColorHeader from '@/components/dualColorHeader/Index'
 import ContentCard from '@/components/card/Index'
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 const FunctionsPage = () => {
     return (
         <>
@@ -46,6 +58,85 @@ const FunctionsPage = () => {
                     </div>
                 </div>
                 <DualColorHeader first={"Browse all"} second={"Insights"} />
+                <div className='flex flex-col md:flex-row gap-4 items-center'>
+                    <div className='w-1/3'>
+                        <div className='w-full'>
+                            <Label htmlFor="Job Title" className="font-semibold text-lg leading-10 text-gray-800">Search Insights</Label>
+                            <Input type="text" placeholder="Enter a Job Title or a Keyword" className=' placeholder:text-[#D0D0D0]' />
+                        </div>
+                    </div>
+                    <div>
+                        <div className=' flex  gap-4 items-end '>
+                            <div className='w-full'>
+                                <Label htmlFor="Filter" className="font-semibold text-lg leading-10 text-gray-800">Filter</Label>
+                                <Select className='z-50 bg-white'>
+                                    <SelectTrigger className='text-[#D0D0D0]'>
+                                        <SelectValue placeholder="Date Posted" />
+                                    </SelectTrigger>
+                                    <SelectContent className="bg-white">
+                                        <SelectGroup>
+                                            <SelectItem value="apple">Apple</SelectItem>
+                                            <SelectItem value="banana">Banana</SelectItem>
+                                            <SelectItem value="blueberry">Blueberry</SelectItem>
+                                            <SelectItem value="grapes">Grapes</SelectItem>
+                                            <SelectItem value="pineapple">Pineapple</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            <div className='w-full'>
+                                <Select>
+                                    <SelectTrigger className='text-[#D0D0D0]'>
+                                        <SelectValue placeholder="Experience" />
+                                    </SelectTrigger>
+                                    <SelectContent className="bg-white">
+                                        <SelectGroup>
+                                            <SelectItem value="apple">Apple</SelectItem>
+                                            <SelectItem value="banana">Banana</SelectItem>
+                                            <SelectItem value="blueberry">Blueberry</SelectItem>
+                                            <SelectItem value="grapes">Grapes</SelectItem>
+                                            <SelectItem value="pineapple">Pineapple</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            <div className='w-full'>
+                                <Select>
+                                    <SelectTrigger className='text-[#D0D0D0]'>
+                                        <SelectValue placeholder="Job Type" />
+                                    </SelectTrigger>
+                                    <SelectContent className="bg-white">
+                                        <SelectGroup>
+                                            <SelectItem value="apple">Apple</SelectItem>
+                                            <SelectItem value="banana">Banana</SelectItem>
+                                            <SelectItem value="blueberry">Blueberry</SelectItem>
+                                            <SelectItem value="grapes">Grapes</SelectItem>
+                                            <SelectItem value="pineapple">Pineapple</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                            <div className='w-full'>
+                                <Select>
+                                    <SelectTrigger className='text-[#D0D0D0]'>
+                                        <SelectValue placeholder="Industry" />
+                                    </SelectTrigger>
+                                    <SelectContent className="bg-white">
+                                        <SelectGroup>
+                                            <SelectItem value="apple">Apple</SelectItem>
+                                            <SelectItem value="banana">Banana</SelectItem>
+                                            <SelectItem value="blueberry">Blueberry</SelectItem>
+                                            <SelectItem value="grapes">Grapes</SelectItem>
+                                            <SelectItem value="pineapple">Pineapple</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 my-10">
                     <ContentCard />
                     <ContentCard />
@@ -54,11 +145,11 @@ const FunctionsPage = () => {
                     <ContentCard />
                     <ContentCard />
                 </div>
-            <div className='text-center my-20'>
-            <Button className="px-8 py-3  bg-[#026534] text-white w-full md:w-40   rounded-[3px] text-[16px] leading-5 font-semibold  ">
-                    More Insights
-                </Button>
-            </div>
+                <div className='text-center my-20'>
+                    <Button className="px-8 py-3  bg-[#026534] text-white w-full md:w-40   rounded-[3px] text-[16px] leading-5 font-semibold  ">
+                        More Insights
+                    </Button>
+                </div>
             </div>
             <ContactUs />
             <Footer />
