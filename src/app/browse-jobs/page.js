@@ -3,10 +3,9 @@
 import ContactUs from '@/components/contact/Index'
 import Footer from '@/components/footer/Index'
 import HeroBanner from '@/components/herobanner/Index'
-import { Button } from '@/components/ui/button'
 import React, { useState } from 'react'
 import JobPostingCard from "@/components/jobPostingCard/Index"
-
+import JobSearchBox from '@/components/JobSearchBox/Index'
 import {
     Pagination,
     PaginationContent,
@@ -15,17 +14,7 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination"
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
+
 
 
 const jobData = [
@@ -134,113 +123,7 @@ export const RenderPagination = () => {
     )
 }
 
-export const JobSearchBar = () => {
-    return (
-        <>
-            <div className='flex flex-col  justify-between items-center gap-5  md:flex-row bg-[#F9F9F9]  rounded-md px-8 pb-8 pt-4 drop-shadow-lg max-w-screen-lg mx-auto'>
-                <div className='flex flex-col gap-5'>
-                    <div className='flex flex-col md:flex-row justify-between w-full gap-4'>
-                        <div className='w-full'>
-                            <Label htmlFor="Job Title" className="font-semibold text-lg leading-10 text-gray-800">Job Title</Label>
-                            <Input type="text" placeholder="Enter Job Title" />
-                        </div>
 
-                        <div className='w-full'>
-                            <Label htmlFor="Location" className="font-semibold text-lg leading-10 text-gray-800">Location</Label>
-                            <Input type="text" placeholder="Enter Job Title" />
-                        </div>
-
-                    </div>
-                    <div className='flex justify-between items-end gap-4'>
-                        <div className='w-full'>
-                            <Label htmlFor="Filter" className="font-semibold text-lg leading-10 text-gray-800">Filter</Label>
-                            <Select className='z-50 bg-white'>
-                                <SelectTrigger className="w-full  lg:w-[180px]">
-                                    <SelectValue placeholder="Select a fruit" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectItem value="apple">Apple</SelectItem>
-                                        <SelectItem value="banana">Banana</SelectItem>
-                                        <SelectItem value="blueberry">Blueberry</SelectItem>
-                                        <SelectItem value="grapes">Grapes</SelectItem>
-                                        <SelectItem value="pineapple">Pineapple</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                        </div>
-                        <div className='w-full'>
-                            <Select>
-                                <SelectTrigger className="w-full  lg:w-[180px]">
-                                    <SelectValue placeholder="Select a fruit" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectItem value="apple">Apple</SelectItem>
-                                        <SelectItem value="banana">Banana</SelectItem>
-                                        <SelectItem value="blueberry">Blueberry</SelectItem>
-                                        <SelectItem value="grapes">Grapes</SelectItem>
-                                        <SelectItem value="pineapple">Pineapple</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                        </div>
-                        <div className='w-full'>
-                            <Select>
-                                <SelectTrigger className="w-full  lg:w-[180px]">
-                                    <SelectValue placeholder="Select a fruit" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectItem value="apple">Apple</SelectItem>
-                                        <SelectItem value="banana">Banana</SelectItem>
-                                        <SelectItem value="blueberry">Blueberry</SelectItem>
-                                        <SelectItem value="grapes">Grapes</SelectItem>
-                                        <SelectItem value="pineapple">Pineapple</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                        </div>
-                        <div className='w-full'>
-                            <Select>
-                                <SelectTrigger className="w-full  lg:w-[180px]">
-                                    <SelectValue placeholder="Select a fruit" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectItem value="apple">Apple</SelectItem>
-                                        <SelectItem value="banana">Banana</SelectItem>
-                                        <SelectItem value="blueberry">Blueberry</SelectItem>
-                                        <SelectItem value="grapes">Grapes</SelectItem>
-                                        <SelectItem value="pineapple">Pineapple</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                        </div>
-
-
-                    </div>
-                </div>
-                <div className='flex md:flex-col space-y-8  gap-6  h-full'>
-                   
-
-                        <Button className="px-8 py-2 mt-10  w-2/3 md:w-full  bg-[#026534] text-white rounded-[3px] text-[16px] leading-5 font-semibold">
-                            Search Job
-                        </Button>
-                   
-
-                        <Button className="  w-1/3 md:w-full  py-2 bg-transparent  text-[#01331A] border-[#01331A] border rounded-[3px] text-[18px] leading-5 font-normal">
-                            Reset Filters
-                        </Button>
-                  
-
-
-                </div>
-            </div>
-
-        </>
-    )
-}
 const BrowseJobs = () => {
 
     return (
@@ -252,15 +135,15 @@ const BrowseJobs = () => {
             />
 
             {/* Wrapper for the JobSearchBar */}
-            <div className="relative lg:container  w-full  lg:mx-auto">
-                {/* Positioning the search bar in the bottom half of the HeroBanner */}
-                <div className="absolute -bottom-28 z-20 w-full lg:w-auto ">
-                    {JobSearchBar()}
-                </div>
-            </div>
+            <div className="relative lg:container w-full flex justify-center items-center lg:mx-auto">
+    {/* Positioning the search bar in the bottom half of the HeroBanner */}
+    <div className="absolute w-[400px] md:w-[820px] lg:w-[998px] -bottom-[26rem] md:-bottom-32">
+        <JobSearchBox />
+    </div>
+</div>
 
             {/* Main Content Section */}
-            <div className="lg:container lg:mx-auto mt-40">
+            <div className="lg:container lg:mx-auto mt-120 md:mt-40">
                 <h1 className="mx-4 lg:mx-0 text-[#006633] font-bold text-xl leading-[66px] my-8">
                     Recent Job Postings
                 </h1>

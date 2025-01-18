@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { JobSearchBar } from '../page'
+import JobSearchBox from '@/components/JobSearchBox/Index'
 import { Button } from '@/components/ui/button'
 import ContactUs from '@/components/contact/Index'
 import Footer from '@/components/footer/Index'
@@ -8,14 +8,16 @@ function SubPage() {
 	return (
 		<>
 			<div className='lg:container w-full mx-4    lg:mx-auto'>
-				<div className='w-full py-14  border-b-2 border-[#006633]'>
-					{JobSearchBar()}
+				<div className=' py-14 mx-4 border-b-2 border-[#006633]'>
+				<JobSearchBox/>
 				</div>
-				<div className=' mt-12'>
+				
+			</div>
+			<div className=' lg:container w-full max-w-full mx-6 lg:mx-auto mt-12 overflow-hidden'>
 					<h1 className='font-bold text-[32px] leading-[44px] text-[#006633]'>
 						Associate Director - Emerging Businesses
 					</h1>
-					<div className='flex justify-between w-full mx-4 flex-col md:flex-row items-center mt-8  '>
+					<div className='flex  md:gap-10 lg:gap-0 lg:justify-between lg:w-full  flex-col md:flex-row items-center mt-8   '>
 						<div className='flex md:justify-between flex-wrap items-center gap-5 lg:gap-14'>
 							<div >
 							<p className='text-[#737475] font-normal leading-6 mb-2'>Date Posted</p>
@@ -107,12 +109,12 @@ function SubPage() {
 							<p className="text-sm text-gray-500">Salary Band: <span className="text-sm text-gray-500">$110,000 – $140,000</span></p>
 							
 
-							<p className="text-sm text-gray-500">
+							<p className="text-sm leading-6 text-gray-500">
 								Alma’s compensation philosophy is driven by our company value of building equity. To best ensure pay equity, we typically bring in new hires near the middle of our listed salary bands and we do not negotiate our compensation (i.e. all people hired at the same level & role are brought in at the same salary, equity, and benefits). The recruiter you work with can provide more details on our philosophy.
 
 
 							</p>
-							<p className="text-sm text-gray-500 my-2">
+							<p className="text-sm leading-6 text-gray-500 my-2">
 							All Alma jobs are listed on our careers page. We do not use outside applications or automated text messaging in our recruiting process. We will not ask for any sensitive financial or identification information throughout the recruiting process. Any communication during the recruitment process, including interview requests or job offers, will come directly from a recruiting team member with a helloalma.com email address
 							</p>
 						</div>
@@ -121,7 +123,6 @@ function SubPage() {
 						Apply
 					</Button>
 				</div>
-			</div>
 			<ContactUs />
             <Footer />
 		</>

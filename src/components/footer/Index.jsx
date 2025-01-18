@@ -14,7 +14,7 @@ const renderMobileFooter = () => {
   return (
     <div className="flex flex-col justify-center items-center">
       <Image src='/Logo-2.svg' alt="logo" width={240} height={240} />
-      <div className="flex flex-wrap justify-center items-center md:gap-5 gap-4 w-80 md:w-[45%] p-2 text-gray-400 my-4">
+      <div className="flex flex-wrap justify-center items-center md:gap-5 gap-4 w-[21rem] md:w-[50%] p-2 text-gray-400 my-4">
         <p>Home</p>
         <p>About</p>
         <p>Solutions</p>
@@ -146,7 +146,7 @@ export default function Footer() {
         {renderDesktopFooter()}
       </div>
 
-      <div className=" mx-24  text-center mt-20 lg:mt-10 text-sm   text-gray-600 border-t-2 border-gray-300  pt-4 lg:pt-8">
+      <div className="  lg:mx-24  text-center mt-6 md:mt-8 lg:mt-10 text-sm   text-gray-600 border-t-2 border-gray-300  pt-4 lg:pt-8">
         Copyright © 2024 Magnific | All Rights Reserved
       </div>
     </footer>
