@@ -12,8 +12,8 @@ body {
 .bars .line {
   fill: none;
  
-  stroke-width: 4;
-  stroke-linecap: square;
+  strokeWidth: 4;
+  strokeLinecap: square;
   transition: stroke-dasharray 400ms,  stroke-dashoffset 400ms;
 }
 .bars .line.top {

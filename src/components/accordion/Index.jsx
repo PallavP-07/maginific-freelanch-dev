@@ -1,7 +1,4 @@
-// components/CategoryList.js
-
-
-// components/Solutions.js
+import { Badge } from "@/components/ui/badge"
 function Solutions() {
     const solutions = [
         "Executive Search",
@@ -30,12 +27,8 @@ function Solutions() {
                 {/* Solutions Buttons */}
                 <div className="flex    gap-4 items-center flex-wrap">
                     {solutions.map((solution, index) => (
-                        <p
-                            key={index}
-                            className="bg-gray-100 bg-opacity-30 text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 border  rounded-lg  transition inline-block"
-                        >
-                            {solution}
-                        </p>
+                
+                        <Badge  key={index} variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>{solution}</Badge>
                     ))}
                 </div>
             </div>
@@ -74,12 +67,7 @@ function IndustryExpertise() {
                 {/* Solutions Buttons */}
                 <div className="flex w-[380px]  md:w-full  gap-4 items-center flex-wrap">
                     {solutions.map((solution, index) => (
-                        <p
-                            key={index}
-                            className="bg-gray-100 bg-opacity-40 text-[#737475] font-semibold text-[16px] leading-[44px] sm:text-base py-1 px-2 border  rounded-md  transition inline-block"
-                        >
-                            {solution}
-                        </p>
+                     <Badge  key={index} variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>{solution}</Badge>
                     ))}
                 </div>
             </div>

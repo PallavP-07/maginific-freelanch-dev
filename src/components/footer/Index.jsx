@@ -3,9 +3,9 @@ import Image from "next/image";
 const renderSocialContent = () => {
   return (
     <div className="flex justify-between items-center gap-3">
-      <Image src='/fb.svg' alt='fb-logo' width={30} height={30} className="text-[#01331A]" />
-      <Image src='/tw.svg' alt='tw-logo' width={30} height={30} />
-      <Image src='/linkedin.svg' alt='linkedin-logo' width={30} height={30} />
+      <Image src='/Icons/fb.svg' alt='fb-logo' width={30} height={30} className="text-[#01331A]" />
+      <Image src='/Icons/tw.svg' alt='tw-logo' width={30} height={30} />
+      <Image src='/Icons/linkedin.svg' alt='linkedin-logo' width={30} height={30} />
     </div>
   );
 }

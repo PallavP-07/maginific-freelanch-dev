@@ -126,7 +126,7 @@ export default function CustomNavbar() {
                   "absolute left-[-570px] top-[51px]  "
                 )}
               >
-                {renderDropDownMenu()}
+                {/* {renderDropDownMenu()} */}
 
               </div>
             </li>
@@ -165,7 +165,7 @@ export default function CustomNavbar() {
                   "absolute left-[-680px] top-[51px] "
                 )}
               >
-                {renderDropDownMenu()}
+                {/* {renderDropDownMenu()} */}
               </div>
             </li>
 
