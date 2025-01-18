@@ -89,40 +89,61 @@ export const RenderPagination = () => {
 
     const handleNextPage = () => {
         if (activePage < totalPages) {
-            setActivePage(activePage + 1);
+            setActivePage((prevPage) => prevPage + 1);
         }
     };
 
     const handlePreviousPage = () => {
         if (activePage > 1) {
-            setActivePage(activePage - 1);
+            setActivePage((prevPage) => prevPage - 1);
         }
     };
-    return (
-        <>
-            <Pagination>
-                <PaginationContent>
-                    <PaginationItem>
-                        <PaginationPrevious onClick={handlePreviousPage} />
-                    </PaginationItem>
 
-                    {/* Render Page Numbers */}
-                    {Array.from({ length: totalPages }, (_, index) => (
-                        <PaginationItem key={index}>
-                            <PaginationLink href="#" isActive={index + 1 === activePage}>
-                                {index + 1}
+    const handlePageClick = (page) => {
+        setActivePage(page);
+    };
+
+    return (
+        <Pagination>
+            <PaginationContent>
+                {/* Previous Button */}
+                <PaginationItem disabled={activePage === 1}>
+                    <PaginationPrevious
+                        onClick={handlePreviousPage}
+                        disabled={activePage === 1} // Disable if on the first page
+                    />
+                </PaginationItem>
+
+                {/* Page Numbers */}
+                {Array.from({ length: totalPages }, (_, index) => {
+                    const pageNumber = index + 1;
+                    return (
+                        <PaginationItem key={pageNumber} isActive={pageNumber === activePage}>
+                            <PaginationLink
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault(); // Prevent default anchor behavior
+                                    handlePageClick(pageNumber);
+                                }}
+                                isActive={pageNumber === activePage} // Highlight active page
+                            >
+                                {pageNumber}
                             </PaginationLink>
                         </PaginationItem>
-                    ))}
-                    <PaginationItem>
-                        <PaginationNext onClick={handleNextPage} />
-                    </PaginationItem>
-                </PaginationContent>
-            </Pagination>
-        </>
-    )
-}
+                    );
+                })}
 
+                {/* Next Button */}
+                <PaginationItem disabled={activePage === totalPages}>
+                    <PaginationNext
+                        onClick={handleNextPage}
+                        disabled={activePage === totalPages} // Disable if on the last page
+                    />
+                </PaginationItem>
+            </PaginationContent>
+        </Pagination>
+    );
+};
 
 const BrowseJobs = () => {
 
@@ -136,11 +157,11 @@ const BrowseJobs = () => {
 
             {/* Wrapper for the JobSearchBar */}
             <div className="relative lg:container w-full flex justify-center items-center lg:mx-auto">
-    {/* Positioning the search bar in the bottom half of the HeroBanner */}
-    <div className="absolute w-[400px] md:w-[820px] lg:w-[998px] -bottom-[26rem] md:-bottom-32">
-        <JobSearchBox />
-    </div>
-</div>
+                {/* Positioning the search bar in the bottom half of the HeroBanner */}
+                <div className="absolute w-[400px] md:w-[820px] lg:w-[998px] -bottom-[26rem] md:-bottom-32">
+                    <JobSearchBox />
+                </div>
+            </div>
 
             {/* Main Content Section */}
             <div className="lg:container lg:mx-auto mt-120 md:mt-40">
@@ -159,13 +180,13 @@ const BrowseJobs = () => {
                             postTime={job.postTime}
                             location={job.location}
                             expe={job.expe}
-                           
+
                         />
                     ))}
                 </div>
 
                 {RenderPagination()}
-               
+
             </div>
 
             {/* Footer and Contact Section */}
