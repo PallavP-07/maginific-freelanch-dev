@@ -66,7 +66,7 @@ const FunctionsPage = () => {
                 </div>
                 <div className="flex flex-col gap-4 md:flex-row md:gap-6  items-start md:items-center w-full">
                     {/* Search Input */}
-                    <div className="w-full md:w-1/3">
+                    <div className="w-full md:w-2/3">
                         <Label
                             htmlFor="Job Title"
                             className="font-bold text-lg leading-5 text-[#2A2B2F] pb-3"

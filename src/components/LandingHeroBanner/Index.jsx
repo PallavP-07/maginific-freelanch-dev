@@ -19,7 +19,7 @@ const LandingHeroBanner = (props) => {
             <h1 className=" text-white font-bold text-[76px] leading-[60px] mb-12 ">
             Tomorrow’s Talent, 
             </h1>
-            <h1 class="bg-gradient-to-r from-[#77BE9A]  to-white inline-block text-transparent bg-clip-text font-bold text-[76px] leading-[60px]">Today.</h1>
+            <h1 className="bg-gradient-to-r from-[#77BE9A]  to-white inline-block text-transparent bg-clip-text font-bold text-[76px] leading-[60px]">Today.</h1>
             <span className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[16px] font-sans  xl:text-[16px] font-light leading-6 text-wrap text-center mt-4 md:mt-8">
             Driving impact through careers, innovation through industries and growth across continents. And it all starts with our people. 
             </span>
