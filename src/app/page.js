@@ -15,7 +15,7 @@ async function getGlobals() {
 			
   }));
 }
-
+ 
 
 export default async function Home() {
   const global = await getGlobals();
