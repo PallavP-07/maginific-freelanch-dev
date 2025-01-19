@@ -158,18 +158,18 @@ const BrowseJobs = () => {
             {/* Wrapper for the JobSearchBar */}
             <div className="relative lg:container w-full flex justify-center items-center lg:mx-auto">
                 {/* Positioning the search bar in the bottom half of the HeroBanner */}
-                <div className="absolute w-[400px] -bottom-44 md:w-[820px] lg:w-[998px]  md:-bottom-36 lg:-bottom-32">
+                <div className="absolute w-[400px] -bottom-44 md:w-[768px] lg:w-[985px]  md:-bottom-48 lg:-bottom-32">
                     <JobSearchBox />
                 </div>
             </div>
 
             {/* Main Content Section */}
-            <div className="lg:container lg:mx-auto mt-[186px] md:mt-40">
-                <h1 className="mx-4 lg:mx-0 text-[#006633] font-bold text-xl leading-[66px] my-8">
+            <div className="lg:container lg:mx-auto mt-[200px] md:mt-56 lg:mt-40">
+                <h1 className="mx-6 lg:mx-0 text-[#006633]  font-bold text-xl leading-[66px] my-5">
                     Recent Job Postings
                 </h1>
 
-                <div className="flex-col mx-4 lg:mx-0 flex gap-6">
+                <div className="flex-col mx-6 lg:mx-0 flex gap-6">
                     {jobData?.map((job) => (
                         <JobPostingCard
                             key={job.id}

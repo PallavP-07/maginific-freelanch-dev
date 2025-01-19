@@ -6,49 +6,89 @@ import { cn } from "@/lib/utils";
 import clsx from "clsx";
 const renderDropDownMenu = () => {
   return (
-    <>
-      <div className="rounded-b-lg  shadow-inner w-[1336px] bg-white text-black  py-6 px-10 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 -z-20 translate-y-[-100%] transition-all duration-500 invisible group-hover:visible">
-        <div className="lg:container lg:mx-auto mx-6">
-          <h2 className="text-2xl md:text-xl flex leading-[65px]  font-semibold  text-[#01331A] border-b-2 border-[#CCE0D6] pb-2 mb-4 sm:mb-2 w-full sm:w-full">
-            Solution &gt;
-
+    <div className="relative group ">
+      <div className="absolute top-0 left-0 w-full rounded-b-lg  bg-white shadow-inner  text-black py-6 px-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 -z-10 translate-y-[-20px] transition-all duration-300 ease-in-out invisible group-hover:visible">
+        <div className="w-full lg:container lg:mx-auto mx-6 my-6">
+          <h2 className="text-xl font-semibold text-[#01331A] pb-3 border-b-2 border-[#CCE0D6] ">
+            Solutions &gt;
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8   text-sm text-gray-700">
-            <p>Legal & Compliance</p>
-            <p>Data Procurement & Supply Chain</p>
-            <p>Customer Success</p>
-            <p>Product</p>
-            <p>Human Resources</p>
-            <p>Sales</p>
-            <p>Business Development</p>
-            <p>Cyber Security</p>
-            <p>Accounting, Finance & Tax</p>
-            <p>Marketing</p>
-            <p>Technology & Engineering</p>
+          <div className="my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full font-normal leading-8 text-[16px] text-[#737475]">
+            {[
+              "Legal & Compliance",
+              "Data Procurement & Supply Chain",
+              "Customer Success",
+              "Product",
+              "Sales",
+              "Human Resources",
+              "Cyber Security",
+              "Business Development",
+              "Accounting, Finance & Tax",
+              "Marketing",
+              "Technology & Engineering",
+            ].map((item, index) => (
+              <p
+                key={index}
+                className="w-full block text-left hover:text-[#01331A] hover:font-medium cursor-pointer transition"
+              >
+                {item}
+              </p>
+            ))}
           </div>
         </div>
       </div>
+    </div>
+  );
+};
 
-    </>
-  )
-}
+
 
 export default function CustomNavbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isHovered, setIsHovered] = React.useState(false); // Track if a menu is hovered
-  const [openDropdown, setOpenDropdown] = React.useState(null);
-   // Track the open dropdown (null if none)
-   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
-   const [showMobileSubMenu, setShowMobileSubMenu] = React.useState(false);
+  const [openDropdown, setOpenDropdown] = React.useState(null); // Track the open dropdown (null if none)
+  const [showMobileMenu, setShowMobileMenu] = React.useState(false);
+  const [showMobileSubMenu, setShowMobileSubMenu] = React.useState(false);
+
+
+  const renderMobileNavMenu = () => {
+    return (
+      <>
+      <div
+  className={clsx(
+    "fixed inset-0 z-50 overflow-y-auto bg-gray-100 w-full md:w-1/2 top-[80px] left-0 transition-transform ease-in-out duration-500 flex flex-col justify-between",
+
+    showMobileMenu ? "translate-x-0 md:w-1/2" : "-translate-x-full md:w-1/2"
+  )}
+>
+  <div className="px-8 py-10  ">
+    <ul className="text-[24px] leading-10 text-[#01331A] font-semibold flex flex-col gap-[57px]">
+      <li>About</li>
+      <li>Solution &gt; </li>
+      <li>Expertise &gt; </li>
+      <li>Functions &gt; </li>
+      <li>Insights</li>
+      <li>Browse Jobs</li>
+      <li>Contact</li>
+    </ul>
+  </div>
+</div>
+      </>
+    )
+  }
+
+
   const toggleMobileMenu = () => {
-    setShowMobileMenu(!showMobileMenu);
-    setIsHovered(!isHovered)
-    setIsScrolled(!isScrolled)
+    setShowMobileMenu((prev) => !prev);
     setShowMobileSubMenu(false);
+    if (isScrolled !== true) {
+
+      setIsScrolled(true);
+    }
   };
+
   React.useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50 || openDropdown || isHovered) {
+      if (window.scrollY > 50 || isHovered || openDropdown) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -56,8 +96,11 @@ export default function CustomNavbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
+
+    // Cleanup event listener on component unmount
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [openDropdown, isHovered]);
+  }, [isHovered, openDropdown]);
+
 
   return (
     <nav
@@ -66,7 +109,7 @@ export default function CustomNavbar() {
         (isScrolled || isHovered) ? "bg-white text-black shadow-lg" : "bg-transparent text-white"
       )}
     >
-      <div className="lg:container lg:mx-auto mx-6 flex items-center justify-between lg:py-5">
+      <div className={`lg:container lg:mx-auto   flex items-center justify-between md:py-5 ml-6 `}>
         {/* Logo */}
         <Link href="/" legacyBehavior className="lg:w-1/3">
           <Image
@@ -124,10 +167,10 @@ export default function CustomNavbar() {
               {/* Show dropdown on hover */}
               <div
                 className={cn(
-                  "absolute left-[-570px] top-[51px]  "
+                  "absolute left-[-578px] -z-50 top-[51px] w-[1342px] "
                 )}
               >
-                {/* {renderDropDownMenu()} */}
+                {renderDropDownMenu()}
 
               </div>
             </li>
@@ -163,10 +206,10 @@ export default function CustomNavbar() {
               {/* Show dropdown on hover */}
               <div
                 className={cn(
-                  "absolute left-[-680px] top-[51px] "
+                  "absolute left-[-688px] top-[51px] w-[1340px] "
                 )}
               >
-                {/* {renderDropDownMenu()} */}
+                {renderDropDownMenu()}
               </div>
             </li>
 
@@ -215,11 +258,11 @@ export default function CustomNavbar() {
         {/* mobile hamburger menu */}
         <div className="lg:hidden">
           <svg
-         
-           onClick={toggleMobileMenu}
+
+            onClick={toggleMobileMenu}
             className={`bars ${showMobileMenu ? "active" : ""}`}
             viewBox="0 0 100 100"
-            // onClick={(e) => e.target.classList.toggle('active')}
+          // onClick={(e) => e.target.classList.toggle('active')}
           >
             <path
               className={`line top ${isScrolled ? 'stroke-black' : 'stroke-white'}`}  // Apply conditional class
@@ -234,26 +277,8 @@ export default function CustomNavbar() {
               d="m 69.575405,67.073826 h -40 c -13.100415,0 -14.380204,-31.80258 -6.899646,-33.421777 24.612039,-5.327373 -9.016154,52.337577 12.75751,30.563913 l 28.284272,-28.284272"
             />
           </svg>
-          <div
-              className={clsx(
-                "fixed inset-0 z-50 overflow-y-auto bg-gray-100 w-full   md:w-1/2  top-[80px] left-0  transition-transform ease-in-out duration-500 flex flex-col justify-between",
-                
-                showMobileMenu ? 'translate-x-0 md:w-1/2' : '-translate-x-full md:1/2 '
-              )}
-            >
-           <div className="px-8 py-10  max-h-[100vh] flex flex-col gap-16">
-            <ul className="text-[24px]  leading-10 text-[#01331A] font-semibold">
-              <li>About</li>
-              <li>Solution &gt; </li>
-              <li>Expertise &gt; </li>
-              <li>Functions &gt; </li>
-              <li>Insights</li>
-              <li>Browse Jobs</li>
-              <li>Contact</li>
-            </ul>
-           </div>
-            </div>
-         
+          {renderMobileNavMenu()}
+
         </div>
       </div>
     </nav>

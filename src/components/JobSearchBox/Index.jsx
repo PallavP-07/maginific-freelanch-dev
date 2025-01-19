@@ -18,22 +18,22 @@ const JobSearchBox = () => {
                 <div className='flex flex-col gap-4  w-full '>
                     <div className='flex flex-col md:flex-row justify-between  w-full gap-4'>
                         <div className='w-full'>
-                            <Label htmlFor="Job Title" className="font-semibold text-lg leading-10 text-gray-800">Job Title</Label>
-                            <Input type="text" placeholder="Enter a Job Title or a Keyword"className=' placeholder:text-[#D0D0D0]'  />
+                            <Label htmlFor="Job Title" className="font-semibold text-lg leading-10 text-[#2A2B2F]">Job Title</Label>
+                            <Input type="text" placeholder="Enter a Job Title or a Keyword" className='h-10 placeholder:text-[#D0D0D0]' />
                         </div>
 
                         <div className='w-full'>
-                            <Label htmlFor="Location" className="font-semibold text-lg leading-10 text-gray-800">Location</Label>
-                            <Input type="text" placeholder="Enter your Location" className=' placeholder:text-[#D0D0D0]'  />
+                            <Label htmlFor="Location" className="font-semibold text-lg leading-10 text-[#2A2B2F]">Location</Label>
+                            <Input type="text" placeholder="Enter your Location" className='h-10 placeholder:text-[#D0D0D0]' />
                         </div>
 
                     </div>
                     <div className=' hidden md:flex  md:flex-row justify-between items-end gap-4'>
                         <div className='w-full'>
-                            <Label htmlFor="Filter" className="font-semibold text-lg leading-10 text-gray-800">Filter</Label>
-                            <Select className='z-50 bg-white'>
+                            <Label htmlFor="Filter" className="font-semibold text-lg leading-10 text-[#2A2B2F]">Filter</Label>
+                            <Select className='z-50 bg-white h-10'>
                                 <SelectTrigger className='text-[#D0D0D0]'>
-                                    <SelectValue  placeholder="Date Posted" />
+                                    <SelectValue placeholder="Date Posted" />
                                 </SelectTrigger>
                                 <SelectContent className="bg-white">
                                     <SelectGroup>
@@ -47,7 +47,7 @@ const JobSearchBox = () => {
                             </Select>
                         </div>
                         <div className='w-full'>
-                            <Select>
+                            <Select className='z-50 bg-white h-10'>
                                 <SelectTrigger className='text-[#D0D0D0]'>
                                     <SelectValue placeholder="Experience" />
                                 </SelectTrigger>
@@ -63,7 +63,7 @@ const JobSearchBox = () => {
                             </Select>
                         </div>
                         <div className='w-full'>
-                            <Select>
+                            <Select className='z-50 bg-white h-10'>
                                 <SelectTrigger className='text-[#D0D0D0]'>
                                     <SelectValue placeholder="Job Type" />
                                 </SelectTrigger>
@@ -79,7 +79,7 @@ const JobSearchBox = () => {
                             </Select>
                         </div>
                         <div className='w-full'>
-                            <Select>
+                            <Select className='z-50 bg-white h-10'>
                                 <SelectTrigger className='text-[#D0D0D0]'>
                                     <SelectValue placeholder="Industry" />
                                 </SelectTrigger>
@@ -94,24 +94,18 @@ const JobSearchBox = () => {
                                 </SelectContent>
                             </Select>
                         </div>
-
-
                     </div>
                 </div>
-                <div className='flex md:flex-col md:space-y-8  md:gap-6  md:h-full'>
-
-
-                    <Button className="px-8 py-2  md:mt-10 w-full  md:w-full  bg-[#026534] text-white rounded-[3px] text-[16px] leading-5 font-semibold">
+                <div className='flex md:flex-col md:space-y-8 w-full md:w-auto  md:gap-6  md:h-full'>
+                    <Button className="px-8 py-5  md:mt-10 w-full  md:w-full  bg-[#026534] text-white rounded-[3px] text-[18px] leading-5 font-semibold">
                         Search Job
                     </Button>
+                    <div className='hidden md:block '>
 
-
-                    <Button className=" hidden md:block md:w-full px-6 w-1/3  py-2 bg-transparent  text-[#01331A] border-[#01331A] border rounded-[3px] text-[18px] leading-5 font-normal">
-                        Reset Filters
-                    </Button>
-
-
-
+                        <Button className="  px-8   py-4 bg-transparent   text-[#01331A] border-[#01331A] border rounded-[3px] text-[16px] leading-5 font-normal">
+                            Reset Filters
+                        </Button>
+                    </div>
                 </div>
             </div>
 

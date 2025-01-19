@@ -18,7 +18,7 @@ const HeroBanner = (props) => {
             <h1 className="border-b-2 font-normal font-sans tracking-[5px] border-white w-full md:pb-7 text-[52px] md:text-[76px] md:leading-[65px]  ">
               {props.header}
             </h1>
-            <span className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[16px] font-sans xl:text-[16px] font-light leading-6 text-wrap text-center mt-4 md:mt-8">
+            <span className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[16px] font-sans xl:text-[16px] font-light leading-6 text-wrap text-center mt-4 md:mt-5">
           {props.discription}
             </span>
           </div>
