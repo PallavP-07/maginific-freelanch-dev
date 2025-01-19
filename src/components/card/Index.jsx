@@ -4,9 +4,9 @@ import React from 'react'
 const ContentCard =()=> {
   return (
    <>
-  <div className="bg-white shadow-md flex flex-col gap-4 p-4 rounded-md">
+  <div className="bg-white drop-shadow-[0_0px_8px_rgba(0,0,0,0.25)] flex flex-col gap-4 p-4 rounded-[4px]">
   {/* Image Section */}
-  <div className="w-full h-[200px] overflow-hidden rounded-md">
+  <div className="w-full h-[200px] overflow-hidden ">
     <Image
       src="/HeroBanners/contact_us-hero-banner.png"
       className="object-fill w-full h-full"

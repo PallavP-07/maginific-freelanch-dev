@@ -1,6 +1,6 @@
-import CategoryList from '@/components/accordion/Index'
+
 import ContactUs from '@/components/contact/Index'
-import Footer from '@/components/footer/Index'
+
 import HeroBanner from '@/components/herobanner/Index'
 
 import Image from 'next/image'
@@ -12,7 +12,6 @@ import {
     SelectContent,
     SelectGroup,
     SelectItem,
-
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
@@ -62,8 +61,10 @@ const FunctionsPage = () => {
                         </div>
                     </div>
                 </div>
-                <DualColorHeader first={"Browse all"} second={"Insights"} />
-                <div className="flex flex-col gap-4 md:flex-row md:gap-6 items-start md:items-center w-full">
+                <div className=' my-8 md:my-10 lg:my-14'>
+                    <DualColorHeader first={"Browse all"} second={"Insights"} />
+                </div>
+                <div className="flex flex-col gap-4 md:flex-row md:gap-6  items-start md:items-center w-full">
                     {/* Search Input */}
                     <div className="w-full md:w-1/3">
                         <Label

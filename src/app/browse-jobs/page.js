@@ -191,7 +191,7 @@ const BrowseJobs = () => {
 
             {/* Footer and Contact Section */}
             <ContactUs />
-            <Footer />
+     
         </>
 
     )

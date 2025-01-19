@@ -3,12 +3,12 @@ import React from 'react'
 import JobSearchBox from '@/components/JobSearchBox/Index'
 import { Button } from '@/components/ui/button'
 import ContactUs from '@/components/contact/Index'
-import Footer from '@/components/footer/Index'
+
 function SubPage() {
 	return (
 		<>
 			<div className='lg:container w-full overflow-hidden    lg:mx-auto'>
-				<div className=' py-14 border-b-2 mx-4 border-[#006633]'>
+				<div className=' py-14 mt-20 border-b-2 mx-4 border-[#006633]'>
 				<JobSearchBox/>
 				</div>
 				<div className='mx-4 my-20'>
@@ -46,7 +46,7 @@ function SubPage() {
 					</div>
 					<div>
 
-						<div className="text-gray-800 mt-10 md:mt-40">
+						<div className="text-gray-800 mt-10 md:mt-20">
 							<h2 className="text-2xl text-[#47494e] font-semibold mb-4">Overview</h2>
 							<p className="text-[#737475]  mb-12 ">
 								Wonder is on a mission to simplify access to high-quality, affordable mental health care. We do this by making it easy and financially rewarding for therapists to accept insurance and offer in-network care. When a provider joins Wonder, they gain access to a suite of tools that not only help them better run their business, but also grow it sustainably and develop as a provider. Alma is available in all 50 states, with over 20,000 therapists in our growing network. Anyone looking for a therapist can browse Alma’s free directory. Alma has raised $220.5M in funding from Insight Partners, Optum Ventures, Tusk Venture Partners, Primary Venture Partners, First Round Capital, Sound Ventures, BoxGroup, Cigna Ventures, and Rainfall Ventures. Alma was also named one of Inc’s Best Workplaces in 2022 and 2023.
@@ -124,7 +124,7 @@ function SubPage() {
 				</div>				
 			</div>
 			<ContactUs />
-            <Footer />
+     
 		</>
 	)
 }

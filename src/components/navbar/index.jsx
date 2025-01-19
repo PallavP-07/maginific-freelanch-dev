@@ -53,25 +53,25 @@ export default function CustomNavbar() {
   const renderMobileNavMenu = () => {
     return (
       <>
-      <div
-  className={clsx(
-    "fixed inset-0 z-50 overflow-y-auto bg-gray-100 w-full md:w-1/2 top-[80px] left-0 transition-transform ease-in-out duration-500 flex flex-col justify-between",
+        <div
+          className={clsx(
+            "fixed inset-0 z-50 overflow-y-auto bg-gray-100 w-full md:w-1/2 top-[80px] left-0 transition-transform ease-in-out duration-500 flex flex-col justify-between",
 
-    showMobileMenu ? "translate-x-0 md:w-1/2" : "-translate-x-full md:w-1/2"
-  )}
->
-  <div className="px-8 py-10  ">
-    <ul className="text-[24px] leading-10 text-[#01331A] font-semibold flex flex-col gap-[57px]">
-      <li>About</li>
-      <li>Solution &gt; </li>
-      <li>Expertise &gt; </li>
-      <li>Functions &gt; </li>
-      <li>Insights</li>
-      <li>Browse Jobs</li>
-      <li>Contact</li>
-    </ul>
-  </div>
-</div>
+            showMobileMenu ? "translate-x-0 md:w-1/2" : "-translate-x-full md:w-1/2"
+          )}
+        >
+          <div className="px-8 py-10  ">
+            <ul className="text-[24px] leading-10 text-[#01331A] font-semibold flex flex-col gap-[57px]">
+              <li>About</li>
+              <li>Solution &gt; </li>
+              <li>Expertise &gt; </li>
+              <li>Functions &gt; </li>
+              <li>Insights</li>
+              <li>Browse Jobs</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+        </div>
       </>
     )
   }
@@ -128,14 +128,13 @@ export default function CustomNavbar() {
               <Link
                 href="/about-us"
                 className={cn(
-                  "hover:font-semibold  font-normal text-[16px] ",
-                  isScrolled || isHovered && "hover:text-black hover:font-semibold font-normal text-[16px]"
+                  "font-normal text-[16px] hover:text-[18px] hover:font-semibold", 
+                  (isScrolled || isHovered) && "hover:text-black text-[16px] hover:text-[18px] hover:font-semibold" 
                 )}
               >
                 About
               </Link>
             </li>
-
             {/* Solutions Dropdown */}
             <li
               className="relative group"
@@ -147,6 +146,7 @@ export default function CustomNavbar() {
                   "bg-transparent flex items-center font-normal text-[16px] hover:bg-transparent  hover:font-semibold",
                   isScrolled || isHovered && "hover:text-black hover:font-semibold"
                 )}
+                href="/solutions"
               >
                 Solutions
                 <svg
@@ -186,6 +186,7 @@ export default function CustomNavbar() {
                   "bg-transparent tracking-[1px] flex items-center font-normal text-[16px] hover:bg-transparent  hover:font-semibold",
                   isScrolled || isHovered && "hover:text-black hover:font-semibold"
                 )}
+                href="/expertise"
               >
                 Expertise
                 <svg
@@ -216,7 +217,7 @@ export default function CustomNavbar() {
             {/* Insights */}
             <li>
               <Link
-                href="/Insights"
+                href="/insights"
                 className={cn(
                   "hover:font-semibold hover:text-white font-normal text-[16px]",
                   isScrolled && "hover:text-black hover:font-semibold"
@@ -226,7 +227,6 @@ export default function CustomNavbar() {
               </Link>
             </li>
           </ul>
-
           {/* Right Actions */}
           <div className="hidden lg:flex items-center gap-3">
             <Link href="#" legacyBehavior>

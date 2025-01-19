@@ -40,7 +40,7 @@ function SubPage() {
       </div>
       <div className='lg:container  mx-4 mb-20  lg:mx-auto'>
         <div className=" text-[#373A40]   py-20 border-b-2 border-[#CCE0D6] mb-10">
-          <div className="max-w-5xl mx-auto space-y-10">
+          <div className="mx-auto space-y-10">
             {/* Section: What is Healthcare Technology? */}
             <div>
               <h2 className="text-lg sm:text-2xl font-bold leading-6 text-[#006633]">

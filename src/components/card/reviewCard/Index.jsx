@@ -4,7 +4,7 @@ import React from 'react'
 export default function ReviewCard() {
   return (
     <>
-    <div className='bg-white border-t-[15px] my-6 mx-8 w-[360px] px-9 py-10 border-[#cce0d6] rounded-md  shadow-md'>
+    <div className='bg-white border-t-[15px] my-6 mx-8 w-full px-9 py-10 border-[#cce0d6] rounded-md  shadow-md'>
         <p className='text-wrap font-medium text-lg leading-8 text-[#373A40] mb-10'>
         “ A visual guide could be a wireframe, creative composition, or information architecture. A device that enables collaboration will lessen the chance of work having to be completely redone. “
         </p>

@@ -98,7 +98,7 @@ export default function CategoryList() {
 
             <div>
                 <div className="lg:container  mx-4  lg:mx-auto mt-12 mb-4">
-                    <div className=" border-b-2 border-[#CCE0D6] ">
+                    <div className=" border-b-4 border-[#CCE0D6] ">
 
                         <DualColorHeader first={"Industries We"} second={"Serve"} />
                     </div>
