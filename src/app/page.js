@@ -5,9 +5,12 @@ import LandingHeroBanner from "@/components/LandingHeroBanner/Index";
 import ReviewCard from "@/components/card/reviewCard/Index";
 
 
+
+
 export default function Home() {
   return (
 <>
+
 <LandingHeroBanner/>
  <ReviewCard/>
 </>

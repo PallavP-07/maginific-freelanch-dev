@@ -115,7 +115,7 @@ function SubPage() {
           </div>
         </div>
       </div>
-      <Footer/>
+
     </>
   )
 }
