@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default nextConfig;
+const nextConfig = {
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'magnific-directus-2p92s.ondigitalocean.app',
+          pathname: '/assets/**', // Allows paths under /assets
+        },
+      ],
+    },
+  };
+  
+  export default nextConfig;
+  

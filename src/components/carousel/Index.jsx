@@ -16,12 +16,12 @@ export function ResponsiveCarousel() {
             <h2 className="text-[32px] sm:text-[36px] lg:text-[44px] text-white font-bold leading-tight py-12">
                 What Our Clients are Saying
             </h2>
-            <Carousel className="relative w-full max-w-screen-xl  mx-auto">
+            <Carousel className="  mx-auto">
                 {/* Carousel Content */}
-                <CarouselContent className="flex gap-4 mx-12">
+                <CarouselContent className=" ">
                     {reviews.map((_, index) => (
                         <CarouselItem
-                            key={index} className=" pl-4 md:basis-1/2 lg:basis-1/3"
+                            key={index} className="   lg:basis-1/3"
                         >
                             <div className="">
                                 <ReviewCard />
@@ -33,7 +33,6 @@ export function ResponsiveCarousel() {
                 {/* Navigation Buttons */}
                 <CarouselPrevious />
                 <CarouselNext />
-
             </Carousel>
         </div>
     );
