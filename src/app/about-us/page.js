@@ -1,8 +1,11 @@
+import AboutHeroBanner from '@/components/aboutHeroBanner/Index'
 import React from 'react'
 
-function page() {
+const page =()=> {
   return (
-    <div>page</div>
+   <>
+   <AboutHeroBanner/>
+   </>
   )
 }
 

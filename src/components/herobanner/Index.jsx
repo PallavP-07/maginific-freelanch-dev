@@ -4,7 +4,7 @@ import NavigationMenuDemo from '@/components/navbar/index'
 const HeroBanner = (props) => {
   return (
     <>
-      <NavigationMenuDemo />
+      {/* <NavigationMenuDemo /> */}
       <div className="relative  w-full h-[60vh] md:h-[40vh] lg:h-[560px]">
         <Image
           className="w-full object-cover h-100 "
