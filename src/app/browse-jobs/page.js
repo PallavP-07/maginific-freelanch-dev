@@ -164,12 +164,12 @@ const BrowseJobs = () => {
             </div>
 
             {/* Main Content Section */}
-            <div className="lg:container lg:mx-auto mt-[200px] md:mt-56 lg:mt-40">
-                <h1 className="mx-6 lg:mx-0 text-[#006633]  font-bold text-xl leading-[66px] my-5">
+            <div className="lg:container mx-4 lg:mx-auto mt-[200px] md:mt-56 lg:mt-40">
+                <h1 className=" lg:mx-0 text-[#006633]  font-bold text-xl leading-[66px] my-5">
                     Recent Job Postings
                 </h1>
 
-                <div className="flex-col mx-6 lg:mx-0 flex gap-6">
+                <div className="flex-col flex w-full gap-6">
                     {jobData?.map((job) => (
                         <JobPostingCard
                             key={job.id}

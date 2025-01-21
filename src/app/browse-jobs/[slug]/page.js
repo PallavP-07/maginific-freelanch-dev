@@ -17,7 +17,7 @@ function SubPage() {
 					</h1>
 
 					<div className='flex flex-wrap  md:gap-10 lg:gap-0 lg:justify-between lg:w-full  flex-col md:flex-row items-center mt-8   '>
-						<div className='grid  grid-cols-3 md:grid-cols-5  gap-5'>
+						<div className='w-full md:w-auto grid grid-cols-3 md:grid-cols-5  gap-5'>
 							<div >
 							<p className='text-[#737475] text-lg font-normal leading-6 mb-2'>Date Posted</p>
 							<p className='text-[#373A40] font-semibold leading-6'>23 June 2024</p>

@@ -27,7 +27,7 @@ const JobPostingCard = ({ title, dipartment, discription, team, postTime, locati
 
     return (
         <>
-            <div className='bg-[#F9F9F9] rounded-md  drop-shadow-md flex flex-col  gap-4 md:gap-0 md:flex-row w-full justify-between items-center py-6 px-10'>
+            <div className='bg-[#F9F9F9]  rounded-md  drop-shadow-md flex flex-col  gap-4 md:gap-0 md:flex-row w-auto justify-between items-center py-6 px-10'>
                 <div className='flex flex-col gap-2 md:border-r-2 md:border-[#D0D0D0] md:pr-[17px] w-full md:w-3/4  lg:w-2/4'>
                     <h2 className='text-xl font-bold leading-[36px]'>{title}</h2>
                     <span className='text-lg font-light leading-[36px]'>{dipartment}</span>

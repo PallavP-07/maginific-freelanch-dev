@@ -109,7 +109,7 @@ export default function CustomNavbar() {
         (isScrolled || isHovered) ? "bg-white text-black shadow-lg" : "bg-transparent text-white"
       )}
     >
-      <div className={`lg:container lg:mx-auto   flex items-center justify-between md:py-5 ml-6 `}>
+      <div className={`lg:container lg:mx-auto   flex items-center justify-between lg:py-5 ml-6 `}>
         {/* Logo */}
         <Link href="/" legacyBehavior className="lg:w-1/3">
           <Image

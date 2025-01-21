@@ -10,7 +10,7 @@ function SubPage() {
     <>
       <div className="flex flex-col md:flex-row  md:items-end w-full h-auto md:h=[400px] lg:h-[480px]">
         {/* Left Section */}
-        <div className="w-full md:pb-10 mt-20 mb-10 md:mt-0 md:mb-0  lg:pb-20 lg:w-1/2 px-6 lg:ml-40 text-left">
+        <div className="lg:container  m-10 mb-20  lg:mx-auto">
           <span className="text-sm font-normal text-[#737475]">July 2024</span>
           <h1 className="text-3xl  lg:text-5xl mb-5 font-semibold leading-[40px] lg:leading-[60px] text-[#373A40] mt-2">
             Insights sub-page heading here
@@ -29,7 +29,7 @@ function SubPage() {
         </div>
 
         {/* Right Section */}
-        <div className="w-full lg:w-2/3 h-[300px] md:h=[400px] lg:h-[480px] relative">
+        <div className="w-full  h-[300px] md:h=[400px] lg:h-[480px] relative">
           <Image
             src="/assets/insights-sub-page-banner.png"
             alt="insight-sub-banner"
@@ -38,7 +38,7 @@ function SubPage() {
           />
         </div>
       </div>
-      <div className='lg:container  mx-4 mb-20  lg:mx-auto'>
+      <div className='lg:container  mx-6 mb-20  lg:mx-auto'>
         <div className=" text-[#373A40]   py-20 border-b-2 border-[#CCE0D6] mb-10">
           <div className="mx-auto space-y-10">
             {/* Section: What is Healthcare Technology? */}
@@ -104,11 +104,11 @@ function SubPage() {
           </div>
         </div>
         <div>
-          <div className='text-center md:text-left'>
+          <div className='text-center w- md:text-left'>
 
-            <DualColorHeader first={"Related "} second={"Content"} />
+            <DualColorHeader first={"Related "} second={"Content"} style={'text-5xl'} />
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-3 my-8 md:my-10 gap-5 '>
+          <div className='grid grid-cols-1 md:grid-cols-3 mx-8 md:mx-0 my-8 md:my-8 gap-8 md:gap-5 '>
             <ContentCard />
             <ContentCard />
             <ContentCard />

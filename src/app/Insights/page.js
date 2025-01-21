@@ -25,7 +25,7 @@ const FunctionsPage = () => {
             <div className='lg:container  mx-4 mt-12 lg:mx-auto'>
                 <DualColorHeader first={"Our latest"} second={"Insights"} />
 
-                <div className='py-12 border-b-2 border-[#CCE0D6] mb-4'>
+                <div className='pb-6 border-b-2 border-[#CCE0D6] mb-4'>
                     <div className="relative py-20 my-8 w-full h-[60vh] md:h-[40vh] rounded-xl lg:h-[460px]">
                         <Image
                             className="w-full object-cover rounded-xl"

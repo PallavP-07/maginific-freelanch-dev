@@ -188,7 +188,7 @@ const progressSection = () => {
 const renderJobSearchBar = () => {
   return (
     <>
-      <div className="lg:container lg:mx-auto w-full p-20">
+      <div className="lg:container lg:mx-auto w-full px-6 md:p-20">
         <DualColorHeader first={"Find Your Next Opportunity"} second={"Today."} />
         <div className="flex flex-col md:flex-row items-start  gap-4 mt-8 w-full ">
           <div className="w-full  ">
@@ -256,9 +256,7 @@ const renderwhyChooseUs = () => {
 
              <Badge  variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>Executive Search</Badge>
              <Badge  variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>Executive Search</Badge>
-             <Badge  variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>Executive Search</Badge>
-
-            
+             <Badge  variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>Executive Search</Badge>    
              </div>
 
           </div>
@@ -274,7 +272,7 @@ export default async function Home() {
   const banner = await globals.bannerData();
 
 
-  console.log(banner)
+
   return (
     <>
       <LandingHeroBanner bannerData={banner.banner} />
