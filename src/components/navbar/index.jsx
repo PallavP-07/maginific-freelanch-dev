@@ -6,40 +6,41 @@ import { cn } from "@/lib/utils";
 import clsx from "clsx";
 const renderDropDownMenu = () => {
   return (
-    <div className="relative group ">
-      <div className="absolute top-0 left-0 w-full rounded-b-lg  bg-white shadow-inner  text-black py-6 px-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 -z-10 translate-y-[-20px] transition-all duration-300 ease-in-out invisible group-hover:visible">
-        <div className="w-full lg:container lg:mx-auto mx-6 my-6">
-          <h2 className="text-xl font-semibold text-[#01331A] pb-3 border-b-2 border-[#CCE0D6] ">
-            Solutions &gt;
-          </h2>
-          <div className="my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full font-normal leading-8 text-[16px] text-[#737475]">
-            {[
-              "Legal & Compliance",
-              "Data Procurement & Supply Chain",
-              "Customer Success",
-              "Product",
-              "Sales",
-              "Human Resources",
-              "Cyber Security",
-              "Business Development",
-              "Accounting, Finance & Tax",
-              "Marketing",
-              "Technology & Engineering",
-            ].map((item, index) => (
-              <p
-                key={index}
-                className="w-full block text-left hover:text-[#01331A] hover:font-medium cursor-pointer transition"
-              >
-                {item}
-              </p>
-            ))}
-          </div>
-        </div>
+    
+    <div
+      className="  rounded-b-lg max-w-screen-lg bg-white shadow-inner absolute left-[100%]
+      -translate-x-[50%] top-[50px] invisible group-hover:visible opacity-0 
+      group-hover:opacity-100  group-hover:translate-y-0 
+      transition-all duration-300 ease-in-out z-50"
+    >
+      <div className="py-6 px-8 overflow-hidden break-words">
+        <h1 className="text-ellipsis overflow-hidden">
+          hellosfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        </h1>
       </div>
     </div>
+ 
   );
 };
 
+const menuItems=[
+  {
+    title:"About",
+    url:'/about-us'
+  },
+  {
+    title:"Solutions",
+    url:'/solutions'
+  },
+  {
+    title:"Expertise",
+    url:'/Expertise'
+  },
+  {
+    title:"Insights",
+    url:'/insights'
+  },
+]
 
 
 export default function CustomNavbar() {
@@ -105,8 +106,8 @@ export default function CustomNavbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0   z-50 transition-all duration-300 w-full",
-        (isScrolled || isHovered) ? "bg-white text-black shadow-lg" : "bg-transparent text-white"
+        "fixed top-0   z-50  w-full",
+        (isScrolled || isHovered) ? "bg-white text-black" : "bg-transparent text-white"
       )}
     >
       <div className={`lg:container lg:mx-auto   flex items-center justify-between lg:py-5 ml-6 `}>
@@ -122,14 +123,14 @@ export default function CustomNavbar() {
 
         {/* Navigation Menu */}
         <div className="lg:w-2/3 lg:flex lg:justify-between lg:items-center lg:gap-5">
-          <ul className="hidden lg:flex lg:justify-between lg:items-center lg:gap-6  ">
+          <ul className="hidden lg:flex lg:justify-between lg:items-center lg:gap-6 ">
             {/* About */}
             <li>
               <Link
                 href="/about-us"
                 className={cn(
-                  "font-normal text-[16px] hover:text-[18px] hover:font-semibold", 
-                  (isScrolled || isHovered) && "hover:text-black text-[16px] hover:text-[18px] hover:font-semibold" 
+                  "font-normal text-[16px]  hover:font-bold", 
+                  (isScrolled || isHovered) && "hover:font-semibold" 
                 )}
               >
                 About
@@ -138,13 +139,13 @@ export default function CustomNavbar() {
             {/* Solutions Dropdown */}
             <li
               className="relative group"
-              onMouseEnter={() => setIsHovered(true)} // Set isHovered to true when hovering
-              onMouseLeave={() => setIsHovered(false)} // Set isHovered to false when not hovering
+              onMouseEnter={() => setIsHovered(true)} 
+              onMouseLeave={() => setIsHovered(false)} 
             >
               <a
                 className={cn(
-                  "bg-transparent flex items-center font-normal text-[16px] hover:bg-transparent  hover:font-semibold",
-                  isScrolled || isHovered && "hover:text-black hover:font-semibold"
+                  " flex items-center font-normal text-[16px]   hover:font-semibold",
+                  isScrolled || isHovered && " hover:font-semibold"
                 )}
                 href="/solutions"
               >
@@ -164,27 +165,22 @@ export default function CustomNavbar() {
                   />
                 </svg>
               </a>
-              {/* Show dropdown on hover */}
-              <div
-                className={cn(
-                  "absolute left-[-578px] -z-50 top-[51px] w-[1342px] "
-                )}
-              >
-                {renderDropDownMenu()}
+            
+             
+                {/* {renderDropDownMenu()} */}
 
-              </div>
             </li>
 
             {/* Expertise Dropdown */}
             <li
               className="relative group"
-              onMouseEnter={() => setIsHovered(true)} // Set isHovered to true when hovering
-              onMouseLeave={() => setIsHovered(false)} // Set isHovered to false when not hovering
+              onMouseEnter={() => setIsHovered(true)} 
+              onMouseLeave={() => setIsHovered(false)} 
             >
               <a
                 className={cn(
                   "bg-transparent tracking-[1px] flex items-center font-normal text-[16px] hover:bg-transparent  hover:font-semibold",
-                  isScrolled || isHovered && "hover:text-black hover:font-semibold"
+                  isScrolled || isHovered && " hover:font-semibold"
                 )}
                 href="/expertise"
               >
@@ -204,14 +200,10 @@ export default function CustomNavbar() {
                   />
                 </svg>
               </a>
-              {/* Show dropdown on hover */}
-              <div
-                className={cn(
-                  "absolute left-[-688px] top-[51px] w-[1340px] "
-                )}
-              >
-                {renderDropDownMenu()}
-              </div>
+             
+          
+                {/* {renderDropDownMenu()} */}
+             
             </li>
 
             {/* Insights */}
@@ -219,8 +211,8 @@ export default function CustomNavbar() {
               <Link
                 href="/insights"
                 className={cn(
-                  "hover:font-semibold hover:text-white font-normal text-[16px]",
-                  isScrolled && "hover:text-black hover:font-semibold"
+                  "hover:font-semibold  font-normal text-[16px]",
+                  (isScrolled || isHovered) && "hover:font-semibold"
                 )}
               >
                 Insights

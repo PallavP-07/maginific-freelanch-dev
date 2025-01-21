@@ -8,7 +8,7 @@ import { LeftArrowWhite, RightArrowWhite } from "@/assets/Icons";
 
 const CustomPrevArrow = ({ onClick }) => (
   <div
-    className="absolute left-[-30px] z-10 w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full cursor-pointer transform -translate-y-1/2 top-1/2"
+    className="absolute left-[-30px] md:left-[-40px] z-10 w-10 h-10 flex items-center justify-center   rounded-full cursor-pointer transform -translate-y-1/2 top-1/2"
     onClick={onClick}
   >
     <LeftArrowWhite />
@@ -17,7 +17,7 @@ const CustomPrevArrow = ({ onClick }) => (
 
 const CustomNextArrow = ({ onClick }) => (
   <div
-    className="absolute right-[-30px] z-10 w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full cursor-pointer transform -translate-y-1/2 top-1/2"
+    className="absolute right-[-30px] md:right-[-40px] z-10 w-10 h-10 flex items-center justify-center  rounded-full cursor-pointer transform -translate-y-1/2 top-1/2"
     onClick={onClick}
   >
     <RightArrowWhite />
@@ -47,23 +47,23 @@ export function ResponsiveCarousel() {
   };
 
   return (
-    <div className="bg-[#2A2B2F] text-center w-full py-12">
-      <div className="container mx-auto px-4 relative">
-        <h2 className="text-[32px] sm:text-[36px] lg:text-[44px] text-white font-bold leading-tight mb-8">
+    <div className="bg-[#2A2B2F] text-center w-full py-20">
+      <div className=" relative">
+        <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] text-white md:font-bold font-medium leading-5 mb-12">
           What Our Clients are Saying
         </h2>
-        <div className="relative">
+        <div className="relative mx-6 md:mx-20 ">
           <Slider {...settings}>
-            <div className="p-4">
+            <div className=" px-4 md:px-16 lg:px-2  ">
               <ReviewCard />
             </div>
-            <div className="p-4">
+            <div className="px-4 md:px-16 lg:px-2  ">
               <ReviewCard />
             </div>
-            <div className="p-4">
+            <div className="px-4 md:px-16 lg:px-2  ">
               <ReviewCard />
             </div>
-            <div className="p-4">
+            <div className="px-4 md:px-16 lg:px-2  ">
               <ReviewCard />
             </div>
           </Slider>
