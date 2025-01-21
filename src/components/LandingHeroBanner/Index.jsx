@@ -16,18 +16,18 @@ const LandingHeroBanner = ({ bannerData }) => {
         />
         <div className=" bg-gradient-to-r from-black/50 via-black/80 to-black/50 absolute inset-0 flex items-center justify-center text-white text-center">
           <div className=" container mx-auto flex flex-wrap w-[600px] p-3 sm:w-[600px] md:w-[700px]  xl:w-[800px] flex-col items-center justify-center">
-            <h1 className=" text-white font-bold text-[76px] leading-[60px] mb-12 ">
+            <h1 className=" text-white text-[40px] font-medium md:font-bold lg:text-[76px] lg:leading-[60px] md:mb-12 ">
               {bannerData.title}
             </h1>
-            <h1 className="bg-gradient-to-r from-[#77BE9A]  to-white inline-block text-transparent bg-clip-text font-bold text-[76px] leading-[60px]">{bannerData.subtitle}.</h1>
-            <span className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[16px] font-sans  xl:text-[16px] font-light leading-6 text-wrap text-center mt-4 md:mt-8">
+            <h1 className="bg-gradient-to-r from-[#77BE9A]  to-white inline-block text-transparent bg-clip-text text-[48px] font-medium md:font-bold md:text-[76px] md:leading-[60px]">{bannerData.subtitle}.</h1>
+            <span className="text-[16px] mt-2 font-normal  md:text-[16px] lg:text-[16px] font-sans  xl:text-[16px] md:font-light leading-6 text-wrap text-center  lg:mt-8">
               {bannerData.description}
             </span>
-            <div className='flex justify-between gap-6 my-12'>
-              <Button className="px-8 py-2    w-full mt-6 md:mt-0     bg-[#026534] text-white rounded-[3px] text-[16px] leading-5 font-semibold">
+            <div className='flex flex-col md:flex-row justify-between gap-8 md:gap-6 my-6'>
+              <Button className="px-8 py-[10px]  w-full mt-6 md:mt-0     bg-[#026534] text-white rounded-[3px] text-lg leading-[22px] font-semibold">
                 Explore Opportunities
               </Button>
-              <Button className="px-7 py-[5]  text-[16px] font-semibold text-white border-2 border-white bg-opacity-15 bg-slate-100 rounded-md hover:bg-white hover:text-black">
+              <Button className="px-7 py-[5]  text-[16px] font-semibold text-white border-2 border-white bg-opacity-15 bg-slate-100 rounded-[3px] hover:bg-white hover:text-black">
                 Advance Your Organization
               </Button>
             </div>

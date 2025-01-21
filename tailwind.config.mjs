@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
     darkMode: ["class"],
     content: [
@@ -8,6 +9,18 @@ export default {
   ],
   theme: {
   	extend: {
+		colors: {
+			green: {
+			  light: '#A8E6CF', // light green
+			  DEFAULT: '#56C596', // default green
+			  dark: '#379683', // dark green
+			},
+			gray: {
+			  light: '#E0E0E0', // light gray
+			  DEFAULT: '#BDBDBD', // default gray
+			  dark: '#757575', // dark gray
+			},
+		  },
   		fontFamily: {
 			sans: ['Inter', 'sans-serif'],
   		},
