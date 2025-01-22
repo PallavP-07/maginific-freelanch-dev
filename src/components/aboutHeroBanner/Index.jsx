@@ -16,14 +16,7 @@ const AboutHeroBanner = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col items-center justify-center text-center bg-gray-100 py-16 px-4">
-                <h1 className="text-3xl md:text-4xl font-bold text-green-700 mb-4">
-                    Unlocking Your Strategy with the Right Talent
-                </h1>
-                <p className="text-gray-600 max-w-3xl">
-                    You've got the strategy, we find the talent. For your strategic vision to soar, you need the perfect blend of individuals occupying key roles, fully aligned and committed to its success. That's where Magnific Search comes in. We specialize in sourcing and recruiting talent that propels your organization forward.
-                </p>
-            </div>
+           
         </>
     )
 }

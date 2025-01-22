@@ -31,15 +31,62 @@ const LeftSlantedTrapezoidCard = () => {
           <Image
             src="/assets/content-img-2.png"
             alt="content"
-            width={100}
-            height={380}
-            className="w-full object-auto h-[380px]"
+            fill
+           
           />
         </div>
         <div className="relative h-full w-2/3 clip-trapezoid bg-[#01331A] text-gray-800">
           {/* Border Layer */}
           <div className="absolute left-0 top-0 w-[calc(100%-10px)] h-full lg:container lg:mx-auto bg-white clip-trapezoid-border">
-            <div className='flex flex-col py-20 mx-8 gap-4'>
+            <div className='flex flex-col py-20 mx-8 lg:mx-20 gap-4'>
+              <h2 className='text-[#006633] text-3xl leading-9 font-medium'>
+                Identifying the Best Candidates
+              </h2>
+              <p className='text-[#D0D0D0] leading-8 break-words font-semibold text-2xl'>First things first...</p>
+              <p className='text-[#737475] font-normal text-[16px] leading-5'>
+                You need to know who you're looking for. Utilizing our extensive network and tapping into AI sourcing and industry insights, we swiftly pinpoint the most suitable candidates for your needs. Efficiency is our forte, and we pride ourselves on delivering top-notch talent at lightning speed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full  h-full lg:container lg:mx-auto bg-white md:hidden">
+        <div className='flex flex-col py-20 mx-8 gap-4'>
+          <h2 className='text-[#006633] text-3xl leading-9 font-medium'>
+            Identifying the Best Candidates
+          </h2>
+          <p className='text-[#D0D0D0] leading-8 font-semibold text-2xl'>First things first...</p>
+          <p className='text-[#737475] font-normal text-[16px] leading-5'>
+            You need to know who you're looking for. Utilizing our extensive network and tapping into AI sourcing and industry insights, we swiftly pinpoint the most suitable candidates for your needs. Efficiency is our forte, and we pride ourselves on delivering top-notch talent at lightning speed.
+          </p>
+
+        </div>
+      </div>
+    </>
+  );
+};
+const RightSlantedTrapezoidCard = () => {
+  return (
+    <>
+      <div className="relative bg-[#01331A] w-full h-[380px] md:block hidden">
+
+        <div className="relative h-full md:w-1/2 clip-trapezoid-dummy">
+          {/* Border Layer */}
+          <div className="absolute left-0 top-0 h-full lg:container lg:mx-auto clip-trapezoid-border-dummy">
+            <div className='w-full h-full'>
+              <Image
+                src="/assets/content-img-2.png"
+                alt="content"
+                fill
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="absolute  right-0 top-0 h-full w-2/3  clip-right-trapezoid ">
+
+          <div className="  h-full lg:container lg:mx-auto bg-white ">
+            <div className='flex flex-col py-20 ml-40 gap-4'>
               <h2 className='text-[#006633] text-3xl leading-9 font-medium'>
                 Identifying the Best Candidates
               </h2>
@@ -127,32 +174,32 @@ const WhatWeDo = () => {
 
 const HowWeHelp = () => {
   return (
-    <section className="py-16 bg-white text-center">
-      <h2 className="text-2xl font-bold text-green-700 mb-4">How We Help You</h2>
-      <p className="text-gray-600 max-w-2xl mx-auto mb-12">
+    <section className="py-24 lg:container mx-6 lg:mx-auto text-center">
+      <h2 className="text-2xl font-bold text-[#006633] mb-4">How We Help You</h2>
+      <p className="text-gray-600  mx-auto mb-20">
         At Magnific Search, we understand that effective leadership is the cornerstone of organizational success. With our strategic approach and unwavering commitment to excellence, we empower your organization to thrive in a dynamic and competitive landscape. Let us help you unlock the potential of your strategy with the right talent.
       </p>
-      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-8  mx-auto">
         {/* Accelerating Hiring Processes */}
         <div className="flex flex-col items-center">
-          <div className="text-green-700 text-4xl mb-4"><ProcessIcon /></div>
-          <h3 className="font-semibold text-lg text-gray-800">Accelerating Hiring Processes</h3>
+          <div className="text-green-700 text-4xl mb-6"><ProcessIcon /></div>
+          <h3 className="font-semibold text-lg mb-4 text-gray-800">Accelerating Hiring Processes</h3>
           <p className="text-gray-600 mt-2">
             Through our vast talent database and industry connections, we expedite the hiring process, ensuring top talent joins your organization swiftly.
           </p>
         </div>
         {/* Finding the Right Candidates */}
         <div className="flex flex-col items-center">
-          <div className="text-green-700 text-4xl mb-4"><PeopleIcon /></div>
-          <h3 className="font-semibold text-lg text-gray-800">Finding the Right Candidates</h3>
+          <div className="text-green-700 text-4xl mb-6"><PeopleIcon /></div>
+          <h3 className="font-semibold text-lg mb-4 text-gray-800">Finding the Right Candidates</h3>
           <p className="text-gray-600 mt-2">
             Leveraging industry-leading tools, digital assessments, and success profiles, we identify candidates who not only meet but exceed your expectations.
           </p>
         </div>
         {/* Scalable Hiring Solutions */}
         <div className="flex flex-col items-center">
-          <div className="text-green-700 text-4xl mb-4"><BulbIcon /></div>
-          <h3 className="font-semibold text-lg text-gray-800">Scalable Hiring Solutions</h3>
+          <div className="text-green-700 text-4xl mb-6"><BulbIcon /></div>
+          <h3 className="font-semibold text-lg mb-4 text-gray-800">Scalable Hiring Solutions</h3>
           <p className="text-gray-600 mt-2">
             Whether you're hiring one manager or many, locally or globally, we source the right leaders at the right levels across various industries.
           </p>
@@ -166,8 +213,19 @@ const page = () => {
   return (
     <>
       <AboutHeroBanner />
+      <div className="flex flex-col items-center justify-center text-center bg-gray-100 py-16 px-4">
+        <div className='lg:container lg:mx-auto my-7'>
+          <h1 className="text-3xl md:text-4xl font-semibold text-[#006633] mb-10">
+            Unlocking Your Strategy with the Right Talent
+          </h1>
+          <p className="text-[#737475] text-lg leading-5">
+            You've got the strategy, we find the talent. For your strategic vision to soar, you need the perfect blend of individuals occupying key roles, fully aligned and committed to its success. That's where Magnific Search comes in. We specialize in sourcing and recruiting talent that propels your organization forward.
+          </p>
+        </div>
+      </div>
 
       <LeftSlantedTrapezoidCard />
+      <RightSlantedTrapezoidCard />
 
       <WhatWeDo />
       <HowWeHelp />
