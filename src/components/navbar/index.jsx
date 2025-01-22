@@ -4,41 +4,90 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import clsx from "clsx";
-const renderDropDownMenu = () => {
+
+
+const subMenuContent = [
+  {
+    title: 'Legal & Compliance '
+  },
+  {
+    title: 'Data Procurement & Supply Chain'
+  },
+  {
+    title: 'Customer Success'
+  },
+  {
+    title: 'Product'
+  },
+  {
+    title: 'Human Resources'
+  },
+  {
+    title: 'Sales'
+  },
+  {
+    title: 'Business Development'
+  },
+  {
+    title: 'Cyber Security'
+  },
+  {
+    title: 'Accounting, Finance & Tax'
+  },
+  {
+    title: 'Marketing'
+  },
+  {
+    title: 'Technology & Engineering'
+  },
+
+]
+const RenderDropDownMenu = ({positionLeft}) => {
   return (
-    
+
     <div
-      className="  rounded-b-lg max-w-screen-lg bg-white shadow-inner absolute left-[100%]
-      -translate-x-[50%] top-[50px] invisible group-hover:visible opacity-0 
-      group-hover:opacity-100  group-hover:translate-y-0 
-      transition-all duration-300 ease-in-out z-50"
+      className={`absolute top-[100%] border-b-lg transform -translate-x-1/2 shadow-inner  hidden group-hover:flex bg-white text-gray-800 w-screen `}
+      style={{ left: positionLeft }}
     >
-      <div className="py-6 px-8 overflow-hidden break-words">
-        <h1 className="text-ellipsis overflow-hidden">
-          hellosfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-        </h1>
+      <div className="lg:container lg:mx-auto my-8">
+        <div className="w-full">
+          <h2 className="text-[#01331A] pb-3 text-[20px] leading-8 font-semibold border-b-2 border-[#CCE0D6]">
+            Solutions &gt;
+          </h2>
+          <div className="grid grid-cols-4 w-auto py-10 gap-5 ">
+            {subMenuContent.map((title, i) => (
+              <a
+                key={i}
+                href="#"
+                className="block text-[#737475] hover:text-[#01331A] font-normal text-sm leading-5"
+              >
+                {title.title}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
- 
   );
 };
 
-const menuItems=[
+
+const menuItems = [
   {
-    title:"About",
-    url:'/about-us'
+    title: "About",
+    url: '/about-us'
   },
   {
-    title:"Solutions",
-    url:'/solutions'
+    title: "Solutions",
+    url: '/solutions'
   },
   {
-    title:"Expertise",
-    url:'/Expertise'
+    title: "Expertise",
+    url: '/Expertise'
   },
   {
-    title:"Insights",
-    url:'/insights'
+    title: "Insights",
+    url: '/insights'
   },
 ]
 
@@ -80,8 +129,7 @@ export default function CustomNavbar() {
 
   const toggleMobileMenu = () => {
     setShowMobileMenu((prev) => !prev);
-    setShowMobileSubMenu(false);
-    if (isScrolled !== true) {
+    if (isScrolled == false) {
 
       setIsScrolled(true);
     }
@@ -103,14 +151,15 @@ export default function CustomNavbar() {
   }, [isHovered, openDropdown]);
 
 
+
   return (
     <nav
       className={cn(
         "fixed top-0   z-50  w-full",
-        (isScrolled || isHovered) ? "bg-white text-black" : "bg-transparent text-white"
+        (isScrolled || isHovered) ? "bg-white text-black " : "bg-transparent text-white "
       )}
     >
-      <div className={`lg:container lg:mx-auto   flex items-center justify-between lg:py-5 ml-6 `}>
+      <div className={`lg:container lg:mx-auto   flex items-center justify-between ml-6 `}>
         {/* Logo */}
         <Link href="/" legacyBehavior className="lg:w-1/3">
           <Image
@@ -123,14 +172,14 @@ export default function CustomNavbar() {
 
         {/* Navigation Menu */}
         <div className="lg:w-2/3 lg:flex lg:justify-between lg:items-center lg:gap-5">
-          <ul className="hidden lg:flex lg:justify-between lg:items-center lg:gap-6 ">
+          <ul className="hidden lg:flex lg:justify-between lg:items-center lg:gap-6 lg:leading-[80px] ">
             {/* About */}
             <li>
               <Link
                 href="/about-us"
                 className={cn(
-                  "font-normal text-[16px]  hover:font-bold", 
-                  (isScrolled || isHovered) && "hover:font-semibold" 
+                  "font-normal text-[16px]  hover:font-bold",
+                  (isScrolled || isHovered) && "hover:font-semibold"
                 )}
               >
                 About
@@ -138,14 +187,14 @@ export default function CustomNavbar() {
             </li>
             {/* Solutions Dropdown */}
             <li
-              className="relative group"
-              onMouseEnter={() => setIsHovered(true)} 
-              onMouseLeave={() => setIsHovered(false)} 
+              className="group relative"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
             >
               <a
                 className={cn(
-                  " flex items-center font-normal text-[16px]   hover:font-semibold",
-                  isScrolled || isHovered && " hover:font-semibold"
+                  " flex items-center font-normal text-[16px]   hover:font-semibold relative ",
+                  isScrolled || isHovered && " hover:font-semibold "
                 )}
                 href="/solutions"
               >
@@ -165,21 +214,23 @@ export default function CustomNavbar() {
                   />
                 </svg>
               </a>
-            
-             
-                {/* {renderDropDownMenu()} */}
+              {isHovered && (
+                <RenderDropDownMenu
+                positionLeft="100%"
+                />
 
+              )}
             </li>
 
             {/* Expertise Dropdown */}
             <li
               className="relative group"
-              onMouseEnter={() => setIsHovered(true)} 
-              onMouseLeave={() => setIsHovered(false)} 
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
             >
               <a
                 className={cn(
-                  "bg-transparent tracking-[1px] flex items-center font-normal text-[16px] hover:bg-transparent  hover:font-semibold",
+                  " flex items-center font-normal text-[16px]   hover:font-semibold relative ",
                   isScrolled || isHovered && " hover:font-semibold"
                 )}
                 href="/expertise"
@@ -200,10 +251,12 @@ export default function CustomNavbar() {
                   />
                 </svg>
               </a>
-             
-          
-                {/* {renderDropDownMenu()} */}
-             
+              {isHovered && (
+                <RenderDropDownMenu
+                positionLeft="-20%"
+                />
+
+              )}
             </li>
 
             {/* Insights */}
