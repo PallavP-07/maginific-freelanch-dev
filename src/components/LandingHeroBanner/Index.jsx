@@ -3,6 +3,7 @@ import React from 'react'
 import NavigationMenuDemo from '@/components/navbar/index'
 import { Button } from '../ui/button';
 const LandingHeroBanner = ({ bannerData }) => {
+
   return (
     <>
       <NavigationMenuDemo />
@@ -21,14 +22,14 @@ const LandingHeroBanner = ({ bannerData }) => {
             </h1>
             <h1 className="bg-gradient-to-r from-[#77BE9A]  to-white inline-block text-transparent bg-clip-text text-[48px] md:text-[60px] font-bold lg:text-[76px] ">{bannerData.subtitle}.</h1>
             <span className="text-lg font-normal break-words leading-9">
-            Driving impact through careers, innovation through industries and growth across continents. And it all starts with our people. 
+             {bannerData.description}
             </span>
             <div className='flex flex-col md:flex-row justify-between gap-5 md:gap-6 mt-6 md:mt-16'>
               <Button className="px-8 py-5  w-full mt-6 md:mt-0   hover:bg-[#0e3a24]  bg-[#026534] text-white rounded-[3px] text-lg leading-[22px] font-semibold">
-                Explore Opportunities
+                {/* Explore Opportunities */} {bannerData?.call_to_actions[1]?.title}
               </Button>
               <Button className="px-7 py-[17px]  text-[16px] font-semibold text-white border-2 border-white bg-opacity-15 bg-slate-100 rounded-[3px] hover:bg-white hover:text-black">
-                Advance Your Organization
+                {/* Advance Your Organization */}{bannerData?.call_to_actions[0]?.title}
               </Button>
             </div>
           </div>

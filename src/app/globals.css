@@ -41,3 +41,16 @@
 .stroke-white {
   stroke: white;
 }
+
+
+.clip-trapezoid {
+  clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+}
+
+.clip-trapezoid-border {
+  clip-path: polygon(0 0, calc(100% - 10px) 0, calc(75% - 10px) 100%, 0% 100%);
+}
+.clip-left-trapezoid {
+  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+}
+

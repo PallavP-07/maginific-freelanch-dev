@@ -34,7 +34,7 @@ async function getGlobals() {
   const bannerData = async () => {
     const data = await directus.request(
       readItems('homepage', {
-        fields: ['banner.background_img.filename_disk', 'banner.title', 'banner.description', 'banner.subtitle'],
+        fields: ['banner.background_img.filename_disk', 'banner.title', 'banner.description', 'banner.subtitle','banner.call_to_actions.*'],
       })
     );
     return data;
@@ -191,7 +191,7 @@ const renderJobSearchBar = () => {
   return (
     <>
       <div className="lg:container px-6 py-8 lg:mx-auto w-full  ">
-        <DualColorHeader first={"Find Your Next Opportunity"} second={"Today."} style={'leading-[38px] md:leading-[80px]'} />
+        <DualColorHeader first={"Find Your Next Opportunity"} second={"Today."}  />
         <div className="flex flex-col md:flex-row items-start  gap-4 mt-8 w-full ">
           <div className="w-full  ">
             <Label
@@ -272,7 +272,7 @@ const renderwhyChooseUs = () => {
 export default async function Home() {
   const globals = await getGlobals();
   const banner = await globals.bannerData();
-
+ 
 
 
   return (
