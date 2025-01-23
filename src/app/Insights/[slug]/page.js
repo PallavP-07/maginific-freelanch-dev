@@ -8,35 +8,39 @@ import React from 'react'
 function SubPage() {
   return (
     <>
-      <div className="flex flex-col md:flex-row  md:items-end w-full h-auto md:h=[400px] lg:h-[480px]">
-        {/* Left Section */}
-        <div className="lg:container  m-10 mb-20  lg:mx-auto">
-          <span className="text-sm font-normal text-[#737475]">July 2024</span>
-          <h1 className="text-3xl  lg:text-5xl mb-5 font-semibold leading-[40px] lg:leading-[60px] text-[#373A40] mt-2">
-            Insights sub-page heading here
-          </h1>
-          <div className="flex flex-wrap gap-4 justify-start my-4">
-            <Badge className=" text-[#737475] py-1 px-3 " variant="outline">
-              Healthcare
-            </Badge>
-            <Badge className=" text-[#737475] py-1 px-3 " variant="outline">
-              Technology
-            </Badge>
-            <Badge className=" text-[#737475] py-1 px-3 " variant="outline">
-              Other
-            </Badge>
+      <div className="flex  flex-col md:flex-row justify-between    h-auto md:h=[400px] lg:h-[480px]">
+        <div className=" py-12 px-10 md:py-0 md:px-0 md:w-1/2 h-full flex justify-center items-center">
+          <div className=' md:mt-20 lg:mt-36 flex justify-center flex-col w-full md:w-2/3  lg:ml-44 '>
+            <span className="text-sm font-normal text-[#737475]">July 2024</span>
+            <h1 className="text-3xl break-words text-wrap lg:text-5xl mb-5 font-semibold leading-[40px] lg:leading-[60px] text-[#373A40] mt-2">
+              Insights sub-page heading here
+            </h1>
+            <div className="flex flex-wrap gap-4 justify-start my-4">
+              <Badge className="text-[#737475] py-1 px-3" variant="outline">
+                Healthcare
+              </Badge>
+              <Badge className="text-[#737475] py-1 px-3" variant="outline">
+                Technology
+              </Badge>
+              <Badge className="text-[#737475] py-1 px-3" variant="outline">
+                Other
+              </Badge>
+            </div>
           </div>
         </div>
-
-        {/* Right Section */}
-        <div className="w-full  h-[300px] md:h=[400px] lg:h-[480px] relative">
+        <div className=" w-full md:w-1/2  ">
           <Image
             src="/assets/insights-sub-page-banner.png"
             alt="insight-sub-banner"
-            className="object-fill w-full h-full"
-            layout="fill"
+            className='w-full h-full object-fill '
+            width={100}
+            height={100}
           />
         </div>
+
+
+
+
       </div>
       <div className='lg:container  mx-6 mb-20  lg:mx-auto'>
         <div className=" text-[#373A40]   py-20 border-b-2 border-[#CCE0D6] mb-10">

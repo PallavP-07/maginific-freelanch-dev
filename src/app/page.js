@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import ProgressCircle from "@/components/circleProgress/Index";
 
 // async function getGlobals() {
 //   // return directus.request(	readFile('a76ee45a-30ae-4199-9533-2e2727d7eb8c', {
@@ -34,23 +35,23 @@ async function getGlobals() {
   const bannerData = async () => {
     const data = await directus.request(
       readItems('homepage', {
-        fields: ['banner.background_img.filename_disk', 'banner.title', 'banner.description', 'banner.subtitle','banner.call_to_actions.*'],
+        fields: ['banner.background_img.filename_disk', 'banner.title', 'banner.description', 'banner.subtitle', 'banner.call_to_actions.*'],
       })
     );
     return data;
   };
-  const Id = await bannerData()
-  // const fetchImageData = async (Id)=>{
-  //   console.log(Id)
-  //   const data =await directus.request(readFile(`${Id.banner.background_img}`,{
-  //     fields:['*']
-  //   }));
-  //   return data
-  // }
-  // const bannerImgData= await fetchImageData(Id)
+
+  const AllContent = async () => {
+    const data = await directus.request(
+      readItems('homepage',{
+        fields:['why_magnific_section.*','why_magnific_section.title','why_magnific_section.description']
+      })
+    );
+    return data;
+  };
   return {
-    // bannerImgData,
-    bannerData
+    bannerData,
+    AllContent
   };
 }
 
@@ -176,9 +177,9 @@ const progressSection = () => {
             </span>
           </div>
           <div className="flex justify-center flex-wrap md:flex-nowrap gap-4  md:justify-between lg:gap-1 ">
-            <CircularProgress label="Customer satisfaction"  value="90%" />
-            <CircularProgress label="Company growth" value="85%" />
-            <CircularProgress label="Successful candidates" value={'5000'} totalValue={'10000'} />
+            <ProgressCircle value={100} text="%" subtext="Customer satisfaction" />
+            <ProgressCircle value={85} text="%" subtext="Company growth" />
+            <ProgressCircle value={'10,000'} text="" subtext="Successful candidates" />
           </div>
         </div>
 
@@ -191,7 +192,7 @@ const renderJobSearchBar = () => {
   return (
     <>
       <div className="lg:container px-6 py-8 lg:mx-auto w-full  ">
-        <DualColorHeader first={"Find Your Next Opportunity"} second={"Today."}  />
+        <DualColorHeader first={"Find Your Next Opportunity"} second={"Today."} />
         <div className="flex flex-col md:flex-row items-start  gap-4 mt-8 w-full ">
           <div className="w-full  ">
             <Label
@@ -272,8 +273,8 @@ const renderwhyChooseUs = () => {
 export default async function Home() {
   const globals = await getGlobals();
   const banner = await globals.bannerData();
- 
-
+  const allContents =await globals.AllContent()
+console.log(allContents);
 
   return (
     <>
@@ -281,16 +282,16 @@ export default async function Home() {
       {renderJobSearchBar()}
       {progressSection()}
       <div className=" w-full h-full bg-[url('/circle-bg.svg')] bg-no-repeat bg-center bg-cover">
-      <div className=" mx-6 lg:container lg:mx-auto py-20">
-        <DualColorHeader first={"Why choose "} second={"Magnific?"} />
-        <p className="mt-4 text-[#373A40] font-normal  text-lg leading-6">With global reach and localized expertise, we understand the impact that exceptional talent can have. From leadership and management, all the way to bright-eyed associates, we’re by your side, selecting the very best talent to unleash your growth and overcome all obstacles. </p>
-        <h2 className="text-[#D0D0D0] font-bold text-[46px] leading-[54px] mt-20">Explore our...</h2>
-        {renderwhyChooseUs()}
-        {renderwhyChooseUs()}
-        {renderwhyChooseUs()}
+        <div className=" mx-6 lg:container lg:mx-auto py-20">
+          <DualColorHeader first={"Why choose "} second={"Magnific?"} />
+          <p className="mt-4 text-[#373A40] font-normal  text-lg leading-6">With global reach and localized expertise, we understand the impact that exceptional talent can have. From leadership and management, all the way to bright-eyed associates, we’re by your side, selecting the very best talent to unleash your growth and overcome all obstacles. </p>
+          <h2 className="text-[#D0D0D0] font-bold text-[46px] leading-[54px] mt-20">Explore our...</h2>
+          {renderwhyChooseUs()}
+          {renderwhyChooseUs()}
+          {renderwhyChooseUs()}
+        </div>
       </div>
-      </div>
-    
+
       <ResponsiveCarousel />
       {renderDiscoverInsight()}
       {ResourcesGrid()}

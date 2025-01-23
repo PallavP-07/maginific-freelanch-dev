@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import clsx from "clsx";
-
+import { useRouter } from 'next/navigation';
 
 const subMenuContent = [
   {
@@ -98,7 +98,7 @@ export default function CustomNavbar() {
   const [openDropdown, setOpenDropdown] = React.useState(null); // Track the open dropdown (null if none)
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   const [showMobileSubMenu, setShowMobileSubMenu] = React.useState(false);
-
+  const router = useRouter();
 
   const renderMobileNavMenu = () => {
     return (
@@ -143,12 +143,21 @@ export default function CustomNavbar() {
         setIsScrolled(false);
       }
     };
-
+    // ****dynamic Routing*****
+    if (router.asPath) {
+      const pathArray = router.asPath.split('/'); // Ensure asPath exists before splitting
+      const isDynamicInsight = pathArray[1] === 'insight' && pathArray.length === 3; // Adjust length as needed
+      setIsScrolled(isDynamicInsight);
+    }
     window.addEventListener("scroll", handleScroll);
 
     // Cleanup event listener on component unmount
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHovered, openDropdown]);
+
+
+   
+
+  }, [isHovered, openDropdown,router.asPath]);
 
 
 
