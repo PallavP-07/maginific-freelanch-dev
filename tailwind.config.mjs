@@ -26,7 +26,7 @@ export default {
   		},
   		container: {
   			center: true,
-  			padding: '8rem',
+  			padding: '9rem',
   			maxWidth: {
   				sm: '100%',
   				md: '100%',

@@ -1,13 +1,11 @@
-import CategoryList from "@/components/accordion/Index";
-import ContactUs from "@/components/contact/Index";
-import Footer from "@/components/footer/Index";
+
 import LandingHeroBanner from "@/components/LandingHeroBanner/Index";
-import ReviewCard from "@/components/card/reviewCard/Index";
+
 import { ResponsiveCarousel } from "@/components/carousel/Index";
 import { renderContatUseComponent } from "./contact-us/page";
 import directus from "@/lib/directus";
-import { readFile, readItems } from "@directus/sdk";
-import CircularProgress from "@/components/circleProgress/Index";
+import { readItems } from "@directus/sdk";
+
 import DualColorHeader from "@/components/dualColorHeader/Index";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -16,20 +14,9 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import ProgressCircle from "@/components/circleProgress/Index";
+import Accordion from "@/components/accordions/Index";
+import CustomAccordion from "@/components/accordions/Index";
 
-// async function getGlobals() {
-//   // return directus.request(	readFile('a76ee45a-30ae-4199-9533-2e2727d7eb8c', {
-// 	// 	fields: ['filename_download.*','*'],
-// 	// }));
-//   const bannerData =()=>{
-//     return directus.request(	readItems('homepage', {
-//       fields: ['*'],
-//     }));    
-//   }
-//   return{
-//     bannerData,
-//   }
-// }
 async function getGlobals() {
   // Fetch data for the banner section
   const bannerData = async () => {
@@ -43,8 +30,8 @@ async function getGlobals() {
 
   const AllContent = async () => {
     const data = await directus.request(
-      readItems('homepage',{
-        fields:['why_magnific_section.*','why_magnific_section.title','why_magnific_section.description']
+      readItems('homepage', {
+        fields: ['services_section.*','insights_section.*','resources_section.*','metrics.*','testimonials.*']
       })
     );
     return data;
@@ -64,19 +51,19 @@ const renderDiscoverInsight = () => {
 
             Discover Our Latest
           </p>
-          <p className="font-medium text-[44px] leading-[54px] text-[#026534] mb-16 ">
+          <p className="font-semibold text-[44px] leading-[54px] text-[#026534] mb-16 ">
             Insights</p>
 
           <div className="grid grid-cols-2 gap-5 md:gap-8 ">
             <div className="flex flex-col gap-5 md:gap-7">
               {/* Card 1 */}
               <div className="bg-[#2A2B2F] text-white  text-center h-[450px]  py-20 px-10 rounded-md w-full">
-                <h2 className="font-semibold leading-7 text-4xl mb-8">Insight One</h2>
+                <h2 className="font-semibold leading-7 text-4xl mb-6">Insight One</h2>
                 <p className="font-normal leading-[28px] text-[16px]">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalaracc.</p>
               </div>
               {/* Card 2 */}
               <div className="bg-[#CCE0D6] text-gray-800 text-center  py-20 px-10 h-[380px] w-full  rounded-md">
-                <h2 className="font-semibold leading-7 text-4xl mb-8">Insight Three</h2>
+                <h2 className="font-semibold leading-7 text-3xl mb-6">Insight Three</h2>
                 <p className="font-normal leading-[28px] text-[16px]">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalaracc.</p>
               </div>
             </div>
@@ -84,12 +71,12 @@ const renderDiscoverInsight = () => {
               {/* Card 3 */}
 
               <div className="bg-[#D0D0D0] text-[#373A40] text-center  py-20 px-10 h-[380px] w-full   rounded-md">
-                <h2 className="font-semibold leading-7 text-4xl mb-8 ">Insight Two</h2>
+                <h2 className="font-semibold leading-7 text-4xl mb-6 ">Insight Two</h2>
                 <p className="font-normal leading-[28px] text-[16px]">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalaracc.</p>
               </div>
               {/* Card 4 */}
               <div className="bg-[#2A2B2F] text-white text-center  py-20 px-10 h-[450px]  rounded-md">
-                <h2 className="font-semibold leading-7 text-4xl mb-8 ">Insight Four</h2>
+                <h2 className="font-semibold leading-7 text-4xl mb-6 ">Insight Four</h2>
                 <p className="font-normal leading-[28px] text-[16px]">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalaracc.</p>
               </div>
             </div>
@@ -171,7 +158,7 @@ const progressSection = () => {
       <div className="bg-[#F9F9F9] w-full overflow-hidden h-auto  ">
         <div className="flex flex-col md:flex-row justify-between py-16 md:py-40 mx-6 lg:container lg:mx-auto">
           <div className="flex flex-col gap-5 text-center md:text-left mb-8 md:mb-0 md:w-1/3">
-            <p className="text-[#373A40] font-bold text-[32px] md:text-[44px] md:leading-[52px] flex-wrap">Driven By <span className="text-[#006633] md:text-text-[#373A40]">Data</span></p>
+            <p className="text-[#373A40] font-bold text-[32px] md:text-[44px] md:leading-[53px] flex-wrap">Driven By <span className="text-[#006633] md:text-[#373A40]">Data</span></p>
             <span className="text-lg leading-[26px] font-normal break-words">
               Unlike some, our entire methodology is powered by data. We’ve built a data platform to ensure we provide the best service for our clients.
             </span>
@@ -191,8 +178,10 @@ const progressSection = () => {
 const renderJobSearchBar = () => {
   return (
     <>
-      <div className="lg:container px-6 py-8 lg:mx-auto w-full  ">
-        <DualColorHeader first={"Find Your Next Opportunity"} second={"Today."} />
+      <div className="lg:container px-6 lg:py-20 lg:mx-auto w-full">
+        <div className="pb-12">
+          <DualColorHeader first={"Find Your Next Opportunity"} second={"Today."} />
+        </div>
         <div className="flex flex-col md:flex-row items-start  gap-4 mt-8 w-full ">
           <div className="w-full  ">
             <Label
@@ -222,11 +211,11 @@ const renderJobSearchBar = () => {
           </div>
           <div className="flex flex-col md:gap-2 gap-5 md:w-1/3 w-full mt-9">
             <div className=''>
-              <Button className="px-8 py-5  bg-[#026534] text-white w-full md:w-40   rounded-[3px] text-[16px] leading-5 font-semibold  ">
+              <Button className="px-8 py-5  bg-[#026534] text-white w-full md:w-40   rounded-[3px] text-[18px] leading-5 font-semibold  ">
                 Search Jobs
               </Button>
             </div>
-            <Link href='#' className=" text-center md:text-left font-semibold text-lg leading-7 underline py-2   text-[#006633] " >Looking to hire?</Link>
+            <Link href='/browse-jobs' className="   font-semibold text-[20px] leading-7 border-b-2 border-[#006633] text-center py-1   text-[#006633] " >Looking to hire?</Link>
           </div>
         </div>
       </div>
@@ -273,8 +262,8 @@ const renderwhyChooseUs = () => {
 export default async function Home() {
   const globals = await getGlobals();
   const banner = await globals.bannerData();
-  const allContents =await globals.AllContent()
-console.log(allContents);
+  const allContents = await globals.AllContent()
+  console.log(allContents);
 
   return (
     <>
@@ -282,10 +271,13 @@ console.log(allContents);
       {renderJobSearchBar()}
       {progressSection()}
       <div className=" w-full h-full bg-[url('/circle-bg.svg')] bg-no-repeat bg-center bg-cover">
-        <div className=" mx-6 lg:container lg:mx-auto py-20">
-          <DualColorHeader first={"Why choose "} second={"Magnific?"} />
+        <div className=" mx-6 lg:container lg:mx-auto py-28">
+          <div className="my-8">
+
+            <DualColorHeader first={"Why choose "} second={"Magnific?"} />
+          </div>
           <p className="mt-4 text-[#373A40] font-normal  text-lg leading-6">With global reach and localized expertise, we understand the impact that exceptional talent can have. From leadership and management, all the way to bright-eyed associates, we’re by your side, selecting the very best talent to unleash your growth and overcome all obstacles. </p>
-          <h2 className="text-[#D0D0D0] font-bold text-[46px] leading-[54px] mt-20">Explore our...</h2>
+          <h2 className="text-[#D0D0D0] font-bold text-[46px] leading-[54px] my-20">Explore our...</h2>
           {renderwhyChooseUs()}
           {renderwhyChooseUs()}
           {renderwhyChooseUs()}
@@ -296,7 +288,6 @@ console.log(allContents);
       {renderDiscoverInsight()}
       {ResourcesGrid()}
       {renderContatUseComponent()}
-
     </>
   );
 }

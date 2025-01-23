@@ -47,9 +47,9 @@ export function ResponsiveCarousel() {
   };
 
   return (
-    <div className="bg-[#2A2B2F] text-center w-full py-20">
+    <div className="bg-[#2A2B2F] text-center w-full py-40">
       <div className=" relative">
-        <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] text-white md:font-bold font-medium leading-5 mb-12">
+        <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] text-white md:font-bold font-medium leading-5 mb-14">
           What Our Clients are Saying
         </h2>
         <div className="relative mx-6 md:mx-20 ">

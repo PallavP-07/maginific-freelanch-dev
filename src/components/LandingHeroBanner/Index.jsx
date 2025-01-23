@@ -6,7 +6,6 @@ const LandingHeroBanner = ({ bannerData }) => {
 
   return (
     <>
-      <NavigationMenuDemo />
       <div className="relative  w-full h-[780px] md:h-[680px] lg:h-[780px]">
         <Image
           className="w-full object-fill h-100 "
@@ -27,10 +26,10 @@ const LandingHeroBanner = ({ bannerData }) => {
             </span>
             <div className='flex flex-col md:flex-row justify-between gap-5 md:gap-6 mt-6 md:mt-16'>
               <Button className="px-8 py-5  w-full mt-6 md:mt-0   hover:bg-[#0e3a24]  bg-[#026534] text-white rounded-[3px] text-lg leading-[22px] font-semibold">
-                {/* Explore Opportunities */} {bannerData?.call_to_actions[1]?.title}
+                {bannerData?.call_to_actions[1]?.title}
               </Button>
-              <Button className="px-7 py-[17px]  text-[16px] font-semibold text-white border-2 border-white bg-opacity-15 bg-slate-100 rounded-[3px] hover:bg-white hover:text-black">
-                {/* Advance Your Organization */}{bannerData?.call_to_actions[0]?.title}
+              <Button className="px-7 py-[18px]  text-[16px] font-semibold text-white border-2 border-white bg-opacity-15 bg-slate-100 rounded-[3px] hover:bg-white hover:text-black">
+               {bannerData?.call_to_actions[0]?.title}
               </Button>
             </div>
           </div>

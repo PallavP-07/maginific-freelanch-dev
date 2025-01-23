@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import clsx from "clsx";
-import { useRouter } from 'next/navigation';
+
 
 const subMenuContent = [
   {
@@ -98,7 +98,7 @@ export default function CustomNavbar() {
   const [openDropdown, setOpenDropdown] = React.useState(null); // Track the open dropdown (null if none)
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   const [showMobileSubMenu, setShowMobileSubMenu] = React.useState(false);
-  const router = useRouter();
+  
 
   const renderMobileNavMenu = () => {
     return (
@@ -143,22 +143,13 @@ export default function CustomNavbar() {
         setIsScrolled(false);
       }
     };
-    // ****dynamic Routing*****
-    if (router.asPath) {
-      const pathArray = router.asPath.split('/'); // Ensure asPath exists before splitting
-      const isDynamicInsight = pathArray[1] === 'insight' && pathArray.length === 3; // Adjust length as needed
-      setIsScrolled(isDynamicInsight);
-    }
+  
     window.addEventListener("scroll", handleScroll);
 
     // Cleanup event listener on component unmount
     return () => window.removeEventListener("scroll", handleScroll);
 
-
-   
-
-  }, [isHovered, openDropdown,router.asPath]);
-
+  }, [isHovered, openDropdown]);
 
 
   return (
@@ -170,12 +161,13 @@ export default function CustomNavbar() {
     >
       <div className={`lg:container lg:mx-auto   flex items-center justify-between ml-6 `}>
         {/* Logo */}
-        <Link href="/" legacyBehavior className="lg:w-1/3">
+        <Link href="/" legacyBehavior className="lg:w-1/3 cursor-pointer">
           <Image
             src={isScrolled || isHovered ? "/navblogo.svg" : "/navwlogo.svg"}
             alt="nav-logo"
             width={120}
             height={120}
+            className="w-auto h-auto"
           />
         </Link>
 
