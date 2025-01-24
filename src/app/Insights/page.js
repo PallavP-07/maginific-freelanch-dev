@@ -1,10 +1,10 @@
-
+'use client'
 import ContactUs from '@/components/contact/Index'
 
 import HeroBanner from '@/components/herobanner/Index'
 
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import DualColorHeader from '@/components/dualColorHeader/Index'
 import ContentCard from '@/components/card/Index'
 import {
@@ -18,7 +18,13 @@ import {
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-const FunctionsPage = () => {
+const InsightsPage = () => {
+    const [visibleCards, setVisibleCards] = useState(6);
+    const totalCards = 12;
+    const handleShowMore = () => {
+        setVisibleCards((prev) => Math.min(prev + 3, totalCards));
+    };
+
     return (
         <>
             <HeroBanner heroBanner={'/HeroBanners/insights-hero-banner.png'} header={'Insights'} discription={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud'} />
@@ -161,19 +167,25 @@ const FunctionsPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 my-10">
-                    <ContentCard />
-                    <ContentCard />
-                    <ContentCard />
-                    <ContentCard />
-                    <ContentCard />
-                    <ContentCard />
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 my-20">
+
+                    {Array.from({ length: visibleCards }).map((_, i) => (
+                        <div key={i}>
+                            <ContentCard pageRedirect={'/insights/:id'} />
+                        </div>
+                    ))}
                 </div>
-                <div className='text-center my-20'>
-                    <Button className="px-8 py-3  bg-[#026534] text-white w-full md:w-40   rounded-[3px] text-[16px] leading-5 font-semibold  ">
-                        More Insights
-                    </Button>
-                </div>
+                {visibleCards < totalCards && (
+                    <div className='text-center my-20'>
+                        <Button className="px-8 py-3  bg-[#026534] hover:bg-[#01331A] text-white w-full md:w-40   rounded-[3px] text-[16px] leading-5 font-semibold "
+                            onClick={handleShowMore}
+                        >
+                            More Insights
+                        </Button>
+                    </div>
+                )
+
+                }
             </div>
             <ContactUs />
 
@@ -181,4 +193,4 @@ const FunctionsPage = () => {
     )
 }
 
-export default FunctionsPage
+export default InsightsPage

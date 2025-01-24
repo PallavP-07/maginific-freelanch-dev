@@ -10,9 +10,9 @@ function SubPage() {
     <>
       <div className="flex  flex-col md:flex-row justify-between    h-auto md:h=[400px] lg:h-[480px]">
         <div className=" py-12 px-10 md:py-0 md:px-0 md:w-1/2 h-full flex justify-center items-center">
-          <div className=' md:mt-20 lg:mt-36 flex justify-center flex-col w-full md:w-2/3  lg:ml-44 '>
+          <div className=' md:mt-20 lg:mt-36 flex justify-center flex-col w-full md:w-2/3  lg:ml-28 '>
             <span className="text-sm font-normal text-[#737475]">July 2024</span>
-            <h1 className="text-3xl break-words text-wrap lg:text-5xl mb-5 font-semibold leading-[40px] lg:leading-[60px] text-[#373A40] mt-2">
+            <h1 className="text-3xl  lg:text-[46px] mb-5 font-semibold leading-[40px] lg:leading-[60px] text-[#373A40] mt-2">
               Insights sub-page heading here
             </h1>
             <div className="flex flex-wrap gap-4 justify-start my-4">

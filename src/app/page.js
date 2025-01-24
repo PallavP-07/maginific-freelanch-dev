@@ -191,8 +191,8 @@ const progressSection = () => {
 const renderJobSearchBar = () => {
   return (
     <>
-      <div className="lg:container px-6 md:py-16 lg:py-20 lg:mx-auto w-full">
-        <div className="pb-12">
+      <div className="lg:container px-6 py-12 md:py-16 lg:py-20 lg:mx-auto w-full">
+        <div className="pb-6 md:pb-12">
           <DualColorHeader first={"Find Your Next Opportunity"} second={"Today."} />
         </div>
         <div className="flex flex-col md:flex-row items-start  gap-4 mt-8 w-full ">
@@ -228,7 +228,7 @@ const renderJobSearchBar = () => {
                 Search Jobs
               </Button>
             </div>
-            <Link href='/browse-jobs' className="   font-semibold text-[20px] leading-7 border-b-2 border-[#006633] text-center py-1   text-[#006633] " >Looking to hire?</Link>
+            <Link href='/browse-jobs' className="   font-semibold text-[20px] leading-7 border-b-2 border-[#006633] text-center py-1    text-[#006633] mx-auto " >Looking to hire?</Link>
           </div>
         </div>
       </div>

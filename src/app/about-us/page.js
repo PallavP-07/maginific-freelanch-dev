@@ -38,12 +38,12 @@ const LeftSlantedTrapezoidCard = () => {
         <div className="relative h-full w-2/3 clip-trapezoid bg-[#01331A] text-gray-800">
           {/* Border Layer */}
           <div className="absolute left-0 top-0 w-[calc(100%-10px)] h-full lg:container lg:mx-auto bg-white clip-trapezoid-border">
-            <div className='flex flex-col py-20 mx-8 lg:mx-20 gap-4'>
+            <div className='flex flex-col py-20 mx-8 md:mx-6 lg:mx-0 gap-4'>
               <h2 className='text-[#006633] text-3xl leading-9 font-medium'>
                 Identifying the Best Candidates
               </h2>
               <p className='text-[#D0D0D0] leading-8 break-words font-semibold text-2xl'>First things first...</p>
-              <p className='text-[#737475] font-normal text-[16px] leading-5'>
+              <p className='text-[#737475] font-normal text-[16px] leading-5 md:w-[380px] lg:w-[460px] '>
                 You need to know who you're looking for. Utilizing our extensive network and tapping into AI sourcing and industry insights, we swiftly pinpoint the most suitable candidates for your needs. Efficiency is our forte, and we pride ourselves on delivering top-notch talent at lightning speed.
               </p>
             </div>
@@ -51,12 +51,12 @@ const LeftSlantedTrapezoidCard = () => {
         </div>
       </div>
       <div className="w-full  h-full lg:container lg:mx-auto bg-white md:hidden">
-        <div className='flex flex-col py-20 mx-8 gap-4'>
+        <div className='flex flex-col py-20 mx-8 gap-4 '>
           <h2 className='text-[#006633] text-3xl leading-9 font-medium'>
             Identifying the Best Candidates
           </h2>
           <p className='text-[#D0D0D0] leading-8 font-semibold text-2xl'>First things first...</p>
-          <p className='text-[#737475] font-normal text-[16px] leading-5'>
+          <p className='text-[#737475] font-normal text-[16px] leading-5 '>
             You need to know who you're looking for. Utilizing our extensive network and tapping into AI sourcing and industry insights, we swiftly pinpoint the most suitable candidates for your needs. Efficiency is our forte, and we pride ourselves on delivering top-notch talent at lightning speed.
           </p>
 
@@ -68,11 +68,11 @@ const LeftSlantedTrapezoidCard = () => {
 const RightSlantedTrapezoidCard = () => {
   return (
     <>
-      <div className="relative bg-[#01331A] w-full h-[380px] md:block hidden">
+      <div className="relative bg-[#01331A] w-full h-[380px]  hidden md:block">
 
         <div className="relative h-full md:w-1/2 clip-trapezoid-dummy">
           {/* Border Layer */}
-          <div className="absolute left-0 top-0 h-full lg:container lg:mx-auto clip-trapezoid-border-dummy">
+          <div className="absolute left-0 top-0 w-full h-full lg:container lg:mx-auto clip-trapezoid-border-dummy">
             <div className='w-full h-full'>
               <Image
                 src="/assets/content-img-2.png"
@@ -86,7 +86,7 @@ const RightSlantedTrapezoidCard = () => {
         <div className="absolute  right-0 top-0 h-full w-2/3  clip-right-trapezoid ">
 
           <div className="  h-full lg:container lg:mx-auto bg-white ">
-            <div className='flex flex-col py-20 ml-40 gap-4'>
+            <div className='flex flex-col py-20 md:ml-36 lg:ml-24 gap-4 md:w-[400px] lg:w-[460px]'>
               <h2 className='text-[#006633] text-3xl leading-9 font-medium'>
                 Identifying the Best Candidates
               </h2>
@@ -155,11 +155,11 @@ const WhatWeDo = () => {
           with in-depth market and industry knowledge to navigate every stage
           of the talent acquisition process.
         </p>
-        <div className="flex  flex-wrap justify-center items-center">
+        <div className="flex  flex-wrap justify-center   items-center">
           {items.map((item, index) => (
             <div
               key={index}
-              className={` py-4 px-5 lg:py-8 lg:px-10 md:w-[240px] lg:w-[320px] my-4 ${(index === 0 || index === 1 || (index - 3) % 4 === 0) ? "md:border-r-2 md:border-[#CCE0D6]" : "" // Apply border to every 3rd index + 1 (1, 4, 7, ...)
+              className={` py-4 pr-5  m-4 md:w-[180px]  lg:w-[282px] my-4 ${(index === 0 || index === 1 || (index - 3) % 4 === 0) ? "md:border-r-2 md:border-[#CCE0D6]" : "" 
                 }`}
             >
               <h3 className="text-xl font-bold leading-6 mb-8">{item.title}</h3>
