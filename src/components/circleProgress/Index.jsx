@@ -3,7 +3,7 @@ const CircularProgress = ({ value, text, subtext }) => {
   return (
     <div className="flex flex-col items-center justify-center">
       {/* Outer Container for the Progress */}
-      <div className="relative w-40 h-40 sm:w-36 sm:h-36 lg:w-52 lg:h-52">
+      <div className="relative w-40 h-40 sm:w-36 sm:h-36 lg:w-[192px] lg:h-[192px]">
         {/* SVG Circular Progress */}
         <svg
           className="absolute inset-0 w-full h-full"
@@ -39,9 +39,9 @@ const CircularProgress = ({ value, text, subtext }) => {
         </svg>
 
         {/* Inner Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-4xl font-bold text-[#026534]">{value}{text === '%' ? '%' : ''}</span>
-          <span className="text-sm text-gray-600 text-center mt-2">{subtext}</span>
+        <div className="absolute inset-0 flex overflow-hidden flex-col items-center justify-center">
+          <p className="text-4xl font-bold text-[#026534]">{value}{text === '%' ? <span className="text-[#CCE0D6]">%</span> : ''}</p>
+          <span className="text-[12px] break-words text-gray-600 text-center mt-2">{subtext}</span>
         </div>
       </div>
     </div>

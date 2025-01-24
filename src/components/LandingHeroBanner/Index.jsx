@@ -16,11 +16,11 @@ const LandingHeroBanner = ({ bannerData }) => {
         />
         <div className=" bg-gradient-to-r from-black/50 via-black/80 to-black/50 absolute inset-0 flex items-center justify-center text-white text-center">
           <div className=" lg:container lg:mx-auto text-center flex flex-col justify-center items-center">
-            <h1 className=" text-white text-[40px] font-medium  md:text-[56px] lg:text-[76px] lg:leading-[60px] lg:mb-4">
+            <h1 className=" text-white text-[40px] font-medium  md:text-[56px] lg:text-[76px] lg:leading-[60px] lg:mb-2">
               {bannerData.title}
             </h1>
-            <h1 className="bg-gradient-to-r from-[#77BE9A]  to-white inline-block text-transparent bg-clip-text text-[48px] md:text-[60px] font-bold lg:text-[76px] ">{bannerData.subtitle}.</h1>
-            <span className="text-lg font-normal break-words leading-9">
+            <h1 className="bg-gradient-to-r from-[#77BE9A]  to-white inline-block text-transparent bg-clip-text text-[48px] md:text-[60px] font-bold lg:text-[76px] lg:mb-4">{bannerData.subtitle}.</h1>
+            <span className="text-lg font-normal break-words  lg:mx-28 leading-7">
          
              {bannerData?.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}
             </span>

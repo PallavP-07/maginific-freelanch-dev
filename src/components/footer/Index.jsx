@@ -33,7 +33,7 @@ const renderMobileFooter = () => {
 const renderDesktopFooter = () => {
   return (
     <>
-      <div className="flex mx-24 items-center border-b-2 border-gray-400 mb-8  py-4 justify-between">
+      <div className="flex mx-32 items-center border-b-2 border-gray-400 mb-8  py-4 justify-between">
         <div>
           <Image src='/Logo.svg' alt="logo" width={150} height={150} />
         </div>
@@ -41,7 +41,7 @@ const renderDesktopFooter = () => {
           {renderSocialContent()}
         </div>
       </div>
-      <div className="mx-24  lg:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6">
+      <div className="mx-32  lg:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6">
         {/* Home Section */}
         <div>
           <h3 className="text-xl leading-8 font-bold mb-4 text-[#01331A]">Home</h3>
@@ -135,7 +135,7 @@ const renderDesktopFooter = () => {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 py-10 px-6">
+    <footer className="bg-gray-50 py-10 px-6 lg:px-0">
       {/* Mobile Footer */}
       <div className="lg:hidden">
         {renderMobileFooter()}
@@ -146,7 +146,7 @@ export default function Footer() {
         {renderDesktopFooter()}
       </div>
 
-      <div className="  lg:mx-24  text-center mt-6 md:mt-8 lg:mt-10 text-sm   text-gray-600 border-t-2 border-gray-300  pt-4 lg:pt-8">
+      <div className="  lg:mx-32  text-center mt-6 md:mt-8 lg:mt-10 text-sm   text-gray-600 border-t-2 border-gray-300  pt-4 lg:pt-8">
         Copyright © 2024 Magnific | All Rights Reserved
       </div>
     </footer>

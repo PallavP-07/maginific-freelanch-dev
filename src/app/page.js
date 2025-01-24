@@ -1,11 +1,8 @@
-
 import LandingHeroBanner from "@/components/LandingHeroBanner/Index";
-
 import { ResponsiveCarousel } from "@/components/carousel/Index";
 import { renderContatUseComponent } from "./contact-us/page";
 import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";
-
 import DualColorHeader from "@/components/dualColorHeader/Index";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -14,8 +11,6 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import ProgressCircle from "@/components/circleProgress/Index";
-import Accordion from "@/components/accordions/Index";
-import CustomAccordion from "@/components/accordions/Index";
 
 async function getGlobals() {
   // Fetch data for the banner section
@@ -28,17 +23,27 @@ async function getGlobals() {
     return data;
   };
 
+  // Fetch data for the Service Section
+  const serviecSectionData = async () => {
+    const data = await directus.request(
+      readItems('homepage', {
+        fields: ['services_section.*'],
+      })
+    );
+    return data;
+  };
   const AllContent = async () => {
     const data = await directus.request(
       readItems('homepage', {
-        fields: ['services_section.*','insights_section.*','resources_section.*','metrics.*','testimonials.*']
+        fields: ['services_section.*', 'insights_section.*', 'resources_section.*', 'metrics.*', 'testimonials.*']
       })
     );
     return data;
   };
   return {
     bannerData,
-    AllContent
+    AllContent,
+    serviecSectionData
   };
 }
 
@@ -93,7 +98,7 @@ const renderDiscoverInsight = () => {
 const ResourcesGrid = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 ">
-      <div className="hidden md:flex bg-[#2A2B2F] text-white md:flex-col md:justify-center md:p-14 lg:p-28 items-center">
+      <div className="hidden md:flex bg-[#2A2B2F] text-white md:flex-col md:justify-center md:p-10 lg:p-28 items-center">
         <div className="text-left w-full md:w-auto ">
           <h2 className="text-[39px] font-bold leading-[46px] mb-8">Candidate Resources</h2>
           <p className="mb-6 font-normal text-lg leading-6">
@@ -106,7 +111,9 @@ const ResourcesGrid = () => {
       </div>
       <div className=" bg-cover bg-center relative  w-full h-[480px]" >
         <div className="w-full h-full">
-          <Image src='/assets/Resources2.png' alt='content-1' width={100} height={480} className="w-full h-full object-fill" />
+          <Image src='/assets/Resources2.png' alt='content-1' layout="fill"
+            objectFit="cover"
+            className="w-full h-full object-cover" />
         </div>
         <div className=" flex bg-black/50  text-white flex-col justify-center absolute inset-0 md:hidden px-10 py-20 items-center">
           <div className="text-center w-full md:w-auto">
@@ -120,11 +127,17 @@ const ResourcesGrid = () => {
           </div>
         </div>
       </div>
-      <div className="bg-cover bg-center relative  w-full h-[480px]">
-        <div className=" w-full h-full">
-          <Image src='/assets/Resources1.png' alt='content-1' width={100} height={480} className="w-full h-full object-fill" />
+      <div className="bg-cover bg-center relative w-full h-[480px]">
+        <div className="w-full h-full">
+          <Image
+            src='/assets/Resources1.png'
+            alt='content-1'
+            layout="fill"
+            objectFit="cover"
+            className="w-full h-full object-cover"
+          />
         </div>
-        <div className=" flex bg-black/50  text-white flex-col justify-center absolute inset-0 md:hidden px-10 py-20 items-center">
+        <div className="flex bg-black/50 text-white flex-col justify-center absolute inset-0 md:hidden px-10 py-20 items-center">
           <div className="text-center w-full md:w-auto">
             <h2 className="text-[42px] font-bold leading-[36px] mb-8">Hiring Resources</h2>
             <p className="mb-6 font-normal text-lg leading-6">
@@ -136,7 +149,7 @@ const ResourcesGrid = () => {
           </div>
         </div>
       </div>
-      <div className="hidden md:flex bg-[#2A2B2F] text-white md:flex-col md:justify-center md:p-14 lg:p-28 items-center">
+      <div className="hidden md:flex bg-[#2A2B2F] text-white md:flex-col md:justify-center md:p-10 lg:p-28 items-center">
         <div className="text-left w-full md:w-auto">
           <h2 className="text-[36px] font-bold leading-[46px] mb-8">Hiring Resources</h2>
           <p className="mb-6 font-normal text-lg leading-6">
@@ -157,16 +170,16 @@ const progressSection = () => {
     <>
       <div className="bg-[#F9F9F9] w-full overflow-hidden h-auto  ">
         <div className="flex flex-col md:flex-row justify-between py-16 md:py-40 mx-6 lg:container lg:mx-auto">
-          <div className="flex flex-col gap-5 text-center md:text-left mb-8 md:mb-0 md:w-1/3">
+          <div className="flex flex-col gap-5 text-center md:text-left mb-8 md:mb-0 w-full">
             <p className="text-[#373A40] font-bold text-[32px] md:text-[44px] md:leading-[53px] flex-wrap">Driven By <span className="text-[#006633] md:text-[#373A40]">Data</span></p>
             <span className="text-lg leading-[26px] font-normal break-words">
               Unlike some, our entire methodology is powered by data. We’ve built a data platform to ensure we provide the best service for our clients.
             </span>
           </div>
-          <div className="flex justify-center flex-wrap md:flex-nowrap gap-4  md:justify-between lg:gap-1 ">
-            <ProgressCircle value={100} text="%" subtext="Customer satisfaction" />
-            <ProgressCircle value={85} text="%" subtext="Company growth" />
-            <ProgressCircle value={'10,000'} text="" subtext="Successful candidates" />
+          <div className="flex  justify-center flex-wrap md:flex-nowrap gap-4  md:justify-between lg:gap-1 ">
+            <ProgressCircle value={"50"} text="%" subtext="Customer satisfaction" />
+            <ProgressCircle value={"85"} text="%" subtext="Company growth" />
+            <ProgressCircle value={'7,000'} text="" subtext="Successful candidates" />
           </div>
         </div>
 
@@ -178,7 +191,7 @@ const progressSection = () => {
 const renderJobSearchBar = () => {
   return (
     <>
-      <div className="lg:container px-6 lg:py-20 lg:mx-auto w-full">
+      <div className="lg:container px-6 md:py-16 lg:py-20 lg:mx-auto w-full">
         <div className="pb-12">
           <DualColorHeader first={"Find Your Next Opportunity"} second={"Today."} />
         </div>
@@ -262,8 +275,8 @@ const renderwhyChooseUs = () => {
 export default async function Home() {
   const globals = await getGlobals();
   const banner = await globals.bannerData();
-  const allContents = await globals.AllContent()
-  console.log(allContents);
+  const serviecSectionData = await globals.serviecSectionData()
+
 
   return (
     <>
@@ -287,7 +300,10 @@ export default async function Home() {
       <ResponsiveCarousel />
       {renderDiscoverInsight()}
       {ResourcesGrid()}
-      {renderContatUseComponent()}
+      <div className="lg:mx-10">
+
+        {renderContatUseComponent()}
+      </div>
     </>
   );
 }
