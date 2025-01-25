@@ -35,7 +35,6 @@ const ContentCard = ({pageRedirect}) => {
           is too long, it will wrap gracefully without disturbing the layout.
         </p>
         {pageRedirect && (
-
         <Link href={pageRedirect} className="text-[14px] leading-3  text-[#01331A] font-semibold [text-align-last:end]">Read more &gt;</Link>
         )}
       </div>
