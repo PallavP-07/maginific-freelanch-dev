@@ -20,11 +20,11 @@ function Solutions() {
   ];
 
   return (
-    <div className="  py-8 px-4   ">
-      <div className="lg:container lg:mx-auto mx-4 ">
+    <div className="  py-8 px-4  lg:my-16">
+      <div className=" mx-4 lg:mx-0">
         {/* Title Section */}
         <div className="flex justify-between items-center md:border-b-4 border-[#CCE0D6] pb-3 mb-7">
-          <h2 className="text-xl leading-6 font-bold text-[#01331A]">Solutions</h2>
+          <h2 className="text-xl leading-6 font-bold text-[#01331A]">Functional Expertise</h2>
           <a
             href="#"
             className="text-[16px] leading-4  text-[#01331A] font-semibold "
@@ -60,8 +60,8 @@ function IndustryExpertise() {
   ];
 
   return (
-    <div className=" py-8 px-4  md:mx-0   mb-8">
-      <div className="lg:container lg:mx-auto mx-4">
+    <div className=" py-8 px-4 md:px-0 md:py-0 md:pb-28   mx-4 lg:mx-0  mb-8 lg:my-16 border-b-4 border-[#CCE0D6]">
+      <div className=" mx-4 lg:mx-0">
         {/* Title Section */}
         <div className="flex justify-between items-center md:border-b-4 border-[#CCE0D6] pb-3 mb-7">
           <h2 className="text-xl leading-6 font-bold text-[#01331A]">Industry Expertise</h2>
@@ -82,7 +82,6 @@ function IndustryExpertise() {
     </div>
   );
 }
-
 
 const RenderParaSection = () => {
   return (
@@ -156,9 +155,9 @@ const RenderWhyChooseMagnific = () => {
 const RenderCardBox = () => {
   return (
     <>
-      <div className='w-full flex h-[360px] lg:h-[480px] bg-[#F9F9F9]'>
-        <div className=' pl-10 pr-2 py-10  lg:pl-40 lg:pr-20 lg:py-40 w-full md:w-2/3'>
-          <h1 className='font-medium text-[28px] md:text-xl lg:text-[32px] leading-8 text-[#006633] mb-4 lg:mb-7'>
+      <div className='w-full md:grid md:grid-cols-2 h-[360px] lg:h-[480px] bg-[#F9F9F9]'>
+        <div className=' md:px-16  flex flex-col justify-center '>
+          <h1 className='font-medium text-[28px] md:text-xl lg:text-[30px] leading-8 text-[#006633] mb-4 lg:mb-6'>
           Empowering Technology Innovators
           </h1>
           <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>In the fast-paced world of technology services, agility and innovation are paramount. Magnific Search's Technology Services Practice specializes in identifying leaders who not only understand the latest technological trends but also possess the strategic vision to leverage them effectively. Whether you're in IT consulting, digital transformation, or software engineering, we partner with you to recruit executives who can drive innovation, capitalize on emerging opportunities, and propel your organization to new heights.</p>
@@ -167,17 +166,16 @@ const RenderCardBox = () => {
           <Image src='/assets/content-img-2.png' alt='content' width={100} height={100} className='w-full h-full object-fill' />
         </div>
       </div>
-      <div className='w-full flex h-[360px] lg:h-[480px] bg-[#F9F9F9]'>
-      <div className=' hidden md:block '>
+      <div className='w-full md:grid md:grid-cols-2 h-[360px] lg:h-[480px] bg-[#F9F9F9]'>
+      <div className=' hidden md:block  '>
           <Image src='/assets/content-img-1.png' alt='content' width={100} height={100} className='w-full h-full object-fill' />
         </div>
-        <div className=' pl-10 pr-2 py-10  lg:pl-40 lg:pr-20 lg:py-40 w-full md:w-2/3'>
-          <h1 className='font-medium text-[28px] md:text-xl lg:text-[32px] leading-8 text-[#006633] mb-4 lg:mb-7'>
-          Empowering Technology Innovators
+        <div className='md:px-16  flex flex-col justify-center '>
+          <h1 className='font-medium text-[28px] md:text-xl lg:text-[30px] leading-8 text-[#006633] mb-4 lg:mb-7'>
+          Driving Growth and Transformation
           </h1>
-          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>In the fast-paced world of technology services, agility and innovation are paramount. Magnific Search's Technology Services Practice specializes in identifying leaders who not only understand the latest technological trends but also possess the strategic vision to leverage them effectively. Whether you're in IT consulting, digital transformation, or software engineering, we partner with you to recruit executives who can drive innovation, capitalize on emerging opportunities, and propel your organization to new heights.</p>
+          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>Once we've identified potential candidates, it's time to make your organization irresistible to them. Leveraging our personal networks, we spread the word about your organization, positioning it as the ultimate destination for skilled mid to upper-level managers. Our strategic approach ensures that your talent pool is not just filled, but enriched with individuals who align seamlessly with your organization's culture and goals.</p>
         </div>
-    
       </div>
     </>
   )
@@ -185,12 +183,11 @@ const RenderCardBox = () => {
 const RelatedContentSection = () => {
   return (
     <>
-      <div className='lg:container lg:mx-auto'>
-        <div className='text-center w- md:text-left'>
-
+      <div className='lg:container lg:mx-auto mx-4'>
+        <div className='text-center md:text-left lg:mb-10'>
           <DualColorHeader first={"Related "} second={"Content"} style={'text-5xl'} />
         </div>
-        <div className='grid grid-cols-1 md:grid-cols-3 mx-8 md:mx-0 my-8 md:my-8 gap-8 md:gap-5 '>
+        <div className='grid grid-cols-1 md:grid-cols-3 mx-8 md:mx-0 my-8 md:my-8 gap-8 md:gap-5 md:pb-10 lg:pb-20'>
           <ContentCard pageRedirect={'/insights/:id'} />
           <ContentCard  pageRedirect={'/insights/:id'}/>
           <ContentCard pageRedirect={'/insights/:id'} />
@@ -199,6 +196,7 @@ const RelatedContentSection = () => {
     </>
   )
 }
+
 
 const RenderAreaOfExpertise =()=>{
   return(
@@ -228,8 +226,10 @@ const SubPage = () => {
       <RenderCardBox />
       <RenderAreaOfExpertise/>
       <RenderWhyChooseMagnific />
+      <div className=' lg:my-20  lg:container lg:mx-auto'>
       {Solutions()}
       {IndustryExpertise()}
+      </div>
       <RelatedContentSection />
       <ContactUs />
     </>

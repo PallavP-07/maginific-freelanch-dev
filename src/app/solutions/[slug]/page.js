@@ -19,11 +19,11 @@ function Solutions() {
   ];
 
   return (
-    <div className="  py-8 px-4   ">
-      <div className="lg:container lg:mx-auto mx-4 ">
+    <div className="  py-8 px-4  lg:my-16">
+      <div className=" mx-4 lg:mx-0">
         {/* Title Section */}
         <div className="flex justify-between items-center md:border-b-4 border-[#CCE0D6] pb-3 mb-7">
-          <h2 className="text-xl leading-6 font-bold text-[#01331A]">Solutions</h2>
+          <h2 className="text-xl leading-6 font-bold text-[#01331A]">Functional Expertise</h2>
           <a
             href="#"
             className="text-[16px] leading-4  text-[#01331A] font-semibold "
@@ -59,8 +59,8 @@ function IndustryExpertise() {
   ];
 
   return (
-    <div className=" py-8 px-4  md:mx-0   mb-8">
-      <div className="lg:container lg:mx-auto mx-4">
+    <div className=" py-8 px-4 md:px-0 md:py-0 md:pb-28   mx-4 lg:mx-0  mb-8 lg:my-16 border-b-4 border-[#CCE0D6]">
+      <div className=" mx-4 lg:mx-0">
         {/* Title Section */}
         <div className="flex justify-between items-center md:border-b-4 border-[#CCE0D6] pb-3 mb-7">
           <h2 className="text-xl leading-6 font-bold text-[#01331A]">Industry Expertise</h2>
@@ -158,12 +158,11 @@ const RenderCardBox = () => {
 const RelatedContentSection = () => {
   return (
     <>
-      <div className='lg:container lg:mx-auto'>
-        <div className='text-center w- md:text-left'>
-
+      <div className='lg:container lg:mx-auto mx-4'>
+        <div className='text-center md:text-left lg:mb-10'>
           <DualColorHeader first={"Related "} second={"Content"} style={'text-5xl'} />
         </div>
-        <div className='grid grid-cols-1 md:grid-cols-3 mx-8 md:mx-0 my-8 md:my-8 gap-8 md:gap-5 '>
+        <div className='grid grid-cols-1 md:grid-cols-3 mx-8 md:mx-0 my-8 md:my-8 gap-8 md:gap-5 md:pb-10 lg:pb-20'>
           <ContentCard pageRedirect={'/insights/:id'} />
           <ContentCard  pageRedirect={'/insights/:id'}/>
           <ContentCard pageRedirect={'/insights/:id'} />
@@ -180,8 +179,10 @@ const SubPage = () => {
       <RenderParaSection />
       <RenderCardBox />
       <RenderWhyChooseMagnific />
+      <div className=' lg:my-20  lg:container lg:mx-auto'>
       {Solutions()}
       {IndustryExpertise()}
+      </div>
       <RelatedContentSection />
       <ContactUs />
     </>

@@ -164,7 +164,7 @@ export default function CustomNavbar() {
     }
   }, [router.pathname, router.isReady]);
 
-console.log(isScrolled);
+
   return (
     <nav
       className={cn(
