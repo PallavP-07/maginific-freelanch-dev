@@ -67,7 +67,7 @@ const InsightsPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className=' my-8 md:my-10 lg:my-14'>
+                <div className=' my-8 md:my-10 lg:my-10'>
                     <DualColorHeader first={"Browse all"} second={"Insights"} />
                 </div>
                 <div className="flex flex-col gap-4 md:flex-row md:gap-6  items-start md:items-center w-full">
@@ -82,7 +82,7 @@ const InsightsPage = () => {
                         <Input
                             type="text"
                             placeholder="Enter a Job Title or a Keyword"
-                            className="placeholder:text-[#D0D0D0] w-full mt-3 py-3 px-5"
+                            className="placeholder:text-[#D0D0D0] w-full mt-2 py-3 px-5"
                         />
                     </div>
 
@@ -97,7 +97,7 @@ const InsightsPage = () => {
                                 Filter
                             </Label>
                             <Select className="z-50 bg-white  ">
-                                <SelectTrigger className="text-[#D0D0D0] mt-3 py-3 px-5">
+                                <SelectTrigger className="text-[#D0D0D0] mt-2 py-3 px-5">
                                     <SelectValue placeholder="Date Posted" />
                                 </SelectTrigger>
                                 <SelectContent className="bg-white ">

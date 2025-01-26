@@ -38,8 +38,8 @@ const LeftSlantedTrapezoidCard = () => {
         <div className="relative h-full w-2/3 clip-trapezoid bg-[#01331A] text-gray-800">
           {/* Border Layer */}
           <div className="absolute left-0 top-0 w-[calc(100%-10px)] h-full lg:container lg:mx-auto bg-white clip-trapezoid-border">
-            <div className='flex flex-col py-20 mx-8 md:mx-6 lg:mx-0 gap-4'>
-              <h2 className='text-[#006633] text-3xl leading-9 font-medium'>
+            <div className='flex flex-col py-20 mx-8 md:mx-6 lg:mx-5 gap-4'>
+              <h2 className='text-[#006633]  md:text-3xl leading-9 font-medium'>
                 Identifying the Best Candidates
               </h2>
               <p className='text-[#D0D0D0] leading-8 break-words font-semibold text-2xl'>First things first...</p>
@@ -214,11 +214,11 @@ const page = () => {
     <>
       <AboutHeroBanner />
       <div className="flex flex-col items-center justify-center text-center bg-gray-100 py-16 px-4">
-        <div className='lg:container lg:mx-auto my-7'>
+        <div className='lg:container lg:mx-auto my-10'>
           <h1 className="text-3xl md:text-4xl font-semibold text-[#006633] mb-10">
             Unlocking Your Strategy with the Right Talent
           </h1>
-          <p className="text-[#737475] text-lg leading-5">
+          <p className="text-[#737475] text-lg leading-5 lg:mx-20">
             You've got the strategy, we find the talent. For your strategic vision to soar, you need the perfect blend of individuals occupying key roles, fully aligned and committed to its success. That's where Magnific Search comes in. We specialize in sourcing and recruiting talent that propels your organization forward.
           </p>
         </div>

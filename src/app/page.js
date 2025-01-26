@@ -51,43 +51,43 @@ const renderDiscoverInsight = () => {
   return (
     <>
       <div className=" lg:container lg:mx-auto w-full my-20  mb-20">
-        <div className=" mx-6 md:mx-20 lg:mx-40">
+        <div className=" mx-6 md:mx-20 lg:mx-36">
           <p className="font-medium text-[44px] leading-[54px] text-[#333333]">
 
             Discover Our Latest
           </p>
-          <p className="font-semibold text-[44px] leading-[54px] text-[#026534] mb-16 ">
+          <p className="font-semibold text-[44px] leading-[54px] text-[#026534] mb-12 ">
             Insights</p>
 
           <div className="grid grid-cols-2 gap-5 md:gap-8 ">
             <div className="flex flex-col gap-5 md:gap-7">
               {/* Card 1 */}
-              <div className="bg-[#2A2B2F] text-white  text-center h-[450px]  py-20 px-10 rounded-md w-full">
-                <h2 className="font-semibold leading-7 text-4xl mb-6">Insight One</h2>
-                <p className="font-normal leading-[28px] text-[16px]">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalaracc.</p>
+              <div className="bg-[#2A2B2F] text-white  text-center h-[450px]  px-5 py-20 md:px-10 rounded-md w-full">
+                <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-4xl mb-6">Insight One</h2>
+                <p className="font-normal md:leading-[28px] text-[16px]">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalaracc.</p>
               </div>
               {/* Card 2 */}
-              <div className="bg-[#CCE0D6] text-gray-800 text-center  py-20 px-10 h-[380px] w-full  rounded-md">
-                <h2 className="font-semibold leading-7 text-3xl mb-6">Insight Three</h2>
+              <div className="bg-[#CCE0D6] text-gray-800 text-center  px-5 py-20 md:px-10  h-[380px] w-full  rounded-md">
+                <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl mb-6">Insight Three</h2>
                 <p className="font-normal leading-[28px] text-[16px]">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalaracc.</p>
               </div>
             </div>
             <div className="flex flex-col w-full gap-5 md:gap-7">
               {/* Card 3 */}
 
-              <div className="bg-[#D0D0D0] text-[#373A40] text-center  py-20 px-10 h-[380px] w-full   rounded-md">
-                <h2 className="font-semibold leading-7 text-4xl mb-6 ">Insight Two</h2>
+              <div className="bg-[#D0D0D0] text-[#373A40] text-center  px-5 py-20 md:px-10  h-[380px] w-full   rounded-md">
+                <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-4xl mb-6">Insight Two</h2>
                 <p className="font-normal leading-[28px] text-[16px]">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalaracc.</p>
               </div>
               {/* Card 4 */}
-              <div className="bg-[#2A2B2F] text-white text-center  py-20 px-10 h-[450px]  rounded-md">
-                <h2 className="font-semibold leading-7 text-4xl mb-6 ">Insight Four</h2>
+              <div className="bg-[#2A2B2F] text-white text-center  px-5 py-36 md:px-10  h-[450px]  rounded-md">
+                <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl mb-6">Insight Four</h2>
                 <p className="font-normal leading-[28px] text-[16px]">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalaracc.</p>
               </div>
             </div>
 
           </div>
-          <p className="text-[#01331A] font-semibold text-[20px] text-end leading-6 mt-10 ">Browse all Insights &gt;</p>
+          <p className="text-[#01331A] font-semibold text-[20px] text-end leading-6 mt-8 ">Browse all Insights &gt;</p>
         </div>
       </div>
     </>
@@ -101,10 +101,10 @@ const ResourcesGrid = () => {
       <div className="hidden md:flex bg-[#2A2B2F] text-white md:flex-col md:justify-center md:p-10 lg:p-28 items-center">
         <div className="text-left w-full md:w-auto ">
           <h2 className="text-[39px] font-bold leading-[46px] mb-8">Candidate Resources</h2>
-          <p className="mb-6 font-normal text-lg leading-6">
+          <p className="mb-8 font-normal text-lg leading-6">
             A comprehensive toolbox of insights and materials to help you unlock your true potential.
           </p>
-          <Button className="bg-[#026534] font-semibold text-lg leading-5 text-white w-40 px-8 py-[10px] rounded-sm hover:bg-green-700">
+          <Button className="bg-[#026534] font-medium text-lg leading-5 text-white w-28 px-8 py-[10px] rounded-sm hover:bg-green-700">
             Browse
           </Button>
         </div>
@@ -115,13 +115,13 @@ const ResourcesGrid = () => {
             objectFit="cover"
             className="w-full h-full object-cover" />
         </div>
-        <div className=" flex bg-black/50  text-white flex-col justify-center absolute inset-0 md:hidden px-10 py-20 items-center">
+        <div className=" flex bg-black/50  text-white flex-col justify-center absolute inset-0 md:hidden px-5 py-20 items-center">
           <div className="text-center w-full md:w-auto">
-            <h2 className="text-[42px] font-bold leading-[36px] mb-8">Candidate Resources</h2>
+            <h2 className="text-[32px] font-bold leading-[36px] mb-6">Candidate Resources</h2>
             <p className="mb-6 font-normal text-lg leading-6">
               A comprehensive toolbox of insights and materials to help you unlock your true potential.
             </p>
-            <Button className="bg-[#026534] font-semibold text-lg leading-5 text-white w-full px-8 py-[10px] rounded-sm hover:bg-green-700">
+            <Button className="bg-[#026534] font-semibold text-lg leading-5 text-white w-full px-8 py-[12px] rounded-sm hover:bg-green-700">
               Browse
             </Button>
           </div>
@@ -137,9 +137,9 @@ const ResourcesGrid = () => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="flex bg-black/50 text-white flex-col justify-center absolute inset-0 md:hidden px-10 py-20 items-center">
+        <div className="flex bg-black/50 text-white flex-col justify-center absolute inset-0 md:hidden px-6 py-20 items-center">
           <div className="text-center w-full md:w-auto">
-            <h2 className="text-[42px] font-bold leading-[36px] mb-8">Hiring Resources</h2>
+            <h2 className="text-[40px] font-bold leading-[36px] mb-6">Hiring Resources</h2>
             <p className="mb-6 font-normal text-lg leading-6">
               A data-driven knowledge base to support your best practices and help you build a world-class team.
             </p>
@@ -152,10 +152,10 @@ const ResourcesGrid = () => {
       <div className="hidden md:flex bg-[#2A2B2F] text-white md:flex-col md:justify-center md:p-10 lg:p-28 items-center">
         <div className="text-left w-full md:w-auto">
           <h2 className="text-[36px] font-bold leading-[46px] mb-8">Hiring Resources</h2>
-          <p className="mb-6 font-normal text-lg leading-6">
+          <p className="mb-8 font-normal text-lg leading-6">
             A data-driven knowledge base to support your best practices and help you build a world-class team.
           </p>
-          <Button className="bg-[#026534] font-semibold text-lg leading-5 text-white w-40 px-8 py-[10px] rounded-sm hover:bg-green-700">
+          <Button className="bg-[#026534] font-medium text-lg leading-5 text-white w-28 px-8 py-[10px] rounded-sm hover:bg-green-700">
             Browse
           </Button>
         </div>
@@ -169,14 +169,14 @@ const progressSection = () => {
   return (
     <>
       <div className="bg-[#F9F9F9] w-full overflow-hidden h-auto  ">
-        <div className="flex flex-col md:flex-row justify-between py-16 md:py-40 mx-6 lg:container lg:mx-auto">
+        <div className="flex flex-col md:flex-row justify-between py-16 md:py-28 lg:py-40 mx-6 lg:container lg:mx-auto">
           <div className="flex flex-col gap-5 text-center md:text-left mb-8 md:mb-0 w-full">
-            <p className="text-[#373A40] font-bold text-[32px] md:text-[44px] md:leading-[53px] flex-wrap">Driven By <span className="text-[#006633] md:text-[#373A40]">Data</span></p>
+            <p className="text-[#373A40] font-bold text-[32px] md:text-[34px] lg:text-[44px] lg:leading-[53px] flex-wrap">Driven By <span className="text-[#006633] md:text-[#092015]">Data</span></p>
             <span className="text-lg leading-[26px] font-normal break-words">
               Unlike some, our entire methodology is powered by data. We’ve built a data platform to ensure we provide the best service for our clients.
             </span>
           </div>
-          <div className="flex  justify-center flex-wrap md:flex-nowrap gap-4  md:justify-between lg:gap-1 ">
+          <div className="flex  justify-center flex-wrap md:flex-nowrap gap-4   md:justify-between md:gap-1 ">
             <ProgressCircle value={"50"} text="%" subtext="Customer satisfaction" />
             <ProgressCircle value={"85"} text="%" subtext="Company growth" />
             <ProgressCircle value={'7,000'} text="" subtext="Successful candidates" />
@@ -192,7 +192,7 @@ const renderJobSearchBar = () => {
   return (
     <>
       <div className="lg:container px-6 py-12 md:py-16 lg:py-20 lg:mx-auto w-full">
-        <div className="pb-6 md:pb-12">
+        <div className="pb-6">
           <DualColorHeader first={"Find Your Next Opportunity"} second={"Today."} />
         </div>
         <div className="flex flex-col md:flex-row items-start  gap-4 mt-8 w-full ">
@@ -206,7 +206,7 @@ const renderJobSearchBar = () => {
             <Input
               type="text"
               placeholder="Enter a Job Title or a Keyword"
-              className="placeholder:text-[#D0D0D0] w-full mt-3 p-5"
+              className="placeholder:text-[#D0D0D0] w-full mt-2 p-5"
             />
           </div>
           <div className="w-full ">
@@ -219,16 +219,16 @@ const renderJobSearchBar = () => {
             <Input
               type="text"
               placeholder="Enter a Job Title or a Keyword"
-              className="placeholder:text-[#D0D0D0] w-full mt-3 p-5"
+              className="placeholder:text-[#D0D0D0] w-full mt-2 p-5"
             />
           </div>
-          <div className="flex flex-col md:gap-2 gap-5 md:w-1/3 w-full mt-9">
+          <div className="flex flex-col md:gap-2 gap-5 md:w-1/3 w-full mt-8">
             <div className=''>
               <Button className="px-8 py-5  bg-[#026534] text-white w-full md:w-40   rounded-[3px] text-[18px] leading-5 font-semibold  ">
                 Search Jobs
               </Button>
             </div>
-            <Link href='/browse-jobs' className="   font-semibold text-[20px] leading-7 border-b-2 border-[#006633] text-center py-1    text-[#006633] mx-auto " >Looking to hire?</Link>
+            <Link href='/browse-jobs' className="font-semibold text-[20px] leading-7 border-b-2 border-[#006633] text-center py-1    text-[#006633] mx-auto " >Looking to hire?</Link>
           </div>
         </div>
       </div>
@@ -237,6 +237,16 @@ const renderJobSearchBar = () => {
 }
 
 const renderwhyChooseUs = () => {
+  const solutions = [
+    "Executive Search",
+    "RPO",
+    "RaaS",
+    "Interim Talent",
+    "Talent Strategy & Advisory",
+    "Projects & Contracts",
+    "Projects & Contracts",
+    "Professional Search",
+  ];
   return (
     <>
 
@@ -255,13 +265,10 @@ const renderwhyChooseUs = () => {
             </a>
           </div>
           <div className="flex gap-[18px] flex-wrap">
-            <Badge variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-[6px] px-[10px] inline-block'>Executive Search</Badge>
-            <Badge variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-[6px] px-[10px] inline-block'>Executive Search</Badge>
-            <Badge variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-[6px] px-[10px] inline-block'>Executive Search</Badge>
+            {solutions.map((solution, index) => (
 
-            <Badge variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-[6px] px-[10px] inline-block'>Executive Search</Badge>
-            <Badge variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-[6px] px-[10px] inline-block'>Executive Search</Badge>
-            <Badge variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-[6px] px-[10px] inline-block'>Executive Search</Badge>
+              <Badge key={index} variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>{solution}</Badge>
+            ))}
           </div>
 
         </div>
@@ -283,9 +290,9 @@ export default async function Home() {
       <LandingHeroBanner bannerData={banner.banner} />
       {renderJobSearchBar()}
       {progressSection()}
-      <div className=" w-full h-full bg-[url('/circle-bg.svg')] bg-no-repeat bg-center bg-cover">
-        <div className=" mx-6 lg:container lg:mx-auto py-28">
-          <div className="my-8">
+      <div className=" w-full h-full bg-[url('/circle-bg.svg')] bg-no-repeat bg-right ">
+        <div className=" mx-6 lg:container lg:mx-auto py-20">
+          <div className="">
 
             <DualColorHeader first={"Why choose "} second={"Magnific?"} />
           </div>

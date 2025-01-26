@@ -9,22 +9,16 @@ function SubPage() {
   return (
     <>
       <div className="flex  flex-col md:flex-row justify-between    h-auto md:h=[400px] lg:h-[480px]">
-        <div className=" py-12 px-10 md:py-0 md:px-0 md:w-1/2 h-full flex justify-center items-center">
+        <div className=" py-12 px-6 md:py-0 md:px-0 md:w-1/2 h-full flex justify-center items-center">
           <div className=' md:mt-20 lg:mt-36 flex justify-center flex-col w-full md:w-2/3  lg:ml-28 '>
             <span className="text-sm font-normal text-[#737475]">July 2024</span>
             <h1 className="text-3xl  lg:text-[46px] mb-5 font-semibold leading-[40px] lg:leading-[60px] text-[#373A40] mt-2">
               Insights sub-page heading here
             </h1>
             <div className="flex flex-wrap gap-4 justify-start my-4">
-              <Badge className="text-[#737475] py-1 px-3" variant="outline">
-                Healthcare
-              </Badge>
-              <Badge className="text-[#737475] py-1 px-3" variant="outline">
-                Technology
-              </Badge>
-              <Badge className="text-[#737475] py-1 px-3" variant="outline">
-                Other
-              </Badge>
+            <Badge  variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>Healthcare</Badge>
+            <Badge  variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>Technology</Badge>
+            <Badge  variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>Other</Badge>
             </div>
           </div>
         </div>
@@ -107,12 +101,11 @@ function SubPage() {
             </div>
           </div>
         </div>
-        <div>
-          <div className='text-center w- md:text-left'>
-
+        <div className='lg:mb-28 lg:mt-14'>
+          <div className='text-center  md:text-left '>
             <DualColorHeader first={"Related "} second={"Content"} style={'text-5xl'} />
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-3 mx-8 md:mx-0 my-8 md:my-8 gap-8 md:gap-5 '>
+          <div className='grid grid-cols-1 w-full md:grid-cols-3  md:mx-0 my-8 md:my-8 gap-8 md:gap-5 '>
             <ContentCard />
             <ContentCard />
             <ContentCard />
