@@ -106,7 +106,7 @@ const Modle = ({ isOpen, closeModal, onSubmit }) => {
     return (
         isOpen && (
             <div className="fixed inset-0 flex items-center  justify-center bg-black bg-opacity-50 backdrop-blur-md z-50">
-                <div className="bg-white p-6 w-[400px] md:w-[640px] lg:w-auto rounded-lg shadow-lg  relative">
+                <div className="bg-white p-12 w-[400px] md:w-[640px] lg:w-auto rounded-lg shadow-lg  relative">
                     <button onClick={closeModal} className="absolute top-5 right-6 text-gray-600 text-lg hover:text-gray-900">
                         ✖
                     </button>

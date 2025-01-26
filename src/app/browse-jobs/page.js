@@ -169,7 +169,7 @@ const BrowseJobs = () => {
                     Recent Job Postings
                 </h1>
 
-                <div className="flex-col flex w-full gap-6">
+                <div className="flex-col flex  gap-6">
                     {jobData?.map((job) => (
                         <JobPostingCard
                             key={job.id}

@@ -4,7 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import clsx from "clsx";
-
+import { useRouter } from "next/navigation";
+import { Flag } from "lucide-react";
 
 const subMenuContent = [
   {
@@ -98,7 +99,7 @@ export default function CustomNavbar() {
   const [openDropdown, setOpenDropdown] = React.useState(null); // Track the open dropdown (null if none)
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   const [showMobileSubMenu, setShowMobileSubMenu] = React.useState(false);
-  
+  const router = useRouter();
 
   const renderMobileNavMenu = () => {
     return (
@@ -152,10 +153,22 @@ export default function CustomNavbar() {
   }, [isHovered, openDropdown]);
 
 
+
+  React.useEffect(() => {
+    if (!router.isReady) return;
+
+    if (router.pathname === "/browse-jobs/details") {
+      setIsScrolled(true)
+    } else {
+      setIsScrolled(false);
+    }
+  }, [router.pathname, router.isReady]);
+
+console.log(isScrolled);
   return (
     <nav
       className={cn(
-        "fixed top-0   z-50  w-full",
+        "fixed top-0 drop-shadow-md  z-50  w-full",
         (isScrolled || isHovered) ? "bg-white text-black " : "bg-transparent text-white "
       )}
     >

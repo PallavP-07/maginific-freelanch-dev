@@ -27,13 +27,13 @@ const JobPostingCard = ({ title, dipartment, discription, team, postTime, locati
 
     return (
         <>
-            <div className='bg-[#F9F9F9]  rounded-md  drop-shadow-md flex flex-col  gap-4 md:gap-0 md:flex-row w-auto justify-between items-center py-6 px-10'>
+            <div className='bg-[#F9F9F9]  rounded-md   flex flex-col  gap-4 md:gap-0 md:flex-row w-full justify-between items-center py-6 px-10'>
                 <div className='flex flex-col gap-2 md:border-r-2 md:border-[#D0D0D0] md:pr-[17px] w-full md:w-3/4  lg:w-2/4'>
                     <h2 className='text-xl font-bold leading-[36px]'>{title}</h2>
                     <span className='text-lg font-light leading-[36px]'>{dipartment}</span>
                     <p className='text-lg text-[#737475] font-normal leading-6'>{discription}</p>
                 </div>
-                <div className='hidden  lg:flex flex-col px-8 py-4 gap-1 text-[#737475] lg:w-1/4 text-[16px] font-semibold' >
+                <div className='hidden  lg:flex flex-col pl-8 py-4 gap-1 text-[#737475] lg:w-1/4 text-[16px] font-semibold' >
                     <span className='flex items-center gap-2'><Time />{postTime}</span>
                     <span className='flex items-center gap-2'><Building />{location}</span>
                     <span className='flex items-center gap-2'><PepopeOutLine />{team}</span>
