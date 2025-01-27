@@ -68,7 +68,7 @@ const renderDiscoverInsight = () => {
               </div>
               {/* Card 2 */}
               <div className="bg-[#CCE0D6] text-gray-800 text-center  px-5 py-20 md:px-10  h-[380px] w-full  rounded-md">
-                <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl mb-6">Insight Three</h2>
+                <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl lg:text-4xl mb-6">Insight Three</h2>
                 <p className="font-normal leading-[28px] text-[16px]">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalaracc.</p>
               </div>
             </div>
@@ -81,7 +81,7 @@ const renderDiscoverInsight = () => {
               </div>
               {/* Card 4 */}
               <div className="bg-[#2A2B2F] text-white text-center  px-5 py-36 md:px-10  h-[450px]  rounded-md">
-                <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl mb-6">Insight Four</h2>
+                <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl lg:text-4xl mb-6">Insight Four</h2>
                 <p className="font-normal leading-[28px] text-[16px]">Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalaracc.</p>
               </div>
             </div>

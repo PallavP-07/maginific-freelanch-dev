@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import React from 'react'
-import NavigationMenuDemo from '@/components/navbar/index'
 import { Button } from '../ui/button';
 const LandingHeroBanner = ({ bannerData }) => {
 
@@ -9,7 +8,7 @@ const LandingHeroBanner = ({ bannerData }) => {
       <div className="relative  w-full h-[780px] md:h-[680px] lg:h-[780px]">
         <Image
           className="w-full object-fill h-100 "
-          src={`https://magnific-directus-2p92s.ondigitalocean.app/assets/${bannerData.background_img.filename_disk}`}
+          src={`https://magnific-directus-2p92s.ondigitalocean.app/assets/${bannerData?.background_img?.filename_disk}` || `/placeholder.png`}
           alt="hero-banner"
           layout="fill"
 

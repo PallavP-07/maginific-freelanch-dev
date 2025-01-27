@@ -41,7 +41,7 @@ const renderDesktopFooter = () => {
           {renderSocialContent()}
         </div>
       </div>
-      <div className="mx-32  lg:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6">
+      <div className="mx-32  lg:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-5">
         {/* Home Section */}
         <div>
           <h3 className="text-xl leading-8 font-bold mb-4 text-[#01331A]">Home</h3>
