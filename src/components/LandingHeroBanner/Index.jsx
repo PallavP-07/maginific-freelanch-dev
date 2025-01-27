@@ -8,7 +8,7 @@ const LandingHeroBanner = ({ bannerData }) => {
       <div className="relative  w-full h-[780px] md:h-[680px] lg:h-[780px]">
         <Image
           className="w-full object-fill h-100 "
-          src={`https://magnific-directus-2p92s.ondigitalocean.app/assets/${bannerData?.background_img?.filename_disk}` || `/placeholder.png`}
+          src={`/HeroBanners/Home_page-hero-banner.png`}
           alt="hero-banner"
           layout="fill"
 
