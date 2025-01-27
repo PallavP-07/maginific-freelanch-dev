@@ -1,4 +1,4 @@
-const CircularProgress = ({ value, text, subtext }) => {
+const CircularProgress = ({ value, text, subtext,percentage }) => {
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -27,7 +27,7 @@ const CircularProgress = ({ value, text, subtext }) => {
             fill="none"
             stroke="#006633" /* Dark green */
             strokeDasharray="100"
-            strokeDashoffset={100 - value}
+            strokeDashoffset={100 - percentage}
             strokeLinecap="round"
             strokeWidth="1.8"
             style={{
