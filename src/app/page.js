@@ -1,8 +1,6 @@
 import LandingHeroBanner from "@/components/LandingHeroBanner/Index";
-import  ResponsiveCarousel  from "@/components/carousel/Index";
+import ResponsiveCarousel from "@/components/carousel/Index";
 import { renderContatUseComponent } from "./contact-us/page";
-import directus from "@/lib/directus";
-import { readItems } from "@directus/sdk";
 import DualColorHeader from "@/components/dualColorHeader/Index";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -11,96 +9,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import ProgressCircle from "@/components/circleProgress/Index";
-
-
-async function getGlobals() {
-	const bannerData = async () => {
-		const data = await directus.request(
-			readItems('homepage', {
-				fields: ['banner.background_img.filename_disk', 'banner.title', 'banner.description', 'banner.subtitle', 'banner.call_to_actions.*'],
-			})
-		);
-		return data;
-	};
-
-	// Fetch data for the  Service Section
-	const serviecSectionData = async () => {
-		const data = await directus.request(
-			readItems('homepage', {
-				fields: ['services_section.*', 'services_section.services.*', 'services_section.services.call_to_actions.*', 'services_section.services.img.*', 'services_section.services.tags.*'],
-			})
-		);
-		return data;
-	};
-
-	const jobSearchSection = async () => {
-		const data = await directus.request(
-			readItems('homepage', {
-				fields: ['job_search_section.*', 'job_search_section.submit_btn.*', 'job_search_section.form_items.*', 'job_search_section.call_to_actions.*'],
-			})
-		);
-		return data;
-	};
-	const matrixSection = async () => {
-		const data = await directus.request(
-			readItems('homepage', {
-				fields: ['metrics.*'],
-			})
-		);
-		return data;
-	};
-	const whyMagnificSection = async () => {
-		const data = await directus.request(
-			readItems('homepage', {
-				fields: ['why_magnific_section.*'],
-			})
-		);
-		return data;
-	};
-	const insightSection = async () => {
-		const data = await directus.request(
-			readItems('homepage', {
-				fields: ['insights_section.*', 'insights_section.cards.*'],
-			})
-		);
-		return data;
-	};
-	const testimonialsSection = async () => {
-		const data = await directus.request(
-			readItems('homepage', {
-				fields: ['testimonials.*','testimonials.testimonials.*'],
-			})
-		);
-		return data;
-	};
-	const resourcesSection = async () => {
-		const data = await directus.request(
-			readItems('homepage', {
-				fields: ['resources_section.*','resources_section.rows.*'],
-			})
-		);
-		return data;
-	};
-	const AllContent = async () => {
-		const data = await directus.request(
-			readItems('homepage', {
-				fields: ['*', 'services_section.*', 'insights_section.*', 'resources_section.*', 'metrics.*', 'testimonials.*','testimonials.testimonials.*']
-			})
-		);
-		return data;
-	};
-	return {
-		bannerData,
-		AllContent,
-		serviecSectionData,
-		jobSearchSection,
-		matrixSection,
-		whyMagnificSection,
-		insightSection,
-		testimonialsSection,
-		resourcesSection
-	};
-}
+import HomePageData from '@/services/homePageData'
+import ContactUsCompData from "@/services/ContactUsComp";
 
 const renderDiscoverInsight = (insightSectionData) => {
 	const title = insightSectionData?.insights_section?.title || "";
@@ -163,7 +73,7 @@ const ResourcesGrid = (resourcesSectionData) => {
 			<div className=" bg-cover bg-center relative  w-full h-[480px]" >
 				<div className="w-full h-full">
 					<Image src='/assets/Resources2.png' alt='content-1' layout="fill"
-						
+
 						className="w-full h-full object-cover" />
 				</div>
 				<div className=" flex bg-black/50  text-white flex-col justify-center absolute inset-0 md:hidden px-5 py-20 items-center">
@@ -184,7 +94,7 @@ const ResourcesGrid = (resourcesSectionData) => {
 						src='/assets/Resources1.png'
 						alt='content-1'
 						layout="fill"
-						
+
 						className="w-full h-full object-cover"
 					/>
 				</div>
@@ -309,7 +219,7 @@ const renderwhyChooseUs = (services) => {
 				<>
 					<div className="flex justify-between md:gap-4 lg:gap-16 my-20" key={i}>
 						<div className="hidden md:block md:w-1/2 rounded-md  drop-shadow-lg">
-							<Image src={`https://magnific-directus-2p92s.ondigitalocean.app/assets/${item?.img?.filename_disk}`} alt="wy-us" width={400} height={356} className="drop-shadow-lg w-full border-t-[12px]  border-[#01331A] h-[360px] object-fill grayscale rounded-md" />
+							<Image src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${item?.img?.filename_disk}`} alt="wy-us" width={400} height={356} className="drop-shadow-lg w-full border-t-[12px]  border-[#01331A] h-[360px] object-fill grayscale rounded-md" />
 						</div>
 						<div className=" w-full md:w-1/2 ">
 							<div className="flex justify-between items-center   mb-7">
@@ -369,43 +279,29 @@ const renderWhyChooseMagnific = (whyMagnificSectionData,
 	)
 }
 export default async function Home() {
-	const globals = await getGlobals();
-
-	// Use Promise.all to fetch all sections concurrently
-	const [
-		banner,
+	const { bannerData,
+		
 		serviecSectionData,
-		jobSearchSectionData,
-		matrixSectionData,
-		allData,
-		whyMagnificSectionData,
-		insightSectionData,
-		testimonialsSectionData,
-		resourcesSectionData
-	] = await Promise.all([
-		globals.bannerData(),
-		globals.serviecSectionData(),
-		globals.jobSearchSection(),
-		globals.matrixSection(),
-		globals.AllContent(),
-		globals.whyMagnificSection(),
-		globals.insightSection(),
-		globals.testimonialsSection(),
-		globals.resourcesSection(),
-	]);
-	console.log(resourcesSectionData.resources_section.rows[0])
+		jobSearchSection,
+		matrixSection,
+		whyMagnificSection,
+		insightSection,
+		testimonialsSection,
+		resourcesSection
+	} = await HomePageData();
 	return (
 		<>
-			<LandingHeroBanner bannerData={banner.banner} />
-			{renderJobSearchBar(jobSearchSectionData)}
-			{progressSection(matrixSectionData)}
-			{renderWhyChooseMagnific(whyMagnificSectionData, serviecSectionData)}
-			<ResponsiveCarousel Data={testimonialsSectionData.testimonials} />
-			{renderDiscoverInsight(insightSectionData)}
-			{ResourcesGrid(resourcesSectionData)}
+			<LandingHeroBanner bannerData={bannerData.banner} />
+			{renderJobSearchBar(jobSearchSection)}
+			{progressSection(matrixSection)}
+			{renderWhyChooseMagnific(whyMagnificSection, serviecSectionData)}
+			<ResponsiveCarousel Data={testimonialsSection.testimonials} />
+			{renderDiscoverInsight(insightSection)}
+			{ResourcesGrid(resourcesSection)}
 			<div className="lg:mx-10">
 				{renderContatUseComponent()}
 			</div>
 		</>
 	);
 }
+
