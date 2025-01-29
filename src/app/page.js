@@ -1,5 +1,5 @@
 import LandingHeroBanner from "@/components/LandingHeroBanner/Index";
-import { ResponsiveCarousel } from "@/components/carousel/Index";
+import  ResponsiveCarousel  from "@/components/carousel/Index";
 import { renderContatUseComponent } from "./contact-us/page";
 import directus from "@/lib/directus";
 import { readItems } from "@directus/sdk";
@@ -65,10 +65,26 @@ async function getGlobals() {
 		);
 		return data;
 	};
+	const testimonialsSection = async () => {
+		const data = await directus.request(
+			readItems('homepage', {
+				fields: ['testimonials.*','testimonials.testimonials.*'],
+			})
+		);
+		return data;
+	};
+	const resourcesSection = async () => {
+		const data = await directus.request(
+			readItems('homepage', {
+				fields: ['resources_section.*','resources_section.rows.*'],
+			})
+		);
+		return data;
+	};
 	const AllContent = async () => {
 		const data = await directus.request(
 			readItems('homepage', {
-				fields: ['*', 'services_section.*', 'insights_section.*', 'resources_section.*', 'metrics.*', 'testimonials.*']
+				fields: ['*', 'services_section.*', 'insights_section.*', 'resources_section.*', 'metrics.*', 'testimonials.*','testimonials.testimonials.*']
 			})
 		);
 		return data;
@@ -80,7 +96,9 @@ async function getGlobals() {
 		jobSearchSection,
 		matrixSection,
 		whyMagnificSection,
-		insightSection
+		insightSection,
+		testimonialsSection,
+		resourcesSection
 	};
 }
 
@@ -128,7 +146,7 @@ const renderDiscoverInsight = (insightSectionData) => {
 }
 
 
-const ResourcesGrid = () => {
+const ResourcesGrid = (resourcesSectionData) => {
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-2 ">
 			<div className="hidden md:flex bg-[#2A2B2F] text-white md:flex-col md:justify-center md:p-10 lg:p-28 items-center">
@@ -362,6 +380,8 @@ export default async function Home() {
 		allData,
 		whyMagnificSectionData,
 		insightSectionData,
+		testimonialsSectionData,
+		resourcesSectionData
 	] = await Promise.all([
 		globals.bannerData(),
 		globals.serviecSectionData(),
@@ -370,17 +390,19 @@ export default async function Home() {
 		globals.AllContent(),
 		globals.whyMagnificSection(),
 		globals.insightSection(),
+		globals.testimonialsSection(),
+		globals.resourcesSection(),
 	]);
-
+	console.log(resourcesSectionData.resources_section.rows[0])
 	return (
 		<>
 			<LandingHeroBanner bannerData={banner.banner} />
 			{renderJobSearchBar(jobSearchSectionData)}
 			{progressSection(matrixSectionData)}
 			{renderWhyChooseMagnific(whyMagnificSectionData, serviecSectionData)}
-			<ResponsiveCarousel />
+			<ResponsiveCarousel Data={testimonialsSectionData.testimonials} />
 			{renderDiscoverInsight(insightSectionData)}
-			{ResourcesGrid()}
+			{ResourcesGrid(resourcesSectionData)}
 			<div className="lg:mx-10">
 				{renderContatUseComponent()}
 			</div>

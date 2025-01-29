@@ -24,7 +24,8 @@ const CustomNextArrow = ({ onClick }) => (
   </div>
 );
 
-export function ResponsiveCarousel() {
+const ResponsiveCarousel = ({ Data }) => {
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -37,7 +38,7 @@ export function ResponsiveCarousel() {
     prevArrow: <CustomPrevArrow />,
     responsive: [
       {
-        breakpoint: 1024, // Tablet and below
+        breakpoint: 1024,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -50,22 +51,15 @@ export function ResponsiveCarousel() {
     <div className="bg-[#2A2B2F] text-center w-full py-40">
       <div className=" relative">
         <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] text-white md:font-bold font-medium leading-5 mb-14">
-          What Our Clients are Saying
+          {Data?.title}
         </h2>
         <div className="relative mx-6 md:mx-20 ">
           <Slider {...settings}>
-            <div className=" px-4 md:px-16 lg:px-2  ">
-              <ReviewCard />
-            </div>
-            <div className="px-4 md:px-16 lg:px-2  ">
-              <ReviewCard />
-            </div>
-            <div className="px-4 md:px-16 lg:px-2  ">
-              <ReviewCard />
-            </div>
-            <div className="px-4 md:px-16 lg:px-2  ">
-              <ReviewCard />
-            </div>
+            {Data?.testimonials?.map((item, i) => (
+              <div key={i} className=" px-4 md:px-16 lg:px-2">
+                <ReviewCard testimonial={item} />
+              </div>
+            ))}
           </Slider>
         </div>
       </div>

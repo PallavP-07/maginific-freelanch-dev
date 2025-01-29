@@ -3,24 +3,33 @@ import AboutHeroBanner from '@/components/aboutHeroBanner/Index'
 import ContactUs from '@/components/contact/Index';
 import Image from 'next/image';
 import React from 'react'
+import directus from "@/lib/directus";
+import { readItems } from "@directus/sdk";
+
+async function getGlobals() {
+	const AllContent = async () => {
+		const data = await directus.request(
+			readItems('about', {
+				fields: ['section_1.*','section_2.*','section_3.*','section_4.*','section_4.sections.*']
+			})
+		);
+		return data;
+	}; 
+  const bannerData = async () => {
+		const data = await directus.request(
+			readItems('about', {
+				fields: ['banner.*','banner.icon.*'],
+			})
+		);
+		return data;
+	};
+	return {
+		AllContent,
+    bannerData
+	};
+}
 
 
-
-// const RightTrapezoidCard = () => {
-//   return (
-//     <div className="relative bg-[#01331A] w-full h-[380px]">
-//       <div className="relative w-64 h-40 bg-white text-gray-800 clip-trapezoid p-4 shadow-lg">
-//         {/* Pseudo-element to simulate border */}
-//         <div className="absolute top-0 left-0 w-full h-full clip-trapezoid-border bg-green-800 -z-10"></div>
-
-//         <h2 className="text-lg font-bold">Trapezoid Card</h2>
-//         <p className="text-sm mt-2">
-//           This is a right trapezoid card styled with Tailwind CSS.
-//         </p>
-//       </div>
-//     </div>
-//   );
-// };
 
 const LeftSlantedTrapezoidCard = () => {
   return (
@@ -172,14 +181,20 @@ const WhatWeDo = () => {
   );
 };
 
-const HowWeHelp = () => {
+const HowWeHelp = ({data}) => {
+
   return (
     <section className="py-24 lg:container mx-6 lg:mx-auto text-center">
-      <h2 className="text-2xl font-bold text-[#006633] mb-4">How We Help You</h2>
+      <h2 className="text-2xl font-bold text-[#006633] mb-4">{data?.title}</h2>
       <p className="text-gray-600  mx-auto mb-20">
-        At Magnific Search, we understand that effective leadership is the cornerstone of organizational success. With our strategic approach and unwavering commitment to excellence, we empower your organization to thrive in a dynamic and competitive landscape. Let us help you unlock the potential of your strategy with the right talent.
+     {data?.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}
       </p>
       <div className="grid md:grid-cols-3 gap-8  mx-auto">
+        {data?.sections.map((item,i)=>(
+          console.log(item)
+          // <>
+          // </>
+        ))}
         {/* Accelerating Hiring Processes */}
         <div className="flex flex-col items-center">
           <div className="text-green-700 text-4xl mb-6"><ProcessIcon /></div>
@@ -209,17 +224,29 @@ const HowWeHelp = () => {
   );
 };
 
-const page = () => {
+const page = async() => {
+  const globals = await getGlobals();
+
+	// Use Promise.all to fetch all sections concurrently
+	const [
+		allData,
+    banner
+	] = await Promise.all([
+		globals.AllContent(),
+    globals.bannerData()
+	
+	]);
+ 
   return (
     <>
-      <AboutHeroBanner />
+      <AboutHeroBanner banner={banner.banner} />
       <div className="flex flex-col items-center justify-center text-center bg-gray-100 py-16 px-4">
         <div className='lg:container lg:mx-auto my-10'>
           <h1 className="text-3xl md:text-4xl font-semibold text-[#006633] mb-10">
-            Unlocking Your Strategy with the Right Talent
+          {allData?.section_1?.title}
           </h1>
           <p className="text-[#737475] text-lg leading-5 lg:mx-20">
-            You've got the strategy, we find the talent. For your strategic vision to soar, you need the perfect blend of individuals occupying key roles, fully aligned and committed to its success. That's where Magnific Search comes in. We specialize in sourcing and recruiting talent that propels your organization forward.
+          {allData?.section_1?.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}
           </p>
         </div>
       </div>
@@ -228,7 +255,7 @@ const page = () => {
       <RightSlantedTrapezoidCard />
 
       <WhatWeDo />
-      <HowWeHelp />
+      <HowWeHelp data={allData.section_4} />
       <ContactUs />
     </>
   )
