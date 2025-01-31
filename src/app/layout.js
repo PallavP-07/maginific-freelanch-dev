@@ -3,6 +3,7 @@ import "./globals.css";
 
 import CustomNavbar from "@/components/navbar";
 import Footer from "@/components/footer/Index";
+import NavbarWrapper from "@/components/navbar/NavBarWrapper";
 
 
 
@@ -19,13 +20,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
       <body
         className={inter.variable}
         
       >
-        <CustomNavbar/>
+        <NavbarWrapper />
         {children}
         <Footer/>
       </body>

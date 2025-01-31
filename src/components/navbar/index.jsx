@@ -5,8 +5,6 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
-import { Flag } from "lucide-react";
-
 const subMenuContent = [
   {
     title: 'Legal & Compliance '
@@ -43,7 +41,7 @@ const subMenuContent = [
   },
 
 ]
-const RenderDropDownMenu = ({positionLeft}) => {
+const RenderDropDownMenu = ({ positionLeft }) => {
   return (
 
     <div
@@ -73,30 +71,11 @@ const RenderDropDownMenu = ({positionLeft}) => {
 };
 
 
-const menuItems = [
-  {
-    title: "About",
-    url: '/about-us'
-  },
-  {
-    title: "Solutions",
-    url: '/solutions'
-  },
-  {
-    title: "Expertise",
-    url: '/Expertise'
-  },
-  {
-    title: "Insights",
-    url: '/insights'
-  },
-]
+ const CustomNavbar=(AllContent)=> {
 
-
-export default function CustomNavbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
-  const [isHovered, setIsHovered] = React.useState(false); // Track if a menu is hovered
-  const [openDropdown, setOpenDropdown] = React.useState(null); // Track the open dropdown (null if none)
+  const [isHovered, setIsHovered] = React.useState(false);
+  const [openDropdown, setOpenDropdown] = React.useState(null);
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   const [showMobileSubMenu, setShowMobileSubMenu] = React.useState(false);
   const router = useRouter();
@@ -144,7 +123,7 @@ export default function CustomNavbar() {
         setIsScrolled(false);
       }
     };
-  
+
     window.addEventListener("scroll", handleScroll);
 
     // Cleanup event listener on component unmount
@@ -153,16 +132,6 @@ export default function CustomNavbar() {
   }, [isHovered, openDropdown]);
 
 
-
-  React.useEffect(() => {
-    if (!router.isReady) return;
-
-    if (router.pathname === "/browse-jobs/details") {
-      setIsScrolled(true)
-    } else {
-      setIsScrolled(false);
-    }
-  }, [router.pathname, router.isReady]);
 
 
   return (
@@ -173,7 +142,7 @@ export default function CustomNavbar() {
       )}
     >
       <div className={`lg:container lg:mx-auto   flex items-center justify-between ml-6 `}>
-        {/* Logo */}
+       
         <Link href="/" legacyBehavior className="lg:w-1/3 cursor-pointer">
           <Image
             src={isScrolled || isHovered ? "/navblogo.svg" : "/navwlogo.svg"}
@@ -187,131 +156,61 @@ export default function CustomNavbar() {
         {/* Navigation Menu */}
         <div className="lg:w-2/3 lg:flex lg:justify-between lg:items-center lg:gap-5">
           <ul className="hidden lg:flex lg:justify-between lg:items-center lg:gap-6 lg:leading-[80px] ">
-            {/* About */}
-            <li>
-              <Link
-                href="/about-us"
-                className={cn(
-                  "font-normal text-[16px]  hover:font-bold",
-                  (isScrolled || isHovered) && "hover:font-semibold"
-                )}
+       
+            {AllContent?.AllContent?.navigation_items.slice(0, 4).map((item) => (
+              <li
+                key={item.sort}
+                className={item.is_expandable ? "relative group" : ""}
+                onMouseEnter={() => item.is_expandable && setIsHovered(true)}
+                onMouseLeave={() => item.is_expandable && setIsHovered(false)}
               >
-                About
-              </Link>
-            </li>
-            {/* Solutions Dropdown */}
-            <li
-              className="group relative"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <a
-                className={cn(
-                  " flex items-center font-normal text-[16px]   hover:font-semibold relative ",
-                  isScrolled || isHovered && " hover:font-semibold "
-                )}
-                href="/solutions"
-              >
-                Solutions
-                <svg
-                  className="ml-1 w-4 h-4 transform group-hover:rotate-180 transition-all duration-300"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                <a
+                  href={item.href}
+                  className={cn(
+                    "font-normal text-[16px] hover:font-semibold",
+                    (isScrolled || isHovered) && "hover:font-semibold",
+                    item.is_expandable && "flex items-center relative"
+                  )}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </a>
-              {isHovered && (
-                <RenderDropDownMenu
-                positionLeft="100%"
-                />
+                  {item.name}
+                  {item.is_expandable && (
+                    <svg
+                      className="ml-1 w-4 h-4 transform group-hover:rotate-180 transition-all duration-300"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
+                </a>
 
-              )}
-            </li>
-
-            {/* Expertise Dropdown */}
-            <li
-              className="relative group"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <a
-                className={cn(
-                  " flex items-center font-normal text-[16px]   hover:font-semibold relative ",
-                  isScrolled || isHovered && " hover:font-semibold"
+                {item.is_expandable && isHovered && (
+                  <RenderDropDownMenu positionLeft={item.name === "Solutions" ? "100%" : "-20%"} />
                 )}
-                href="/expertise"
-              >
-                Expertise
-                <svg
-                  className="ml-1 w-4 h-4 transform group-hover:rotate-180 transition-all duration-300"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </a>
-              {isHovered && (
-                <RenderDropDownMenu
-                positionLeft="-20%"
-                />
-
-              )}
-            </li>
-
-            {/* Insights */}
-            <li>
-              <Link
-                href="/insights"
-                className={cn(
-                  "hover:font-semibold  font-normal text-[16px]",
-                  (isScrolled || isHovered) && "hover:font-semibold"
-                )}
-              >
-                Insights
-              </Link>
-            </li>
+              </li>
+            ))}
           </ul>
-          {/* Right Actions */}
+         
           <div className="hidden lg:flex items-center gap-3">
-            <Link href="#" legacyBehavior>
-              <a
-                className={cn(
+            {AllContent?.AllContent?.navigation_items.slice(4, 6).map(item => (
+              <Link key={item.sort} href={item.href}  className={item.name === 'Browse Jobs' ?
+                cn(
                   "px-3 py-[8px] rounded-[60px] text-[16px] border hover:bg-white hover:border-gray-900 hover:text-black tracking-[1px] font-medium leading-5",
                   isScrolled || isHovered
                     ? "bg-transparent text-black border-gray-700"
                     : "bg-gray-100 bg-opacity-20 border-white"
-                )}
-              >
-                Browse Jobs
-              </a>
-            </Link>
-            <Link href="#" legacyBehavior>
-              <a
-                className={cn(
+                ) : cn(
                   "px-3 py-[8px] rounded-3xl tracking-[1px] text-[16px] font-semibold border transition-all duration-300 leading-5 ",
                   isScrolled || isHovered
                     ? "bg-[#026534] text-white border-transparent hover:bg-[#0e3a25] hover:border-white"
                     : "bg-[#026534] text-white border-[#026534] hover:bg-[#0e3b25] hover:text-white hover:border-white"
-                )}
-              >
-                Contact
-              </a>
-            </Link>
+                )
+                }>
+                {item.name}
+              </Link>
+            ))}
           </div>
         </div>
         {/* mobile hamburger menu */}
@@ -321,7 +220,7 @@ export default function CustomNavbar() {
             onClick={toggleMobileMenu}
             className={`bars ${showMobileMenu ? "active" : ""}`}
             viewBox="0 0 100 100"
-          // onClick={(e) => e.target.classList.toggle('active')}
+          
           >
             <path
               className={`line top ${isScrolled ? 'stroke-black' : 'stroke-white'}`}  // Apply conditional class
@@ -343,3 +242,4 @@ export default function CustomNavbar() {
     </nav>
   );
 }
+export default CustomNavbar;

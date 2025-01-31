@@ -1,6 +1,6 @@
 import LandingHeroBanner from "@/components/LandingHeroBanner/Index";
 import ResponsiveCarousel from "@/components/carousel/Index";
-import { renderContatUseComponent } from "./contact-us/page";
+import { renderContatUseComponent } from "./contact/page";
 import DualColorHeader from "@/components/dualColorHeader/Index";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
