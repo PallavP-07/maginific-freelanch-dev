@@ -11,7 +11,7 @@ import InputField from '../customInputs/InputField';
 import TextareaField from '../customInputs/TextAreaField';
 
 const RenderContactForm = ({formData}) => {
-   console.log(formData)
+ 
   const { handleSubmit, register, control, formState: { errors } } = useForm({
     resolver: yupResolver(contactFormSchema),
     defaultValues: {

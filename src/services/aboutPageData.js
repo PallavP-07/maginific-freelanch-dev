@@ -14,7 +14,7 @@ const AboutPageData = async () => {
             'section_4.sections.icon.*']
     });
 
-    const { response: bannerData } = await fetchCollectionData('homepage', {
+    const { response: bannerData } = await fetchCollectionData('about', {
         fields: ['banner.*', 'banner.icon.*'],
     });
     return {

@@ -77,7 +77,7 @@ const jobData = [
 
 const BrowseJobs = async () => {
     const {bannerData,AllContent} = await JobListData();
-    console.log(AllContent);
+   
     return (
         <>
             <HeroBanner
