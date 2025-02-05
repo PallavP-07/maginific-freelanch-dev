@@ -7,7 +7,7 @@ const HeroBanner = (props) => {
       <div className="relative  w-full h-[60vh] md:h-[40vh] lg:h-[560px]">
         <Image
           className="w-full object-cover h-100 "
-          src={`https://magnific-directus-2p92s.ondigitalocean.app/assets/${props.heroBanner}`}
+          src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${props.heroBanner}`}
           alt="hero-banner"
           layout="fill"
         />

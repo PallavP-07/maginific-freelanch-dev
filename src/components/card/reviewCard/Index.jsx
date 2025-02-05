@@ -10,7 +10,7 @@ export default function ReviewCard({ testimonial }) {
           {testimonial?.message?.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}
         </p>
         <div className='flex gap-6 items-center text-left'>
-          <Image src={`https://magnific-directus-2p92s.ondigitalocean.app/assets/${testimonial?.client_img?.filename_disk}`} width={80} height={80} alt='review-log' />
+          <Image src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${testimonial?.client_img?.filename_disk}`} width={80} height={80} alt='review-log' className='rounded-full' />
           <div className='flex flex-col '>
             <p className='text-[#006633] mb-2 font-bold text-lg leading-5'>
               {testimonial?.client_name}
