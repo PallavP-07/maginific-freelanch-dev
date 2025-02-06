@@ -1,9 +1,12 @@
 import CustomNavbar from "./index"; // Import the client navbar
 import NavbarData from "@/services/main_NavbarData";
-
+import Loader from '@/components/loader/Index'
 export default async function NavbarWrapper() {
   try {
-    const { AllContent } = await NavbarData(); // Fetch data on the server
+    const { AllContent } = await NavbarData(); 
+    if (!AllContent) {
+      return <><Loader/></>;
+    }
     return <CustomNavbar AllContent={AllContent} />;
   } catch (error) {
     console.error("Error fetching navbar data:", error);

@@ -16,6 +16,6 @@ const directus = createDirectus(`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}`).w
       }
     } catch (error) {
       console.error(`Error fetching ${collection}:`, error);
-      return null;
+      return { response: null };
     }
   };

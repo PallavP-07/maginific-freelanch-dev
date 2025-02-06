@@ -6,7 +6,7 @@ import JobPostingCard from "@/components/jobPostingCard/Index"
 import JobSearchBox from '@/components/JobSearchBox/Index'
 import JobListData from '@/services/jobs_listData'
 import { RenderPagination } from '@/components/CustomPagination/Index' 
-
+import Loader from '@/components/loader/Index'
 
 const jobData = [
     {
@@ -77,7 +77,9 @@ const jobData = [
 
 const BrowseJobs = async () => {
     const {bannerData,AllContent} = await JobListData();
-   
+    if (!AllContent || !bannerData) {
+        return <div><Loader/></div>;  // Optional: handle missing data case
+      }
     return (
         <>
             <HeroBanner
