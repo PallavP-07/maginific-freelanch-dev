@@ -89,9 +89,9 @@ const RenderParaSection = () => {
       <div className='text-center lg:py-28 md:py-14 md:px-10 py-7 px-5 lg:px-40 flex flex-col gap-5'>
         <h1 className='font-semibold text-[32px] lg:leading-9 text-[#01331A]'>Unlocking Excellence in Professional & Technology Services with Magnific Search</h1>
       
-        <p className='text-[#737475] font-normal text-lg leading-6'>In today's dynamic landscape, professional and technology services firms face unprecedented challenges and opportunities. At Magnific Search, we specialize in helping organizations like yours navigate these complexities by identifying top-tier talent that drives growth, fosters innovation, and propels success.</p>
+        <p className='text-[#737475] font-normal text-lg leading-6'>{`In today's dynamic landscape, professional and technology services firms face unprecedented challenges and opportunities. At Magnific Search, we specialize in helping organizations like yours navigate these complexities by identifying top-tier talent that drives growth, fosters innovation, and propels success.`}</p>
         <p className='text-[#737475] font-normal text-lg leading-6'>
-        The realm of professional services is undergoing a profound transformation, driven by changing client expectations and technological advancements. Magnific Search's Professional Services Practice is dedicated to redefining leadership in this space. We collaborate with firms across strategy consulting, financial advisory, and human capital management to identify leaders who excel at driving collaboration, shaping culture, and delivering value-driven solutions. Our tailored approach ensures that you have the right talent in place to navigate the evolving demands of your industry.</p>
+       {` The realm of professional services is undergoing a profound transformation, driven by changing client expectations and technological advancements. Magnific Search's Professional Services Practice is dedicated to redefining leadership in this space. We collaborate with firms across strategy consulting, financial advisory, and human capital management to identify leaders who excel at driving collaboration, shaping culture, and delivering value-driven solutions. Our tailored approach ensures that you have the right talent in place to navigate the evolving demands of your industry.`}</p>
       </div>
     </>
   )
@@ -135,7 +135,7 @@ const RenderWhyChooseMagnific = () => {
       <div className='bg-[#13432b] relative text-white'>
         <div className='bg-gradient-to-r from-black/70 to-transparent  flex flex-col text-center lg:py-28 md:py-14 md:px-10 py-7 px-5 lg:px-40 '>
           <h1 className='font-semibold text-[40px] leading-[48px] text-white mb-3'>Why Choose Magnific Search?</h1>
-          <p className='mb-10'>Unlock excellence in professional and technology services with Magnific Search. Partner with us to find the visionary leaders who will drive your organization's success in a rapidly evolving market.</p>
+          <p className='mb-10'>{`Unlock excellence in professional and technology services with Magnific Search. Partner with us to find the visionary leaders who will drive your organization's success in a rapidly evolving market.`}</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10  justify-center text-white ">
             {items.map((item, index) => (
               <div
@@ -160,7 +160,7 @@ const RenderCardBox = () => {
           <h1 className='font-medium text-[28px] md:text-xl lg:text-[30px] leading-8 text-[#006633] mb-4 lg:mb-6'>
           Empowering Technology Innovators
           </h1>
-          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>In the fast-paced world of technology services, agility and innovation are paramount. Magnific Search's Technology Services Practice specializes in identifying leaders who not only understand the latest technological trends but also possess the strategic vision to leverage them effectively. Whether you're in IT consulting, digital transformation, or software engineering, we partner with you to recruit executives who can drive innovation, capitalize on emerging opportunities, and propel your organization to new heights.</p>
+          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>{`In the fast-paced world of technology services, agility and innovation are paramount. Magnific Search's Technology Services Practice specializes in identifying leaders who not only understand the latest technological trends but also possess the strategic vision to leverage them effectively. Whether you're in IT consulting, digital transformation, or software engineering, we partner with you to recruit executives who can drive innovation, capitalize on emerging opportunities, and propel your organization to new heights.`}</p>
         </div>
         <div className=' hidden md:block '>
           <Image src='/assets/content-img-2.png' alt='content' width={100} height={100} className='w-full h-full object-fill' />
@@ -174,7 +174,7 @@ const RenderCardBox = () => {
           <h1 className='font-medium text-[28px] md:text-xl lg:text-[30px] leading-8 text-[#006633] mb-4 lg:mb-7'>
           Driving Growth and Transformation
           </h1>
-          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>Once we've identified potential candidates, it's time to make your organization irresistible to them. Leveraging our personal networks, we spread the word about your organization, positioning it as the ultimate destination for skilled mid to upper-level managers. Our strategic approach ensures that your talent pool is not just filled, but enriched with individuals who align seamlessly with your organization's culture and goals.</p>
+          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>{`Once we've identified potential candidates, it's time to make your organization irresistible to them. Leveraging our personal networks, we spread the word about your organization, positioning it as the ultimate destination for skilled mid to upper-level managers. Our strategic approach ensures that your talent pool is not just filled, but enriched with individuals who align seamlessly with your organization's culture and goals.`}</p>
         </div>
       </div>
     </>

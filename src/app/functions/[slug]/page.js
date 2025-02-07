@@ -101,7 +101,7 @@ const RenderCardBox = () => {
           <h1 className='font-medium text-[28px] md:text-xl lg:text-[30px] leading-8 text-[#006633] mb-4 lg:mb-6'>
             Empowering Technology Innovators
           </h1>
-          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>In the fast-paced world of technology services, agility and innovation are paramount. Magnific Search's Technology Services Practice specializes in identifying leaders who not only understand the latest technological trends but also possess the strategic vision to leverage them effectively. Whether you're in IT consulting, digital transformation, or software engineering, we partner with you to recruit executives who can drive innovation, capitalize on emerging opportunities, and propel your organization to new heights.</p>
+          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>{`In the fast-paced world of technology services, agility and innovation are paramount. Magnific Search's Technology Services Practice specializes in identifying leaders who not only understand the latest technological trends but also possess the strategic vision to leverage them effectively. Whether you're in IT consulting, digital transformation, or software engineering, we partner with you to recruit executives who can drive innovation, capitalize on emerging opportunities, and propel your organization to new heights.`}</p>
         </div>
         <div className=' hidden md:block '>
           <Image src='/assets/content-img-2.png' alt='content' width={100} height={100} className='w-full h-full object-fill' />
@@ -115,7 +115,7 @@ const RenderCardBox = () => {
           <h1 className='font-medium text-[28px] md:text-xl lg:text-[30px] leading-8 text-[#006633] mb-4 lg:mb-7'>
             Driving Growth and Transformation
           </h1>
-          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>Once we've identified potential candidates, it's time to make your organization irresistible to them. Leveraging our personal networks, we spread the word about your organization, positioning it as the ultimate destination for skilled mid to upper-level managers. Our strategic approach ensures that your talent pool is not just filled, but enriched with individuals who align seamlessly with your organization's culture and goals.</p>
+          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>{`Once we've identified potential candidates, it's time to make your organization irresistible to them. Leveraging our personal networks, we spread the word about your organization, positioning it as the ultimate destination for skilled mid to upper-level managers. Our strategic approach ensures that your talent pool is not just filled, but enriched with individuals who align seamlessly with your organization's culture and goals.`}</p>
         </div>
       </div>
     </>
@@ -170,7 +170,7 @@ const RenderAreaOfExpertise = () => {
         <h1 className='text-[#006633] font-medium text-4xl leading-9 mb-6'>
           Global Reach, Local Insight
         </h1>
-        <p className='font-normal text-lg leading-6 text-[#737475] mb-16'>As technology recruitment experts, we operate across major hubs worldwide, combining a global mindset with local talent intelligence to facilitate impactful hires. Whether you're seeking leadership in:</p>
+        <p className='font-normal text-lg leading-6 text-[#737475] mb-16'>{`As technology recruitment experts, we operate across major hubs worldwide, combining a global mindset with local talent intelligence to facilitate impactful hires. Whether you're seeking leadership in:`}</p>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10  '>
           <CustomAccordion title={"Strategy and Management Consulting"} content={"Strategy and Management Consulting"} />
           <CustomAccordion title={"Financial Advisory & Transaction Services"} content={" IT Consulting and Digital Transformation"} />

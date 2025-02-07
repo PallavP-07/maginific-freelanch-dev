@@ -45,14 +45,14 @@ function SubPage() {
                 What is Healthcare Technology?
               </h2>
               <p className="mt-4 text-base sm:text-lg leading-7 text-[#373A40]">
-                Healthcare technology refers to any IT tools or software designed to boost hospital
+            {`    Healthcare technology refers to any IT tools or software designed to boost hospital
                 and administrative productivity, give new insights into medicines and treatments, or
                 improve the overall quality of healthcare provided. Today's healthcare industry is a
                 $2 trillion behemoth at a crossroads. Currently being weighed down by crushing costs
                 and red tape, the industry is looking for ways to improve in nearly every imaginable
                 area. That's where healthtech comes in. Tech-infused tools are being integrated into
                 every step of the healthcare experience to counteract two key trouble spots: quality
-                and efficiency.
+                and efficiency.`}
               </p>
             </div>
 

@@ -54,10 +54,10 @@ function SubPage() {
 
 							<h2 className="text-2xl text-[#373A40] font-semibold mb-4">Project Manager, Payer Operations</h2>
 							<p className="text-[#737475] mb-6">
-								Wonder is seeking a mission-driven Project Manager to join our Payer Operations team. In the role of Payer Operations Project Manager, you will be critical to ensuring that Alma is an efficient and effective partner in the Payer organization's operations. You will play a vital role in driving projects that contribute to improved team efficiency, improved customer satisfaction, cost savings, and compliance with industry standards. You will interact regularly with cross-functional teams, including Product, Engineering, Marketing, Insurance Operations, and Sales. This role will report to the Senior Manager, Payer Operations.
+						{`		Wonder is seeking a mission-driven Project Manager to join our Payer Operations team. In the role of Payer Operations Project Manager, you will be critical to ensuring that Alma is an efficient and effective partner in the Payer organization's operations. You will play a vital role in driving projects that contribute to improved team efficiency, improved customer satisfaction, cost savings, and compliance with industry standards. You will interact regularly with cross-functional teams, including Product, Engineering, Marketing, Insurance Operations, and Sales. This role will report to the Senior Manager, Payer Operations.`}
 							</p>
 
-							<h3 className="text-xl font-semibold mb-3">What you'll do:</h3>
+							<h3 className="text-xl font-semibold mb-3">{`What you'll do:`}</h3>
 							<ul className="list-disc pl-6 space-y-1 text-[#737475]">
 								<li className="break-words">Lead project management efforts that support payer team operations, from developing opportunities through ongoing relationship management.</li>
 								<li className="break-words">Provide on-the-ground support to help execute the planning, directing, and coordination of day-to-day activities.</li>

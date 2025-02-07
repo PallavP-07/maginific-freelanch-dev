@@ -139,10 +139,9 @@ const CustomNavbar = (AllContent) => {
       <div
         className={`lg:container lg:mx-auto   flex items-center justify-between ml-6 `}
       >
-        <Link href="/" legacyBehavior className="lg:w-1/3 cursor-pointer">
-          <MainLogo color={isScrolled || isHovered ? "dark" : "main"}  />
+        <Link href="/" className="lg:w-1/3 cursor-pointer">
+          <MainLogo color={isScrolled || isHovered ? "dark" : "main"} />
         </Link>
-
         {/* Navigation Menu */}
         <div className="lg:w-2/3 lg:flex lg:justify-between lg:items-center lg:gap-5">
           <ul className="hidden lg:flex lg:justify-between lg:items-center lg:gap-6 lg:leading-[80px] ">
