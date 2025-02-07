@@ -72,9 +72,8 @@ const ResourcesGrid = (resourcesSectionData) => {
 			</div>
 			<div className=" bg-cover bg-center relative  w-full h-[480px]" >
 				<div className="w-full h-full">
-					<Image src='/assets/Resources2.png' alt='content-1' layout="fill"
-
-						className="w-full h-full object-cover" />
+					<Image src='/assets/Resources2.png' alt='content-1' width={100} height={100} 
+						className="w-full h-full object-fill" />
 				</div>
 				<div className=" flex bg-black/50  text-white flex-col justify-center absolute inset-0 md:hidden px-5 py-20 items-center">
 					<div className="text-center w-full md:w-auto">
@@ -93,7 +92,8 @@ const ResourcesGrid = (resourcesSectionData) => {
 					<Image
 						src='/assets/Resources1.png'
 						alt='content-1'
-						layout="fill"
+					   width={100}
+					   height={100}
 
 						className="w-full h-full object-cover"
 					/>
@@ -216,7 +216,7 @@ const renderwhyChooseUs = (services) => {
 	return (
 		<>
 			{services?.map((item, i) => (
-				<>
+				
 					<div className="flex justify-between md:gap-4 lg:gap-16 my-20" key={i}>
 						<div className="hidden md:block md:w-1/2 rounded-md  drop-shadow-lg">
 							<Image src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${item?.img?.filename_disk}`} alt="wy-us" width={400} height={356} className="drop-shadow-lg w-full border-t-[12px]  border-[#01331A] h-[360px] object-fill grayscale rounded-md" />
@@ -243,7 +243,7 @@ const renderwhyChooseUs = (services) => {
 							</div>
 						</div>
 					</div>
-				</>
+				
 			))
 			}
 		</>
@@ -256,7 +256,7 @@ const renderWhyChooseMagnific = (whyMagnificSectionData,
 	const [firstPart, secondPart] = title.split("Magnific?").map((part, i) => i === 0 ? part.trim() : "Magnific?");
 
 	return (
-		<>
+		
 			<div className=" w-full h-full bg-[url('/circle-bg.svg')] bg-no-repeat bg-right ">
 				<div className=" mx-6 lg:container lg:mx-auto py-20">
 					<div className="">
@@ -275,7 +275,7 @@ const renderWhyChooseMagnific = (whyMagnificSectionData,
 					}
 				</div>
 			</div>
-		</>
+		
 	)
 }
 export default async function Home() {

@@ -9,7 +9,8 @@ const SubHeroBanner = (props) => {
           className="w-full h-full object-fill"
           src={props.heroBanner}
           alt="hero-banner"
-          layout="fill"
+         width={100}
+         height={100}
         />
         <div className=" bg-gradient-to-r from-black/50 via-black/80 to-black/50 absolute inset-0 flex items-center justify-center text-white text-center">
           <div className=" container mx-auto flex flex-wrap w-[600px] p-3 sm:w-[600px] md:w-[700px]  xl:w-[800px] flex-col items-center justify-center">

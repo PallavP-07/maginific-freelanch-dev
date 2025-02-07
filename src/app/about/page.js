@@ -108,7 +108,7 @@ const WhatWeDo = ({ data }) => {
         </p>
         <div className="flex flex-wrap justify-center items-center">
           {data?.sections.map((item, i) => (
-            <>
+            
               <div
                 key={i}
                 className={` py-4 pr-5  m-4 md:w-[180px]  lg:w-[282px] my-4 ${(i === 0 || i === 1 || (i - 3) % 4 === 0) ? "md:border-r-2 md:border-[#CCE0D6]" : ""
@@ -117,7 +117,7 @@ const WhatWeDo = ({ data }) => {
                 <h3 className="text-xl font-bold leading-6 mb-8">{item.title}</h3>
                 <p className="text-[#F9F9F9] text-16px leading-5 font-normal">{item.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}</p>
               </div>
-            </>
+            
           ))}
         </div>
       </div>
@@ -135,7 +135,7 @@ const HowWeHelp = ({ data }) => {
       </p>
       <div className="grid md:grid-cols-3 gap-8  mx-auto">
         {data?.sections.map((item, i) => (
-          <>
+          
             <div className="flex flex-col items-center" key={item.sort}>
               <div className="mb-6">
                 <Image
@@ -152,7 +152,7 @@ const HowWeHelp = ({ data }) => {
                 {item.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}
               </p>
             </div>
-          </>
+          
         ))}
       </div>
     </section>
