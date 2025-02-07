@@ -17,42 +17,40 @@ const renderDiscoverInsight = (insightSectionData) => {
 	const [firstPart, secondPart] = title.split("Insights").map((part, i) => i === 0 ? part.trim() : "Insights");
 	const firstTwoCards = insightSectionData?.insights_section?.cards?.slice(0, 2);
 	const lastTwoCards = insightSectionData?.insights_section?.cards?.slice(2, 4)
-	return (
-		<>
-			<div className=" lg:container lg:mx-auto w-full my-20  mb-20">
-				<div className=" mx-6 md:mx-20 lg:mx-36">
-					<p className="font-medium text-[44px] leading-[54px] text-[#333333]">
-						{firstPart}
-					</p>
-					<p className="font-semibold text-[44px] leading-[54px] text-[#026534] mb-12 ">
-						{secondPart}</p>
-					<div className="grid grid-cols-2 gap-5 md:gap-8 ">
-						<div className="flex flex-col gap-5 md:gap-7">
-							{firstTwoCards?.map((item, i) => (
-								<>
-									<div key={i} className={` ${item?.sort === 1 ? 'bg-[#CCE0D6] text-gray-800 h-[380px]' : 'bg-[#2A2B2F] text-white  h-[450px]'}   text-center  px-5 py-20 md:px-10   w-full  rounded-md`}>
-										<h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl lg:text-4xl mb-6">{item.title}</h2>
-										<p className="font-normal leading-[28px] text-[16px]">{item.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}</p>
-									</div>
-								</>
-							))}
-						</div>
-						<div className="flex flex-col w-full gap-5 md:gap-7">
-							{lastTwoCards?.map((item, i) => (
-								<>
-									<div key={i} className={` ${item?.sort === 2 ? 'bg-[#D0D0D0] text-[#373A40] h-[380px]' : 'bg-[#2A2B2F] text-white h-[450px]'}   text-center  px-5 py-20 md:px-10   w-full  rounded-md`}>
-										<h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl lg:text-4xl mb-6">{item.title}</h2>
-										<p className="font-normal leading-[28px] text-[16px]">{item.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}</p>
-									</div>
-								</>
-							))}
-						</div>
-					</div>
-					<p className="text-[#01331A] font-semibold text-[20px] text-end leading-6 mt-8 ">Browse all Insights &gt;</p>
-				</div>
-			</div>
-		</>
-	)
+	return (<>
+        <div className=" lg:container lg:mx-auto w-full my-20  mb-20">
+            <div className=" mx-6 md:mx-20 lg:mx-36">
+                <p className="font-medium text-[44px] leading-[54px] text-[#333333]">
+                    {firstPart}
+                </p>
+                <p className="font-semibold text-[44px] leading-[54px] text-[#026534] mb-12 ">
+                    {secondPart}</p>
+                <div className="grid grid-cols-2 gap-5 md:gap-8 ">
+                    <div className="flex flex-col gap-5 md:gap-7">
+                        {firstTwoCards?.map((item, i) => (
+                            
+                                <div key={i} className={` ${item?.sort === 1 ? 'bg-[#CCE0D6] text-gray-800 h-[380px]' : 'bg-[#2A2B2F] text-white  h-[450px]'}   text-center  px-5 py-20 md:px-10   w-full  rounded-md`}>
+                                    <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl lg:text-4xl mb-6">{item.title}</h2>
+                                    <p className="font-normal leading-[28px] text-[16px]">{item.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}</p>
+                                </div>
+                        
+                        ))}
+                    </div>
+                    <div className="flex flex-col w-full gap-5 md:gap-7">
+                        {lastTwoCards?.map((item, i) => (
+                            
+                                <div key={i} className={` ${item?.sort === 2 ? 'bg-[#D0D0D0] text-[#373A40] h-[380px]' : 'bg-[#2A2B2F] text-white h-[450px]'}   text-center  px-5 py-20 md:px-10   w-full  rounded-md`}>
+                                    <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl lg:text-4xl mb-6">{item.title}</h2>
+                                    <p className="font-normal leading-[28px] text-[16px]">{item.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}</p>
+                                </div>
+                            
+                        ))}
+                    </div>
+                </div>
+                <p className="text-[#01331A] font-semibold text-[20px] text-end leading-6 mt-8 ">Browse all Insights &gt;</p>
+            </div>
+        </div>
+    </>);
 }
 
 
@@ -130,27 +128,25 @@ const progressSection = (matrixSectionData) => {
 	const title = matrixSectionData?.metrics?.data_metrics_section_title || "";
 	const [firstPart, secondPart] = title.split("Data").map((part, i) => i === 0 ? part.trim() : "Data");
 
-	return (
-		<>
-			<div className="bg-[#F9F9F9] w-full overflow-hidden h-auto  ">
-				<div className="flex flex-col md:flex-row justify-between py-16 md:py-28 lg:py-40 mx-6 lg:container lg:mx-auto">
-					<div className="flex flex-col gap-5 text-center md:text-left mb-8 md:mb-0 w-full">
-						<p className="text-[#373A40] font-bold text-[32px] md:text-[34px] lg:text-[44px] lg:leading-[53px] flex-wrap">{firstPart} <span className="text-[#006633] md:text-[#092015]">{secondPart}</span></p>
-						<span className="text-lg leading-[26px] font-normal break-words">
-							{matrixSectionData?.metrics?.data_metrics_section_description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}
-						</span>
-					</div>
-					<div className="flex  justify-center flex-wrap md:flex-nowrap gap-4   md:justify-between md:gap-1 ">
-						{matrixSectionData?.metrics?.data_metrics_section_metrics_items.map(item => (
-							<>
-								<ProgressCircle key={item.sort} value={item.name} text={item.suffix} subtext={item.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')} percentage={item.percentage} />
-							</>
-						))}
-					</div>
-				</div>
-			</div>
-		</>
-	)
+	return (<>
+        <div className="bg-[#F9F9F9] w-full overflow-hidden h-auto  ">
+            <div className="flex flex-col md:flex-row justify-between py-16 md:py-28 lg:py-40 mx-6 lg:container lg:mx-auto">
+                <div className="flex flex-col gap-5 text-center md:text-left mb-8 md:mb-0 w-full">
+                    <p className="text-[#373A40] font-bold text-[32px] md:text-[34px] lg:text-[44px] lg:leading-[53px] flex-wrap">{firstPart} <span className="text-[#006633] md:text-[#092015]">{secondPart}</span></p>
+                    <span className="text-lg leading-[26px] font-normal break-words">
+                        {matrixSectionData?.metrics?.data_metrics_section_description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}
+                    </span>
+                </div>
+                <div className="flex  justify-center flex-wrap md:flex-nowrap gap-4   md:justify-between md:gap-1 ">
+                    {matrixSectionData?.metrics?.data_metrics_section_metrics_items.map(item => (
+                    
+                            <ProgressCircle key={item.sort} value={item.name} text={item.suffix} subtext={item.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')} percentage={item.percentage} />
+                        
+                    ))}
+                </div>
+            </div>
+        </div>
+    </>);
 }
 
 const renderJobSearchBar = (jobSearchSectionData) => {
@@ -225,7 +221,7 @@ const renderwhyChooseUs = (services) => {
 							<div className="flex justify-between items-center   mb-7">
 								<h2 className=" md:text-2xl lg:text-3xl leading-8 font-bold text-[#01331A]">{item.title}</h2>
 								{item?.call_to_actions?.map((item, i) => (
-									<>
+									
 										<Link
 											key={i}
 											href={item?.href || "#"}
@@ -233,7 +229,7 @@ const renderwhyChooseUs = (services) => {
 										>
 											{item?.title}
 										</Link>
-									</>
+									
 								))}
 							</div>
 							<div className="flex gap-[18px] flex-wrap">
@@ -256,27 +252,25 @@ const renderWhyChooseMagnific = (whyMagnificSectionData,
 	const [firstPart, secondPart] = title.split("Magnific?").map((part, i) => i === 0 ? part.trim() : "Magnific?");
 
 	return (
-		
-			<div className=" w-full h-full bg-[url('/circle-bg.svg')] bg-no-repeat bg-right ">
-				<div className=" mx-6 lg:container lg:mx-auto py-20">
-					<div className="">
-						<DualColorHeader first={firstPart} second={secondPart} />
-					</div>
-					<p className="mt-4 text-[#373A40] font-normal  text-lg leading-6">
-						{whyMagnificSectionData?.why_magnific_section?.description?.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}</p>
-					<h2 className="text-[#D0D0D0] font-bold text-[46px] leading-[54px] my-20">
-						{serviecSectionData?.services_section?.title}</h2>
-					{serviecSectionData?.services_section?.services &&
-						(
-							<>
-								{renderwhyChooseUs(serviecSectionData?.services_section?.services)}
-							</>
-						)
-					}
-				</div>
-			</div>
-		
-	)
+        (<div className=" w-full h-full bg-[url('/circle-bg.svg')] bg-no-repeat bg-right ">
+            <div className=" mx-6 lg:container lg:mx-auto py-20">
+                <div className="">
+                    <DualColorHeader first={firstPart} second={secondPart} />
+                </div>
+                <p className="mt-4 text-[#373A40] font-normal  text-lg leading-6">
+                    {whyMagnificSectionData?.why_magnific_section?.description?.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}</p>
+                <h2 className="text-[#D0D0D0] font-bold text-[46px] leading-[54px] my-20">
+                    {serviecSectionData?.services_section?.title}</h2>
+                {serviecSectionData?.services_section?.services &&
+                    (
+                        <>
+                            {renderwhyChooseUs(serviecSectionData?.services_section?.services)}
+                        </>
+                    )
+                }
+            </div>
+        </div>)
+    );
 }
 export default async function Home() {
 	const { bannerData,

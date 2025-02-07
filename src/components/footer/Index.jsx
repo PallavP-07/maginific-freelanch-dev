@@ -72,20 +72,19 @@ export default async function Footer() {
   const { AllContent } = await FooterNavData();
 
   return (
-    <footer className="bg-gray-50 py-10 px-6 lg:px-0">
+    (<footer className="bg-gray-50 py-10 px-6 lg:px-0">
       {/* Mobile Footer */}
       <div className="lg:hidden">
         {renderMobileFooter(AllContent)}
       </div>
-
       {/* Desktop Footer */}
       <div className="hidden lg:block">
         {renderDesktopFooter(AllContent)}
       </div>
-
-      <div className="  lg:mx-32  text-center mt-6 md:mt-8 lg:mt-10 text-sm   text-gray-600 border-t-2 border-gray-300  pt-4 lg:pt-8">
-        {AllContent.copyright_text.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}
+      <div className="  lg:mx-32  text-center mt-6 md:mt-8 lg:mt-10 text-sm   text-gray-600 border-t-2 border-gray-300  pt-4 lg:pt-8"
+       dangerouslySetInnerHTML={{ __html: AllContent.copyright_text }}
+      >
       </div>
-    </footer>
+    </footer>)
   );
 }

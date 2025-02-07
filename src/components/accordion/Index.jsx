@@ -147,7 +147,7 @@ export default function CategoryList() {
 
   return (
     <>
-      <div>
+      
         <div className="lg:container  mx-4  lg:mx-auto mt-12 mb-4">
           <div className=" border-b-4 border-[#CCE0D6] ">
             <DualColorHeader first={"Industries We"} second={"Serve"} />
@@ -166,7 +166,7 @@ export default function CategoryList() {
         </div>
         {Solutions()}
         {IndustryExpertise()}
-      </div>
+      
     </>
   );
 }

@@ -9,18 +9,16 @@ import ContactFormData from '@/services/contactFormData';
 export const renderContatUseComponent = (contactForm) => {
   const title = contactForm?.contact_form?.title || "";
 	const [firstPart, secondPart] = title.split("Today").map((part, i) => i === 0 ? part.trim() : "Today");
-  return (
-    <>
-      <div className='lg:container my-6  mx-4  lg:mx-auto lg:my-20 md:my-12 md:mx-8'>
-        <div className='mb-6'>
-        <DualColorHeader first={firstPart} second={secondPart}/>
-        </div>
-        <span className='text-[#2A2B2F] text-lg leading-5 '>	{contactForm?.contact_form?.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}</span>
-        <RenderContactForm formData={contactForm?.contact_form} />
-
+  return (<>
+    <div className='lg:container my-6  mx-4  lg:mx-auto lg:my-20 md:my-12 md:mx-8'>
+      <div className='mb-6'>
+      <DualColorHeader first={firstPart} second={secondPart}/>
       </div>
-    </>
-  )
+      <span className='text-[#2A2B2F] text-lg leading-5 '>	{contactForm?.contact_form?.description.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}</span>
+      <RenderContactForm formData={contactForm?.contact_form} />
+
+    </div>
+  </>);
 };
 const ContactUs = async() => {
   const{bannerData}= await ContactPageData();
