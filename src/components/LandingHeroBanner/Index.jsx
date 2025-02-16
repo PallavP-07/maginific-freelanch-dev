@@ -6,12 +6,11 @@ const LandingHeroBanner = ({ bannerData }) => {
   return (<>
     <div className="relative  w-full h-[780px] md:h-[680px] lg:h-[780px]">
       <Image
-        className="w-full object-fill h-100"
+        className="w-full object-fill h-[780px] md:h-[680px] lg:h-[780px]"
         src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${bannerData?.background_img?.filename_disk}` || `/placeholder.png`}
         alt="hero-banner"
         width={100}
         height={100}
-
       />
       <div className=" bg-gradient-to-r from-black/50 via-black/80 to-black/50 absolute inset-0 flex items-center justify-center text-white text-center">
         <div className=" lg:container lg:mx-auto text-center flex flex-col justify-center items-center">
