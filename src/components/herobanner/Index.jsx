@@ -2,10 +2,10 @@ import Image from 'next/image'
 import React from 'react'
 
 const HeroBanner = (props) => {
-  return (<>
+  return (
     <div className="relative  w-full h-[60vh] md:h-[40vh] lg:h-[560px]">
       <Image
-        className="w-full object-fill h-100 "
+        className="w-full h-[60vh] md:h-[40vh] lg:h-[560px] object-fill"
         src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${props.heroBanner}`}
         alt="hero-banner"
        width={100}
@@ -22,7 +22,7 @@ const HeroBanner = (props) => {
         </div>
       </div>
     </div>
-  </>);
+  );
 }
 
 export default HeroBanner;
