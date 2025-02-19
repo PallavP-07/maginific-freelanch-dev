@@ -19,7 +19,7 @@ export const Building = () => (
 
 
 );
-export const PepopeOutLine = () => (
+export const PeopleOutLine = () => (
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M17.2727 7.21875C17.1468 8.96629 15.8505 10.3125 14.4368 10.3125C13.0231 10.3125 11.7246 8.96672 11.6009 7.21875C11.4719 5.40074 12.7339 4.125 14.4368 4.125C16.1396 4.125 17.4016 5.43383 17.2727 7.21875Z" stroke="#D0D0D0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M14.4373 13.0625C11.6371 13.0625 8.9442 14.4534 8.2696 17.1621C8.18022 17.5205 8.40495 17.875 8.77319 17.875H20.1019C20.4701 17.875 20.6936 17.5205 20.6055 17.1621C19.9309 14.41 17.238 13.0625 14.4373 13.0625Z" stroke="#D0D0D0" strokeWidth="1.5" strokeMiterlimit="10" />

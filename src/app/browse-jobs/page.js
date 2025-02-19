@@ -11,13 +11,13 @@ import JobDetailsData from "@/services/jobDetailsData";
 const BrowseJobs = async () => {
   const { bannerData, AllContent } = await JobListData();
   const { JobDetails } = await JobDetailsData();
-  console.log(JobDetails);
+
   if (!AllContent || !bannerData) {
     return (
       <div>
         <Loader />
       </div>
-    ); // Optional: handle missing data case
+    ); 
   }
   return (
     <>
@@ -43,16 +43,19 @@ const BrowseJobs = async () => {
 
         <div className="flex-col flex  gap-6">
           {JobDetails?.map((JobDetails) => (
+       
             <JobPostingCard
               id={JobDetails.id}
               key={JobDetails.sort}
               title={JobDetails.title}
-              dipartment={JobDetails.industry}
+              department={JobDetails.industry?.title}
               description={JobDetails.details}
               team={JobDetails.company_employees_number}
               postTime={JobDetails.date_posted}
-              location={JobDetails.job_type}
-              expe={JobDetails.min_experience}
+              jobType={JobDetails.job_type}
+              location={JobDetails.location?.title}
+              minExp={JobDetails.min_experience}
+              maxExp={JobDetails.max_experience}
             />
           ))}
         </div>

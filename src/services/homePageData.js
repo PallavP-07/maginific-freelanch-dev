@@ -6,7 +6,7 @@ const HomePageData = async () => {
         fields: ['banner.background_img.filename_disk', 'banner.title', 'banner.description', 'banner.subtitle', 'banner.call_to_actions.*'],
     });
 
-    const { response: serviecSectionData } = await fetchCollectionData('homepage', {
+    const { response: serviceSectionData } = await fetchCollectionData('homepage', {
         fields: ['services_section.*', 'services_section.services.*', 'services_section.services.call_to_actions.*', 'services_section.services.img.*', 'services_section.services.tags.*'],
     });
     const { response: jobSearchSection } = await fetchCollectionData('homepage', {
@@ -27,7 +27,7 @@ const HomePageData = async () => {
     });
 
     const { response: resourcesSection } = await fetchCollectionData('homepage', {
-        fields: ['resources_section.*', 'resources_section.rows.*'],
+        fields: ['resources_section.*', 'resources_section.rows.*','resources_section.rows.img.*','resources_section.rows.call_to_actions.*'],
     });
 
     const { response: AllContent } = await fetchCollectionData('homepage', {
@@ -36,7 +36,7 @@ const HomePageData = async () => {
     return {
         bannerData,
         AllContent,
-        serviecSectionData,
+        serviceSectionData,
         jobSearchSection,
         matrixSection,
         whyMagnificSection,
