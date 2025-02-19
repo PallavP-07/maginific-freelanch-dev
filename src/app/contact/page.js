@@ -1,6 +1,6 @@
 
 import React from 'react';
-import HeroBanner from '@/components/herobanner/Index';
+import HeroBanner from '@/components/heroBanner/Index';
 import RenderContactForm from '@/components/contactForm/ContactForm';
 import DualColorHeader from '@/components/dualColorHeader/Index';
 import ContactPageData from '@/services/contactPageData';

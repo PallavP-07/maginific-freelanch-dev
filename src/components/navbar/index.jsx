@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
@@ -130,7 +129,7 @@ const CustomNavbar = (AllContent) => {
   return (
     <nav
       className={cn(
-        "fixed top-0 drop-shadow-md  z-50  w-full",
+        "fixed top-0 drop-shadow-md  z-20  w-full",
         isScrolled || isHovered
           ? "bg-white text-black "
           : "bg-transparent text-white "
@@ -154,7 +153,7 @@ const CustomNavbar = (AllContent) => {
                   onMouseEnter={() => item.is_expandable && setIsHovered(true)}
                   onMouseLeave={() => item.is_expandable && setIsHovered(false)}
                 >
-                  <a
+                  <Link
                     href={item.href}
                     className={cn(
                       "font-normal text-[16px] hover:font-semibold",
@@ -179,8 +178,7 @@ const CustomNavbar = (AllContent) => {
                         />
                       </svg>
                     )}
-                  </a>
-
+                  </Link>
                   {item.is_expandable && isHovered && (
                     <RenderDropDownMenu
                       positionLeft={item.name === "Solutions" ? "100%" : "-20%"}
@@ -189,7 +187,6 @@ const CustomNavbar = (AllContent) => {
                 </li>
               ))}
           </ul>
-
           <div className="hidden lg:flex items-center gap-3">
             {AllContent?.AllContent?.navigation_items
               .slice(4, 6)

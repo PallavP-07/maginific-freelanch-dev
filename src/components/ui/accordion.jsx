@@ -2,10 +2,10 @@
 
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { ChevronDown } from "lucide-react"
+
 
 import { cn } from "@/lib/utils"
-import { RightArrow, RightArrowWhite } from "@/assets/Icons"
+import { RightArrow } from "@/assets/Icons"
 
 const Accordion = AccordionPrimitive.Root
 

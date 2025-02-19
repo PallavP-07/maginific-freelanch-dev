@@ -1,5 +1,5 @@
 import ContactUs from "@/components/contact/Index";
-import HeroBanner from "@/components/herobanner/Index";
+import HeroBanner from "@/components/heroBanner/Index";
 import React from "react";
 import JobPostingCard from "@/components/jobPostingCard/Index";
 import JobSearchBox from "@/components/JobSearchBox/Index";
@@ -43,7 +43,6 @@ const BrowseJobs = async () => {
 
         <div className="flex-col flex  gap-6">
           {JobDetails?.map((JobDetails) => (
-       
             <JobPostingCard
               id={JobDetails.id}
               key={JobDetails.sort}

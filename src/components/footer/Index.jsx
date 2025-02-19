@@ -1,18 +1,31 @@
 import FooterNavData from "@/services/footer_nav_data";
 import MainLogo from "../logo";
 import Image from "next/image";
+import { use } from "react";
+import Link from "next/link";
+
 
 const renderSocialContent = (socialContent) => {
- 
+  if (!socialContent) return null;
   return (
     <div className="flex justify-between items-center gap-3">
-      <Image src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${socialContent?.facebook_icon?.icon?.filename_disk}`} alt='fb-logo' width={30} height={30}  />
-      <Image src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${socialContent?.twitter_icon?.icon?.filename_disk}`} alt='tw-logo' width={30} height={30} />
-      <Image src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${socialContent?.linkedin_icon?.icon?.filename_disk}`} alt='linkedin-logo' width={30} height={30} />
+      {["facebook", "twitter", "linkedin"].map((platform) => {
+        const iconPath = socialContent?.[`${platform}_icon`]?.icon?.filename_disk;
+        return (
+          iconPath && (
+            <Image
+              key={platform}
+              src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${iconPath}`}
+              alt={`${platform}-logo`}
+              width={30}
+              height={30}
+            />
+          )
+        );
+      })}
     </div>
   );
-}
-
+};
 const renderMobileFooter = (NavBarData) => {
   return (
     <div className="flex flex-col justify-center items-center">
@@ -46,18 +59,18 @@ const renderDesktopFooter = (NavBarData) => {
               <ul className="space-y-2">
                 {item.sub_items.map((subItem, index) => (
                   <li key={index}>
-                    <a href={subItem.href} className="text-gray-600 hover:text-green-800">
+                    <Link href={subItem.href} className="text-gray-600 hover:text-green-800">
                       {subItem.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
             ) : (
               <ul className="space-y-2">
                 <li>
-                  <a href={item.href} className="text-gray-600 hover:text-green-800">
+                  <Link href={item.href} className="text-gray-600 hover:text-green-800">
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             )}
@@ -68,9 +81,8 @@ const renderDesktopFooter = (NavBarData) => {
   );
 }
 
-export default async function Footer() {
-  const { AllContent } = await FooterNavData();
-
+ const  Footer=()=> {
+  const { AllContent } = use(FooterNavData());
   return (
     (<footer className="bg-gray-50 py-10 px-6 lg:px-0">
       {/* Mobile Footer */}
@@ -88,3 +100,4 @@ export default async function Footer() {
     </footer>)
   );
 }
+export default Footer;

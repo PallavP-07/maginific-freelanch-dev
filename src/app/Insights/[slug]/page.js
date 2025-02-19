@@ -1,6 +1,6 @@
 import ContentCard from '@/components/card/Index'
 import DualColorHeader from '@/components/dualColorHeader/Index'
-import Footer from '@/components/footer/Index'
+
 import { Badge } from '@/components/ui/badge'
 import Image from 'next/image'
 import React from 'react'
