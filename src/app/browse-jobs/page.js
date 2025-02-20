@@ -1,5 +1,5 @@
 import ContactUs from "@/components/contact/Index";
-import HeroBanner from "@/components/heroBanner/Index";
+import HeroBanner from "@/components/heroBanner/Index.jsx";
 import React from "react";
 import JobPostingCard from "@/components/jobPostingCard/Index";
 import JobSearchBox from "@/components/JobSearchBox/Index";
