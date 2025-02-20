@@ -23,7 +23,7 @@ const HomePageData = async () => {
         fields: ['insights_section.*', 'insights_section.cards.*'],
     });
     const { response: testimonialsSection } = await fetchCollectionData('homepage', {
-        fields: ['testimonials.*', 'testimonials.testimonials.*'],
+        fields: ['testimonials.*', 'testimonials.testimonials.*','testimonials.testimonials.client_img.*'],
     });
 
     const { response: resourcesSection } = await fetchCollectionData('homepage', {
