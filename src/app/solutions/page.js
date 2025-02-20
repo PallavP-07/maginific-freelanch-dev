@@ -1,7 +1,7 @@
 import CategoryList from "@/components/accordion/Index";
 import ContactUs from "@/components/contact/Index";
 import Footer from "@/components/footer/Index";
-import HeroBanner from "@/components/heroBanner/Index.jsx";
+import HeroBanner from "@/components/heroBanner/Index";
 import SolutionListData from "@/services/solutionListData";
 import React from "react";
 

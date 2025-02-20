@@ -2,7 +2,7 @@
 
 import { use, useState } from "react";
 import ContactUs from "@/components/contact/Index";
-import HeroBanner from "@/components/heroBanner/Index.jsx";
+import HeroBanner from "@/components/heroBanner/Index";
 import DualColorHeader from "@/components/dualColorHeader/Index";
 import ContentCard from "@/components/card/Index";
 import InsightsListData from "@/services/insightsListData";
@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import Loader from "@/components/loader/Index";
 
 const InsightsPage = ({ bannerData, insightsData }) => {
-console.log(insightsData)
   const [visibleCards, setVisibleCards] = useState(6);
   const totalCards = Array.isArray(insightsData) ? insightsData.length : 0; // ✅ Ensure insightsData is an array
 
