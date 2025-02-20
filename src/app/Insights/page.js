@@ -2,7 +2,7 @@
 
 import { use, useState } from "react";
 import ContactUs from "@/components/contact/Index";
-import HeroBanner from "@/components/heroBanner/Index";
+import HeroBanner from "@/components/herobanner/Index";
 import DualColorHeader from "@/components/dualColorHeader/Index";
 import ContentCard from "@/components/card/Index";
 import InsightsListData from "@/services/insightsListData";
