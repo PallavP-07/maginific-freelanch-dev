@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { use, useState } from "react";
 import ContactUs from "@/components/contact/Index";
 import HeroBanner from "@/components/heroBanner/Index";
 import DualColorHeader from "@/components/dualColorHeader/Index";
