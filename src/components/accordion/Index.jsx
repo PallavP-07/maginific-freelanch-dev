@@ -148,11 +148,7 @@ export default function CategoryList() {
   return (
     <>
       
-        <div className="lg:container  mx-4  lg:mx-auto mt-12 mb-4">
-          <div className=" border-b-4 border-[#CCE0D6] ">
-            <DualColorHeader first={"Industries We"} second={"Serve"} />
-          </div>
-        </div>
+      
         <div className="min-h-screen   md:mx-0  p-4 sm:p-6 lg:py-8 lg:px-0">
           <div className="mx-auto space-y-2">
             {categories.map((category, index) => (

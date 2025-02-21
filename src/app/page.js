@@ -1,6 +1,6 @@
 import LandingHeroBanner from "@/components/LandingHeroBanner/Index";
 import ResponsiveCarousel from "@/components/carousel/Index";
-import { renderContatUseComponent } from "./contact/page";
+import  {RenderContactUseComponent}  from "./contact/page";
 import DualColorHeader from "@/components/dualColorHeader/Index";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import ProgressCircle from "@/components/circleProgress/Index";
 import HomePageData from "@/services/homePageData";
 import ContactUsCompData from "@/services/ContactUsComp";
+import { splitTextByWord } from "@/utils/splitText";
 
 const renderDiscoverInsight = (insightSectionData) => {
   const title = insightSectionData?.insights_section?.title || "";
@@ -222,9 +223,7 @@ const progressSection = (matrixSectionData) => {
 
 const renderJobSearchBar = (jobSearchSectionData) => {
   const title = jobSearchSectionData?.job_search_section?.title || "";
-  const parts = title.includes("Today") ? title.split("Today") : [title, ""];
-  const firstPart = parts[0]?.trim(); // Safely get the first part
-  const secondPart = parts[1]?.trim() ? "Today" : ""; // Safely handle second part
+      const[firstPart,secondPart]= splitTextByWord(title, 'Today');
   return (
     <>
       <div className="lg:container px-6 py-12 md:py-16 lg:py-20 lg:mx-auto w-full">
@@ -337,9 +336,7 @@ const renderWhyChooseMagnific = (
   serviceSectionData
 ) => {
   const title = whyMagnificSectionData?.why_magnific_section?.title || "";
-  const [firstPart, secondPart] = title
-    .split("Magnific?")
-    .map((part, i) => (i === 0 ? part.trim() : "Magnific?"));
+  const[firstPart,secondPart]=splitTextByWord(title, 'Magnific?');
 
   return (
     <div className=" w-full h-full bg-[url('/circle-bg.svg')] bg-no-repeat bg-right ">
@@ -397,7 +394,7 @@ export default async function Home() {
           />
         ))}
       </div>
-      <div className="lg:mx-10">{renderContatUseComponent()}</div>
+      <div className="lg:mx-10">{RenderContactUseComponent()}</div>
     </>
   );
 }

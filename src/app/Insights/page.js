@@ -7,9 +7,9 @@ import DualColorHeader from "@/components/dualColorHeader/Index";
 import ContentCard from "@/components/card/Index";
 import InsightsListData from "@/services/insightsListData";
 import { Button } from "@/components/ui/button";
-import Loader from "@/components/loader/Index";
 
-const InsightsPage = ({ bannerData, insightsData }) => {
+const InsightsPage = () => {
+  const { bannerData,AllContent:insightsData } = use(InsightsListData());
   const [visibleCards, setVisibleCards] = useState(6);
   const totalCards = Array.isArray(insightsData) ? insightsData.length : 0; // ✅ Ensure insightsData is an array
 
@@ -20,9 +20,7 @@ const InsightsPage = ({ bannerData, insightsData }) => {
   const { banner } = bannerData || {};
   const { background_img, title, description } = banner || {};
   const highlightedTitle = insightsData?.highlighted_insight_heading || "";
-  const [firstPart, secondPart] = highlightedTitle
-    .split("Insights")
-    .map((part, i) => (i === 0 ? part.trim() : "Insights"));
+     const[firstPart,secondPart]=splitTextByWord(highlightedTitle, 'Insights');
   return (
     <>
       <HeroBanner heroBanner={background_img?.filename_disk} header={title} description={description} />
@@ -50,15 +48,6 @@ const InsightsPage = ({ bannerData, insightsData }) => {
   );
 };
 
-const Index = () => {
-  const { bannerData,AllContent } = use(InsightsListData());
-
-  if (!bannerData) {
-    return <Loader />; 
-  }
-
-  return <InsightsPage bannerData={bannerData} insightsData={AllContent} />;
-};
+export default InsightsPage;
 
 
-export default Index;
