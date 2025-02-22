@@ -3,7 +3,7 @@ import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import clsx from "clsx";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import MainLogo from "../logo";
 const subMenuContent = [
   {
@@ -74,8 +74,8 @@ const CustomNavbar = (AllContent) => {
   const [openDropdown, setOpenDropdown] = React.useState(null);
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   const [showMobileSubMenu, setShowMobileSubMenu] = React.useState(false);
-  const router = useRouter();
-
+  const pathname = usePathname();
+  const scrolledPagesRegex = /^\/insights\/[^/]+$/;
   const renderMobileNavMenu = () => {
     return (
       <>
@@ -112,19 +112,24 @@ const CustomNavbar = (AllContent) => {
   };
 
   React.useEffect(() => {
+   
+    // Check if current page is in the predefined list
+    if (scrolledPagesRegex.test(pathname)) {
+      setIsScrolled(true);
+    }
+
     const handleScroll = () => {
       if (window.scrollY > 50 || isHovered || openDropdown) {
         setIsScrolled(true);
-      } else {
+      } else if (!scrolledPages.includes(pathname)) {
         setIsScrolled(false);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup event listener on component unmount
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHovered, openDropdown]);
+  }, [pathname, isHovered, openDropdown]);
 
   return (
     <nav
