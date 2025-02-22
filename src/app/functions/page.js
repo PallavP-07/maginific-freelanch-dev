@@ -15,7 +15,7 @@ const FunctionsPage = async() => {
                header={bannerData?.banner?.title}
                description={bannerData?.banner?.description}
             />
-            <CategoryList />
+            {/* <CategoryList /> */}
             <ContactUs />
             <Footer />
         </>
