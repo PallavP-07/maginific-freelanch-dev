@@ -7,6 +7,7 @@ import DualColorHeader from "@/components/dualColorHeader/Index";
 import ContentCard from "@/components/card/Index";
 import InsightsListData from "@/services/insightsListData";
 import { Button } from "@/components/ui/button";
+import { splitTextByWord } from "@/utils/splitText";
 
 const InsightsPage = () => {
   const { bannerData,AllContent:insightsData } = use(InsightsListData());
