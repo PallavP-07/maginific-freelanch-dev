@@ -81,7 +81,7 @@ const CustomNavbar = (AllContent) => {
       <>
         <div
           className={clsx(
-            "fixed inset-0 z-50 overflow-y-auto bg-gray-100 w-full md:w-1/2 top-[80px] left-0 transition-transform ease-in-out duration-500 flex flex-col justify-between",
+            "fixed min-h-screen inset-0 z-50 overflow-y-auto bg-gray-100 w-full md:w-1/2 top-[80px] left-0 transition-transform ease-in-out duration-500 flex flex-col justify-between",
 
             showMobileMenu
               ? "translate-x-0 md:w-1/2"
@@ -129,7 +129,7 @@ const CustomNavbar = (AllContent) => {
   return (
     <nav
       className={cn(
-        "fixed top-0 drop-shadow-md  z-20  w-full",
+        "fixed top-0 drop-shadow-md  z-10  w-full",
         isScrolled || isHovered
           ? "bg-white text-black "
           : "bg-transparent text-white "

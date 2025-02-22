@@ -3,11 +3,10 @@ import './style.css'
 function Index() {
   return (
     <>
-      <div className="bg-gray-100 flex justify-center items-center z-[999] min-h-screen">
-        <div>
+      <div className="bg-gray-100 overflow-hidden w-full flex justify-center items-center z-20 min-h-screen">
           <svg
-            width="100%"
-            height="100%"
+            width="30%"
+            height="30%"
             viewBox="0 0 1560 481"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +83,6 @@ function Index() {
               </clipPath>
             </defs>
           </svg>
-        </div>
       </div>
     </>
   );

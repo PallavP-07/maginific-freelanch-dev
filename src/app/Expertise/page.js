@@ -1,4 +1,4 @@
-import CategoryList from "@/components/accordion/Index";
+
 import ContactUs from "@/components/contact/Index";
 import DualColorHeader from "@/components/dualColorHeader/Index";
 import Footer from "@/components/footer/Index";
@@ -45,7 +45,7 @@ const ExpertisePage = async () => {
           cta={AllContent?.solutions_call_to_action}
         />
       </div>
-      {/* <CategoryList /> */}
+
       <ContactUs />
       <Footer />
     </>

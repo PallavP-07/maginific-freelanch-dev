@@ -4,101 +4,12 @@ import DualColorHeader from "@/components/dualColorHeader/Index";
 import HeaderWithCta from "@/components/headerWithCta";
 import SubHeroBanner from "@/components/SubHeroBanner/Index";
 import { Badge } from "@/components/ui/badge";
-import { directus, fetchCollectionDataBySlug } from "@/lib/directus";
+import { fetchCollectionDataBySlug } from "@/lib/directus";
 import SolutionDetails from "@/services/solutionsDetails";
 import { splitTextByWord } from "@/utils/splitText";
 import Image from "next/image";
 import React from "react";
 
-function Solutions() {
-  const solutions = [
-    "Executive Search",
-    "RPO",
-    "Talent Strategy & Advisory",
-    "Projects & Contracts",
-    "Interim Talent",
-    "Projects & Contracts",
-    "RaaS",
-    "Professional Search",
-  ];
-
-  return (
-    <div className="  py-8 px-4  lg:my-16">
-      <div className=" mx-4 lg:mx-0">
-        {/* Title Section */}
-        <div className="flex justify-between items-center md:border-b-4 border-[#CCE0D6] pb-3 mb-7">
-          <h2 className="text-xl leading-6 font-bold text-[#01331A]">
-            Functional Expertise
-          </h2>
-          <a
-            href="#"
-            className="text-[16px] leading-4  text-[#01331A] font-semibold "
-          >
-            Read More &gt;
-          </a>
-        </div>
-        {/* Solutions Buttons */}
-        <div className="flex    gap-4 items-center flex-wrap">
-          {solutions.map((solution, index) => (
-            <Badge
-              key={index}
-              variant="outline"
-              className="text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block"
-            >
-              {solution}
-            </Badge>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function IndustryExpertise() {
-  const solutions = [
-    "Financial Services ",
-    "Technology",
-    "Healthcare",
-    "Pharmaceuticals & Medical Devices",
-    "Non Profit",
-    "Consumer",
-    "Real Estate",
-    "Venture Capital",
-    "Private Equity ",
-    "Professional Services",
-  ];
-
-  return (
-    <div className=" py-8 px-4 md:px-0 md:py-0 md:pb-28   mx-4 lg:mx-0  mb-8 lg:my-16 border-b-4 border-[#CCE0D6]">
-      <div className=" mx-4 lg:mx-0">
-        {/* Title Section */}
-        <div className="flex justify-between items-center md:border-b-4 border-[#CCE0D6] pb-3 mb-7">
-          <h2 className="text-xl leading-6 font-bold text-[#01331A]">
-            Industry Expertise
-          </h2>
-          <a
-            href="#"
-            className="text-[16px] leading-4  text-[#01331A] font-semibold"
-          >
-            Read More &gt;
-          </a>
-        </div>
-        {/* Solutions Buttons */}
-        <div className="flex w-[380px]  md:w-full  gap-4 items-center flex-wrap">
-          {solutions.map((solution, index) => (
-            <Badge
-              key={index}
-              variant="outline"
-              className="text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block"
-            >
-              {solution}
-            </Badge>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 const RenderParaSection = ({ details }) => {
   return (
@@ -113,16 +24,6 @@ const RenderParaSection = ({ details }) => {
   );
 };
 const RenderWhyChooseMagnific = ({data}) => {
-  const items = [
-    {
-      description:
-        "Partnering with Magnific Search means gaining access to unparalleled expertise, extensive networks, and a track record of success. With a global presence spanning over 70 offices across 30 countries, we bring specialized industry, functional, and geographic knowledge to every assignment. Our commitment to client success is evident in the relationships we build, the insights we provide, and the results we deliver.",
-    },
-    {
-      description:
-        "At Magnific Search, we understand the significance of finding the right leaders. Our personalized approach, rigorous assessment methods, and ongoing support ensure that you not only find exceptional talent but also cultivate a leadership team that drives sustained success. Trust Magnific Search to guide you towards transformative leadership appointments that secure your organization's future.",
-    },
-  ];
   return (
     <>
       <div className="bg-[#13432b] relative ">
