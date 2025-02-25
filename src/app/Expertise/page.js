@@ -32,8 +32,8 @@ const ExpertisePage = async () => {
         description={bannerData?.banner?.description}
       />
       <HeadingData heading={AllContent.heading} />
-      {expertiseData.map((solution, i) => (
-        <TypeSelection key={i} title={solution.title} description={solution.short_description} slug={`/expertise/${solution.slug}`} />
+      {expertiseData.map((expertise, i) => (
+        <TypeSelection key={i} title={expertise.title} description={expertise.short_description} slug={`/expertise/${expertise.slug}`} />
       ))}
       <div className=" lg:my-20  lg:container lg:mx-auto">
         <HeaderWithCta

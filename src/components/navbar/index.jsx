@@ -5,42 +5,9 @@ import { cn } from "@/lib/utils";
 import clsx from "clsx";
 import { usePathname} from "next/navigation";
 import MainLogo from "../logo";
-const subMenuContent = [
-  {
-    title: "Legal & Compliance ",
-  },
-  {
-    title: "Data Procurement & Supply Chain",
-  },
-  {
-    title: "Customer Success",
-  },
-  {
-    title: "Product",
-  },
-  {
-    title: "Human Resources",
-  },
-  {
-    title: "Sales",
-  },
-  {
-    title: "Business Development",
-  },
-  {
-    title: "Cyber Security",
-  },
-  {
-    title: "Accounting, Finance & Tax",
-  },
-  {
-    title: "Marketing",
-  },
-  {
-    title: "Technology & Engineering",
-  },
-];
-const RenderDropDownMenu = ({ positionLeft }) => {
+
+const RenderDropDownMenu = ({ positionLeft,data }) => {
+  console.log(data)
   return (
     <div
       className={`absolute top-[100%] border-b-lg transform -translate-x-1/2 shadow-inner  hidden group-hover:flex bg-white text-gray-800 w-screen `}
@@ -52,7 +19,7 @@ const RenderDropDownMenu = ({ positionLeft }) => {
             Solutions &gt;
           </h2>
           <div className="grid grid-cols-4 w-auto py-10 gap-5 ">
-            {subMenuContent.map((title, i) => (
+            {data.map((title, i) => (
               <a
                 key={i}
                 href="#"
@@ -68,14 +35,14 @@ const RenderDropDownMenu = ({ positionLeft }) => {
   );
 };
 
-const CustomNavbar = (AllContent) => {
+const CustomNavbar = (props) => {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isHovered, setIsHovered] = React.useState(false);
   const [openDropdown, setOpenDropdown] = React.useState(null);
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   const [showMobileSubMenu, setShowMobileSubMenu] = React.useState(false);
   const pathname = usePathname();
-
+const {AllContent,solutionSubPage,expertiseSubPage,FunctionsSubPage} = props;
   const renderMobileNavMenu = () => {
     return (
       <>
@@ -150,7 +117,7 @@ const CustomNavbar = (AllContent) => {
         {/* Navigation Menu */}
         <div className="lg:w-2/3 lg:flex lg:justify-between lg:items-center lg:gap-5">
           <ul className="hidden lg:flex lg:justify-between lg:items-center lg:gap-6 lg:leading-[80px] ">
-            {AllContent?.AllContent?.navigation_items
+            {AllContent?.navigation_items
               .slice(0, 4)
               .map((item) => (
                 <li
@@ -188,13 +155,22 @@ const CustomNavbar = (AllContent) => {
                   {item.is_expandable && isHovered && (
                     <RenderDropDownMenu
                       positionLeft={item.name === "Solutions" ? "100%" : "-20%"}
+                      data={
+                        item.name === "Solutions"
+                          ? solutionSubPage
+                          : item.name === "Expertise"
+                          ? expertiseSubPage
+                          : item.name === "Services"
+                          ? FunctionsSubPage
+                          : defaultData // Provide a default fallback if needed
+                      }
                     />
                   )}
                 </li>
               ))}
           </ul>
           <div className="hidden lg:flex items-center gap-3">
-            {AllContent?.AllContent?.navigation_items
+            {AllContent?.navigation_items
               .slice(4, 6)
               .map((item) => (
                 <Link

@@ -1,7 +1,7 @@
 import { fetchCollectionData } from "@/lib/directus";
 
 const FunctionsDetails = async () => {
-  const { response: functionalDetails } = await fetchCollectionData("functional_expertise", {
+  const { response: functionalDetailsData } = await fetchCollectionData("functional_expertise", {
     fields: ["*"],
   });
 
@@ -20,7 +20,7 @@ const FunctionsDetails = async () => {
     }
   );
   return {
-    functionalDetails,
+    functionalDetailsData,
     ExpertiseContents,
   };
 };
