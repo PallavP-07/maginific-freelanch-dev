@@ -30,7 +30,7 @@ const BrowseJobs = async () => {
       {/* Wrapper for the JobSearchBar */}
       <div className="relative lg:container w-full flex justify-center items-center lg:mx-auto">
         {/* Positioning the search bar in the bottom half of the HeroBanner */}
-        <div className="absolute w-[400px] -bottom-44 md:w-[768px] lg:w-[985px]  md:-bottom-48 lg:-bottom-32">
+        <div className="absolute w-[400px] -bottom-44 md:w-[768px] lg:w-[945px]  md:-bottom-48 lg:-bottom-32">
           <JobSearchBox />
         </div>
       </div>

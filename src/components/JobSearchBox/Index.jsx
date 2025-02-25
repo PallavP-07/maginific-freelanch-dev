@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button'
 const JobSearchBox = () => {
     return (
         <>
-            <div className='flex flex-col  justify-between items-center gap-5 p-6   md:flex-row bg-white md:px-10 md:pt-5 md:pb-10   rounded-md  drop-shadow-[0_0px_10px_rgba(0,0,0,0.25)] '>
+            <div className='flex flex-col w-full  justify-between items-center gap-5 p-6   md:flex-row bg-white md:px-10 md:pt-5 md:pb-10   rounded-md  drop-shadow-[0_0px_10px_rgba(0,0,0,0.25)] '>
                 <div className='flex flex-col gap-4  w-full '>
                     <div className='flex flex-col md:flex-row justify-between  w-full gap-4'>
                         <div className='w-full'>

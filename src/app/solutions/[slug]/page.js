@@ -2,27 +2,16 @@ import ContentCard from "@/components/card/Index";
 import ContactUs from "@/components/contact/Index";
 import DualColorHeader from "@/components/dualColorHeader/Index";
 import HeaderWithCta from "@/components/headerWithCta";
+import LongParaContent from "@/components/longParaSection/LongParaContentSection";
 import SubHeroBanner from "@/components/SubHeroBanner/Index";
+import TextImageBox from "@/components/textImageBox/TextImageSection";
 import { Badge } from "@/components/ui/badge";
 import { fetchCollectionDataBySlug } from "@/lib/directus";
 import SolutionDetails from "@/services/solutionsDetails";
 import { splitTextByWord } from "@/utils/splitText";
-import Image from "next/image";
+
 import React from "react";
 
-
-const RenderParaSection = ({ details }) => {
-  return (
-    <>
-      <div className="text-center lg:py-28 md:py-14 md:px-10 py-7 px-5 lg:px-40 flex flex-col gap-5">
-        <div
-          className="content-container"
-          dangerouslySetInnerHTML={{ __html: details }}
-        />
-      </div>
-    </>
-  );
-};
 const RenderWhyChooseMagnific = ({data}) => {
   return (
     <>
@@ -52,43 +41,6 @@ const RenderWhyChooseMagnific = ({data}) => {
         </div>
       </div>
     </>
-  );
-};
-const RenderCardBox = ({ title, description, imageSrc, orientation }) => {
-  const isTextLeft = orientation === "text-left-image-right";
-
-  return (
-    <div className="w-full grid md:grid-cols-2 bg-[#F9F9F9] items-center">
-      {/* Text Section */}
-      <div
-        className={`p-6 md:p-10 lg:p-20 w-full ${
-          isTextLeft ? "order-1" : "order-2"
-        }`}
-      >
-        <h1 className="font-medium text-[28px] md:text-xl lg:text-[32px] leading-8 text-[#006633] mb-4 lg:mb-7">
-          {title}
-        </h1>
-        <p
-          className="font-normal md:text-[14px] lg:text-[16px] leading-5 text-[#737475]"
-          dangerouslySetInnerHTML={{ __html: description }}
-        />
-      </div>
-
-      {/* Image Section */}
-      <div
-        className={`relative w-full h-[250px] md:h-[360px] lg:h-[480px] ${
-          isTextLeft ? "order-2" : "order-1"
-        }`}
-      >
-        <Image
-          src={imageSrc}
-          alt={title}
-          layout="fill"
-          objectFit="cover"
-          className="w-full h-full"
-        />
-      </div>
-    </div>
   );
 };
 const RelatedContentSection = ({title}) => {
@@ -129,9 +81,9 @@ const {SolutionDetailsContents}= await SolutionDetails();
         heroBanner={"/HeroBanners/solutions-hero-banner.png"}
         header={"Executive Search"}
       />
-      <RenderParaSection details={solData[0].details} />
+      <LongParaContent details={solData[0].details} />
       {solData[0].dynamic_section_1.rows.map((data, i) => (
-        <RenderCardBox
+        <TextImageBox
           key={i}
           title={data.title}
           description={data.description}

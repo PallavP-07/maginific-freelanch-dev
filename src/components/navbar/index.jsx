@@ -3,7 +3,7 @@ import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import clsx from "clsx";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname} from "next/navigation";
 import MainLogo from "../logo";
 const subMenuContent = [
   {
@@ -75,7 +75,7 @@ const CustomNavbar = (AllContent) => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   const [showMobileSubMenu, setShowMobileSubMenu] = React.useState(false);
   const pathname = usePathname();
-  const scrolledPagesRegex = /^\/insights\/[^/]+$/;
+
   const renderMobileNavMenu = () => {
     return (
       <>
@@ -112,16 +112,17 @@ const CustomNavbar = (AllContent) => {
   };
 
   React.useEffect(() => {
-   
+    const scrolledPagesRegexList = [/^\/insights\/[^/]+$/, /^\/browse-jobs\/[^/]+$/];
+    const shouldScroll = scrolledPagesRegexList.some((regex) => regex.test(pathname));
     // Check if current page is in the predefined list
-    if (scrolledPagesRegex.test(pathname)) {
+    if (shouldScroll) {
       setIsScrolled(true);
     }
 
     const handleScroll = () => {
-      if (window.scrollY > 50 || isHovered || openDropdown) {
+      if (window.scrollY > 50 || isHovered || openDropdown || shouldScroll) {
         setIsScrolled(true);
-      } else if (!scrolledPages.includes(pathname)) {
+      } else  {
         setIsScrolled(false);
       }
     };

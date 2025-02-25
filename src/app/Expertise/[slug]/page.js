@@ -2,8 +2,11 @@ import CustomAccordion from '@/components/accordions/Index';
 import ContentCard from '@/components/card/Index';
 import ContactUs from '@/components/contact/Index'
 import DualColorHeader from '@/components/dualColorHeader/Index';
+import LongParaContent from '@/components/longParaSection/LongParaContentSection';
 import SubHeroBanner from '@/components/SubHeroBanner/Index'
+import TextImageBox from '@/components/textImageBox/TextImageSection';
 import { Badge } from '@/components/ui/badge';
+import { fetchCollectionDataBySlug } from '@/lib/directus';
 import Image from 'next/image';
 import React from 'react'
 
@@ -218,12 +221,28 @@ const RenderAreaOfExpertise =()=>{
     </>
   )
 }
-const SubPage = () => {
+const SubPage = async({ params }) => {
+    const { slug } = await params;
+    let expertiseData = null;
+    if (slug) {
+      const response = await fetchCollectionDataBySlug("industry_expertise", slug, {
+        fields: ["*", "dynamic_section_1.rows.*", "dynamic_section_1.rows.img.*"],
+      });
+      expertiseData = response.response;
+    }
   return (
     <>
-      <SubHeroBanner heroBanner={'/HeroBanners/solutions-hero-banner.png'} header={'Professional Services'} />
-      <RenderParaSection />
-      <RenderCardBox />
+      <SubHeroBanner heroBanner={'/HeroBanners/solutions-hero-banner.png'} header={expertiseData[0].title} />
+      <LongParaContent details={expertiseData[0].details} />
+      {expertiseData[0]?.dynamic_section_1?.rows?.map((data, i) => (
+        <TextImageBox
+          key={i}
+          title={data.title}
+          description={data.description}
+          imageSrc={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${data?.img?.filename_disk}`}
+          orientation={data.orientation}
+        />
+      ))}
       <RenderAreaOfExpertise/>
       <RenderWhyChooseMagnific />
       <div className=' lg:my-20  lg:container lg:mx-auto'>
