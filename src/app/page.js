@@ -10,7 +10,6 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import ProgressCircle from "@/components/circleProgress/Index";
 import HomePageData from "@/services/homePageData";
-import ContactUsCompData from "@/services/ContactUsComp";
 import { splitTextByWord } from "@/utils/splitText";
 
 const renderDiscoverInsight = (insightSectionData) => {
@@ -167,7 +166,7 @@ const OverlayText = ({ title, description, buttonText }) => (
       {buttonText?.href && (
         <Link
           href={buttonText.href}
-          className="bg-[#026534] font-semibold text-lg text-white w-full px-8 py-[12px] rounded-sm hover:bg-green-700"
+          className="bg-[#026534] font-semibold  text-lg text-white w-full px-8 py-[12px] rounded-sm hover:bg-green-700"
         >
           {buttonText.title}
         </Link>
@@ -192,12 +191,10 @@ const progressSection = (matrixSectionData) => {
                 {secondPart}
               </span>
             </p>
-            <span className="text-lg leading-[26px] font-normal break-words">
-              {matrixSectionData?.metrics?.data_metrics_section_description
-                .replace(/<p>/g, "")
-                .replace(/<\/p>/g, "")
-                .replace(/&nbsp;/g, "")}
-            </span>
+            <span className="text-lg leading-[26px] font-normal break-words"
+              dangerouslySetInnerHTML={{ __html: matrixSectionData?.metrics?.data_metrics_section_description }}
+            />
+          
           </div>
           <div className="flex  justify-center flex-wrap md:flex-nowrap gap-4   md:justify-between md:gap-1 ">
             {matrixSectionData?.metrics?.data_metrics_section_metrics_items.map(

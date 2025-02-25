@@ -38,7 +38,7 @@ const CircularProgress = ({ value, text, subtext, percentage }) => {
 
   return (
     <div className="flex flex-col items-center justify-center" ref={progressRef}>
-      <div className="relative md:w-[148px] md:h-[148px] lg:w-[192px] lg:h-[192px]">
+      <div className="relative w-[140px] h-[140px] md:w-[148px] md:h-[148px] lg:w-[192px] lg:h-[192px]">
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox="0 0 36 36"
