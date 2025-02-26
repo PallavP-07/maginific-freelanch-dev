@@ -7,7 +7,7 @@ import { usePathname} from "next/navigation";
 import MainLogo from "../logo";
 
 const RenderDropDownMenu = ({ positionLeft,data }) => {
-  console.log(data)
+
   return (
     <div
       className={`absolute top-[100%] border-b-lg transform -translate-x-1/2 shadow-inner  hidden group-hover:flex bg-white text-gray-800 w-screen `}
