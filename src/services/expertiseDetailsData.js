@@ -5,23 +5,21 @@ const ExpertiseDetails = async () => {
     fields: ["*"],
   });
 
-  const { response: ExpertiseContents } = await fetchCollectionData(
-    "solutions_details",
+  const { response: ExpertiseDetailPageContents } = await fetchCollectionData(
+    "industry_expertise_details",
     {
       fields: [
         "*",
-        "section_2.*",
-        "functional_expertise_heading.*",
-        "industry_expertise_heading.*",
-        "industry_expertise_call_to_action.*",
-        "functional_expertise_call_to_action.*",
-        "section_2.sections.*",
+        "section_1.sections.*",
+        "section_1.*",
+        "solutions_call_to_action.*",
+        "functional_expertise_call_to_action.*"
       ],
     }
   );
   return {
     expertiseData,
-    ExpertiseContents,
+    ExpertiseDetailPageContents,
   };
 };
 export default ExpertiseDetails;

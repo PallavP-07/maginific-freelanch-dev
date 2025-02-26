@@ -2,7 +2,7 @@ import { fetchCollectionData } from "@/lib/directus";
 
 const FunctionsDetails = async () => {
   const { response: functionalDetailsData } = await fetchCollectionData("functional_expertise", {
-    fields: ["*"],
+    fields: ["*","functional_expertise_call_to_action.*","solutions_call_to_action.*"],
   });
 
   const { response: ExpertiseContents } = await fetchCollectionData(

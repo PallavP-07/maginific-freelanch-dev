@@ -1,9 +1,21 @@
-import React from 'react'
+import { CircleChevronLeft } from 'lucide-react';
+import Link from 'next/link';
 
-function NotFoundPage() {
+const NotFoundPage = () => {
   return (
-    <div>NotFoundPage</div>
-  )
-}
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="text-center">
+        <h1 className="text-6xl font-bold text-green-800">404</h1>
+        <h2 className="mt-4 text-2xl text-gray-800">Page Not Found</h2>
+        <p className="mt-2 text-gray-600">
+          Sorry, the page you are looking for does not exist.
+        </p>
+        <Link href="/" className="mt-6 inline-block px-3 py-1 text-gray-600 shadow-md  bg-gray-200 border-2 border-green-700 rounded-md hover:bg-green-900 hover:border-gray-200 hover:text-white transition duration-500">
+       <span className='flex items-center gap-1 text-sm'> <CircleChevronLeft className='w-4 h-4'/>  Home  </span>     
+        </Link>
+      </div>
+    </div>
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;

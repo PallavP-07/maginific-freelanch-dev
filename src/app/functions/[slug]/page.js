@@ -2,9 +2,18 @@ import CustomAccordion from '@/components/accordions/Index';
 import ContentCard from '@/components/card/Index';
 import ContactUs from '@/components/contact/Index'
 import DualColorHeader from '@/components/dualColorHeader/Index';
+import HeaderWithCta from '@/components/headerWithCta';
+import LongParaContent from '@/components/longParaSection/LongParaContentSection';
 import SubHeroBanner from '@/components/SubHeroBanner/Index'
+import TextImageBox from '@/components/textImageBox/TextImageSection';
 import { Badge } from '@/components/ui/badge';
+import { fetchCollectionDataBySlug } from '@/lib/directus';
+import ExpertiseDetails from '@/services/expertiseDetailsData';
+import FunctionListData from '@/services/functionalExpertiseListData';
+import FunctionsDetails from '@/services/functionsDetailsData';
+import SolutionDetails from '@/services/solutionsDetails';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
 function Solutions() {
@@ -184,18 +193,75 @@ const RenderAreaOfExpertise = () => {
     </>
   )
 }
-const SubPage = () => {
+const SubPage = async({params}) => {
+  const { slug } = await params;
+  let functionsDetailsContent = null;
+  if (slug) {
+    const response = await fetchCollectionDataBySlug("functional_expertise", slug, {
+      fields: ["*", "dynamic_section_1.rows.*", "dynamic_section_1.rows.img.*"],
+    });
+    functionsDetailsContent = response.response;
+  }
+  const {AllContent} = await FunctionListData();
+  const { SoluDetails } = await SolutionDetails();
+  const { expertiseData } = await ExpertiseDetails();
   return (
     <>
-      <SubHeroBanner heroBanner={'/HeroBanners/solutions-hero-banner.png'} header={'Technology'} />
-      <RenderParaSection title={"Empower Your Technology Journey with Magnific Search"} discription={"In today's dynamic B2B technology landscape, competition is fierce—from entrenched incumbents to agile startups and global titans. At Magnific Search, we offer a unique blend of global perspective and nuanced understanding tailored to every stage of your company's evolution."} />
-      <RenderCardBox />
+      <SubHeroBanner heroBanner={'/HeroBanners/solutions-hero-banner.png'} header={functionsDetailsContent[0].title} />
+      <LongParaContent details={functionsDetailsContent[0].details} />
+      {functionsDetailsContent[0]?.dynamic_section_1?.rows?.map((data, i) => (
+        <TextImageBox
+          key={i}
+          title={data.title}
+          description={data.description}
+          imageSrc={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${data?.img?.filename_disk}`}
+          orientation={data.orientation}
+        />
+      ))}
       <RenderAreaOfExpertise />
       <RenderParaSection bgColor={'bg-[#F9F9F9]'} titleColor={'text-[#006633]'} title={"Driving Transformational Growth"} discription={"The digital revolution sweeping the global economy places a premium on leaders who possess the vision and adaptability to thrive amidst uncertainty. At Magnific Search, our Technology Executive Search practice leverages over 30 years of experience to identify exceptional talent for technology-driven organizations. From visionary CEOs to dynamic sales leaders and technical directors, we connect forward-thinking individuals with organizations poised to revolutionize the technological landscape."} />
       <RenderEnPowerFuture />
-      <div className=' lg:my-20  lg:container lg:mx-auto'>
-        {Solutions()}
-        {IndustryExpertise()}
+      <div className=" lg:my-20  lg:container lg:mx-auto">
+      <div>
+          <HeaderWithCta
+            heading={AllContent?.indistry_expertise_heading}
+            cta={AllContent?.industry_expertise_call_to_action}
+          />
+          {expertiseData?.map((expertise, i) => (
+            <Link
+              key={i}
+              href={`/expertise/${expertise?.slug}`}
+              className="mr-2 mb-2 inline-block"
+            >
+              <Badge
+                variant="outline"
+                className="text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2"
+              >
+                {expertise?.title}
+              </Badge>
+            </Link>
+          ))}
+        </div>
+        <div>
+          <HeaderWithCta
+            heading={AllContent.solutions_heading}
+            cta={AllContent?.solutions_call_to_action}
+          />
+          {SoluDetails?.map((solution, i) => (
+            <Link
+              key={i}
+              href={`/solutions/${solution?.slug}`}
+              className="mr-2 mb-2 inline-block"
+            >
+              <Badge
+                variant="outline"
+                className="text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2"
+              >
+                {solution?.title}
+              </Badge>
+            </Link>
+          ))}
+        </div>
       </div>
       <RelatedContentSection />
       <ContactUs />
