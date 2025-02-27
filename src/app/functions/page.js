@@ -88,7 +88,6 @@ const FunctionsPage = async () => {
         </div>
       </div>
       <ContactUs />
-      <Footer />
     </>
   );
 };

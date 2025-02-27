@@ -87,7 +87,6 @@ const SolutionsPage = async () => {
         </div>
       </div>
       <ContactUs />
-      <Footer />
     </>
   );
 };
