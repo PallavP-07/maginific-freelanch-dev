@@ -11,99 +11,10 @@ import { fetchCollectionDataBySlug } from '@/lib/directus';
 import ExpertiseDetails from '@/services/expertiseDetailsData';
 import FunctionsDetails from '@/services/functionsDetailsData';
 import SolutionDetails from '@/services/solutionsDetails';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
-function Solutions() {
-  const solutions = [
-    "Executive Search",
-    "RPO",
-    "Talent Strategy & Advisory",
-    "Projects & Contracts",
-    "Interim Talent",
-    "Projects & Contracts",
-    "RaaS",
-    "Professional Search",
-  ];
 
-  return (
-    <div className="  py-8 px-4  lg:my-16">
-      <div className=" mx-4 lg:mx-0">
-        {/* Title Section */}
-        <div className="flex justify-between items-center md:border-b-4 border-[#CCE0D6] pb-3 mb-7">
-          <h2 className="text-xl leading-6 font-bold text-[#01331A]">Functional Expertise</h2>
-          <a
-            href="#"
-            className="text-[16px] leading-4  text-[#01331A] font-semibold "
-          >
-            Read More &gt;
-          </a>
-        </div>
-        {/* Solutions Buttons */}
-        <div className="flex    gap-4 items-center flex-wrap">
-          {solutions.map((solution, index) => (
-
-            <Badge key={index} variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>{solution}</Badge>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function IndustryExpertise() {
-  const solutions = [
-    "Financial Services ",
-    "Technology",
-    "Healthcare",
-    "Pharmaceuticals & Medical Devices",
-    "Non Profit",
-    "Consumer",
-    "Real Estate",
-    "Venture Capital",
-    "Private Equity ",
-    "Professional Services",
-
-  ];
-
-  return (
-    <div className=" py-8 px-4 md:px-0 md:py-0 md:pb-28   mx-4 lg:mx-0  mb-8 lg:my-16 border-b-4 border-[#CCE0D6]">
-      <div className=" mx-4 lg:mx-0">
-        {/* Title Section */}
-        <div className="flex justify-between items-center md:border-b-4 border-[#CCE0D6] pb-3 mb-7">
-          <h2 className="text-xl leading-6 font-bold text-[#01331A]">Industry Expertise</h2>
-          <a
-            href="#"
-            className="text-[16px] leading-4  text-[#01331A] font-semibold"
-          >
-            Read More &gt;
-          </a>
-        </div>
-        {/* Solutions Buttons */}
-        <div className="flex w-[380px]  md:w-full  gap-4 items-center flex-wrap">
-          {solutions.map((solution, index) => (
-            <Badge key={index} variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>{solution}</Badge>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const RenderParaSection = () => {
-  return (
-    <>
-      <div className='text-center lg:py-28 md:py-14 md:px-10 py-7 px-5 lg:px-40 flex flex-col gap-5'>
-        <h1 className='font-semibold text-[32px] lg:leading-9 text-[#01331A]'>Unlocking Excellence in Professional & Technology Services with Magnific Search</h1>
-      
-        <p className='text-[#737475] font-normal text-lg leading-6'>{`In today's dynamic landscape, professional and technology services firms face unprecedented challenges and opportunities. At Magnific Search, we specialize in helping organizations like yours navigate these complexities by identifying top-tier talent that drives growth, fosters innovation, and propels success.`}</p>
-        <p className='text-[#737475] font-normal text-lg leading-6'>
-       {` The realm of professional services is undergoing a profound transformation, driven by changing client expectations and technological advancements. Magnific Search's Professional Services Practice is dedicated to redefining leadership in this space. We collaborate with firms across strategy consulting, financial advisory, and human capital management to identify leaders who excel at driving collaboration, shaping culture, and delivering value-driven solutions. Our tailored approach ensures that you have the right talent in place to navigate the evolving demands of your industry.`}</p>
-      </div>
-    </>
-  )
-}
 const RenderWhyChooseMagnific = ({data}) => {
   return (
     <>

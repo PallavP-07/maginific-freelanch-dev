@@ -1,4 +1,4 @@
-import ContentCard from "@/components/card/Index";
+
 import DualColorHeader from "@/components/dualColorHeader/Index";
 
 import { Badge } from "@/components/ui/badge";

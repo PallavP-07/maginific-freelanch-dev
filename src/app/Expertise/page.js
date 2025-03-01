@@ -1,7 +1,6 @@
 
 import ContactUs from "@/components/contact/Index";
 import DualColorHeader from "@/components/dualColorHeader/Index";
-import Footer from "@/components/footer/Index";
 import HeaderWithCta from "@/components/headerWithCta";
 import HeroBanner from "@/components/herobanner/Index";
 import TypeSelection from "@/components/typeSelection/Index";
@@ -18,7 +17,6 @@ const ExpertisePage = async () => {
   const { bannerData, AllContent } = await ExpertiseListData();
   const { expertiseData } = await ExpertiseDetails();
   const { SoluDetails } = await SolutionDetails();
-  
   const {functionalDetailsData} = await FunctionsDetails();
  
   const HeadingData = ({ heading }) => {
@@ -44,7 +42,6 @@ const ExpertisePage = async () => {
       ))}
       <div className=" lg:my-20  lg:container lg:mx-auto">
         <div>
-
         <HeaderWithCta
           heading={AllContent.functional_expertise_heading}
           cta={AllContent?.functional_expertise_call_to_action}
@@ -84,10 +81,7 @@ const ExpertisePage = async () => {
             </Link>
           ))}
         </div>
- 
       </div>
-
-
       <ContactUs />
     </>
   );

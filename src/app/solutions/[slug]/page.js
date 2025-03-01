@@ -5,7 +5,6 @@ import HeaderWithCta from "@/components/headerWithCta";
 import LongParaContent from "@/components/longParaSection/LongParaContentSection";
 import SubHeroBanner from "@/components/SubHeroBanner/Index";
 import TextImageBox from "@/components/textImageBox/TextImageSection";
-import { Badge } from "@/components/ui/badge";
 import { fetchCollectionDataBySlug } from "@/lib/directus";
 import SolutionDetails from "@/services/solutionsDetails";
 import { splitTextByWord } from "@/utils/splitText";
@@ -109,3 +108,6 @@ const {SolutionDetailsContents}= await SolutionDetails();
 };
 
 export default SubPage;
+
+
+ 

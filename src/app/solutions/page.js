@@ -1,6 +1,5 @@
 import ContactUs from "@/components/contact/Index";
 import DualColorHeader from "@/components/dualColorHeader/Index";
-import Footer from "@/components/footer/Index";
 import HeaderWithCta from "@/components/headerWithCta";
 import HeroBanner from "@/components/herobanner/Index";
 import TypeSelection from "@/components/typeSelection/Index";
