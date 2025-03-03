@@ -7,6 +7,7 @@ const ContentCard = ({pageRedirect,data}) => {
   const formattedDate = new Date(data?.publish_date).toLocaleDateString('en-US', options);
   const secondParagraphMatch = data.details.match(/<p>(.*?)<\/p>/g);
   const secondParagraph = secondParagraphMatch && secondParagraphMatch[1] ? secondParagraphMatch[1].replace(/<[^>]*>/g, '') : '';
+ 
   return (
     <>
       <div className="bg-white drop-shadow-[0_0px_8px_rgba(0,0,0,0.25)] flex flex-col gap-4 p-4 rounded-[4px]">

@@ -1,11 +1,10 @@
 import InsightsListData from "@/services/insightsListData";
-import InsightsPages from "./insightsPageData"; // Client Component
+import InsightsPages from "./InsightsPage"; // Client Component
 import InsightsDetailsContent from "@/services/insightDetailsData";
 
 const Page = async () => {
   try {
-    const data = await InsightsListData(); // Fetch data on the server
-    const { bannerData, AllContent: insightsData } = data || {};
+    const { bannerData, AllContent: insightsData } =  await InsightsListData();
     const banner = bannerData?.banner || {};
     const {InsightsSubPageContent} = await InsightsDetailsContent();
     return <InsightsPages banner={banner} insightsData={insightsData || []} insightsDetailPage={InsightsSubPageContent} />;

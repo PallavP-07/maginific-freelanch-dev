@@ -16,81 +16,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
-function Solutions() {
-  const solutions = [
-    "Executive Search",
-    "RPO",
-    "Talent Strategy & Advisory",
-    "Projects & Contracts",
-    "Interim Talent",
-    "Projects & Contracts",
-    "RaaS",
-    "Professional Search",
-  ];
-
-  return (
-    <div className="  py-8 px-4  lg:my-16">
-      <div className=" mx-4 lg:mx-0">
-        {/* Title Section */}
-        <div className="flex justify-between items-center md:border-b-4 border-[#CCE0D6] pb-3 mb-7">
-          <h2 className="text-xl leading-6 font-bold text-[#01331A]">Functional Expertise</h2>
-          <a
-            href="#"
-            className="text-[16px] leading-4  text-[#01331A] font-semibold "
-          >
-            Read More &gt;
-          </a>
-        </div>
-        {/* Solutions Buttons */}
-        <div className="flex    gap-4 items-center flex-wrap">
-          {solutions.map((solution, index) => (
-
-            <Badge key={index} variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>{solution}</Badge>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function IndustryExpertise() {
-  const solutions = [
-    "Financial Services ",
-    "Technology",
-    "Healthcare",
-    "Pharmaceuticals & Medical Devices",
-    "Non Profit",
-    "Consumer",
-    "Real Estate",
-    "Venture Capital",
-    "Private Equity ",
-    "Professional Services",
-
-  ];
-
-  return (
-    <div className=" py-8 px-4 md:px-0 md:py-0 md:pb-28   mx-4 lg:mx-0  mb-8 lg:my-16 border-b-4 border-[#CCE0D6]">
-      <div className=" mx-4 lg:mx-0">
-        {/* Title Section */}
-        <div className="flex justify-between items-center md:border-b-4 border-[#CCE0D6] pb-3 mb-7">
-          <h2 className="text-xl leading-6 font-bold text-[#01331A]">Industry Expertise</h2>
-          <a
-            href="#"
-            className="text-[16px] leading-4  text-[#01331A] font-semibold"
-          >
-            Read More &gt;
-          </a>
-        </div>
-        {/* Solutions Buttons */}
-        <div className="flex w-[380px]  md:w-full  gap-4 items-center flex-wrap">
-          {solutions.map((solution, index) => (
-            <Badge key={index} variant="outline" className='text-[#737475] font-semibold text-lg leading-[44px] sm:text-base py-1 px-2 inline-block'>{solution}</Badge>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 const RenderParaSection = ({ bgColor, title, discription, titleColor }) => {
   return (
@@ -102,34 +27,7 @@ const RenderParaSection = ({ bgColor, title, discription, titleColor }) => {
     </>
   )
 }
-const RenderCardBox = () => {
-  return (
-    <>
-      <div className='w-full md:grid md:grid-cols-2 h-[360px] lg:h-[480px] bg-[#F9F9F9]'>
-        <div className=' md:px-16  flex flex-col justify-center '>
-          <h1 className='font-medium text-[28px] md:text-xl lg:text-[30px] leading-8 text-[#006633] mb-4 lg:mb-6'>
-            Empowering Technology Innovators
-          </h1>
-          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>{`In the fast-paced world of technology services, agility and innovation are paramount. Magnific Search's Technology Services Practice specializes in identifying leaders who not only understand the latest technological trends but also possess the strategic vision to leverage them effectively. Whether you're in IT consulting, digital transformation, or software engineering, we partner with you to recruit executives who can drive innovation, capitalize on emerging opportunities, and propel your organization to new heights.`}</p>
-        </div>
-        <div className=' hidden md:block '>
-          <Image src='/assets/content-img-2.png' alt='content' width={100} height={100} className='w-full h-full object-fill' />
-        </div>
-      </div>
-      <div className='w-full md:grid md:grid-cols-2 h-[360px] lg:h-[480px] bg-[#F9F9F9]'>
-        <div className=' hidden md:block  '>
-          <Image src='/assets/content-img-1.png' alt='content' width={100} height={100} className='w-full h-full object-fill' />
-        </div>
-        <div className='md:px-16  flex flex-col justify-center '>
-          <h1 className='font-medium text-[28px] md:text-xl lg:text-[30px] leading-8 text-[#006633] mb-4 lg:mb-7'>
-            Driving Growth and Transformation
-          </h1>
-          <p className='font-normal  md:text-[14px] lg:text-[16px] leading-5 text-[#737475]'>{`Once we've identified potential candidates, it's time to make your organization irresistible to them. Leveraging our personal networks, we spread the word about your organization, positioning it as the ultimate destination for skilled mid to upper-level managers. Our strategic approach ensures that your talent pool is not just filled, but enriched with individuals who align seamlessly with your organization's culture and goals.`}</p>
-        </div>
-      </div>
-    </>
-  )
-}
+
 const RelatedContentSection = () => {
   return (
     <>
@@ -208,7 +106,7 @@ const SubPage = async({params}) => {
   return (
     <>
       <SubHeroBanner heroBanner={'/HeroBanners/solutions-hero-banner.png'} header={functionsDetailsContent[0].title} />
-      <LongParaContent details={functionsDetailsContent[0].details} />
+      <LongParaContent details={functionsDetailsContent[0]?.details} />
       {functionsDetailsContent[0]?.dynamic_section_1?.rows?.map((data, i) => (
         <TextImageBox
           key={i}
