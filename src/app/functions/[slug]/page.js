@@ -36,9 +36,9 @@ const RelatedContentSection = () => {
           <DualColorHeader first={"Related "} second={"Content"} style={'text-5xl'} />
         </div>
         <div className='grid grid-cols-1 md:grid-cols-3 mx-8 md:mx-0 my-8 md:my-8 gap-8 md:gap-5 md:pb-10 lg:pb-20'>
+          {/* <ContentCard pageRedirect={'/insights/:id'} />
           <ContentCard pageRedirect={'/insights/:id'} />
-          <ContentCard pageRedirect={'/insights/:id'} />
-          <ContentCard pageRedirect={'/insights/:id'} />
+          <ContentCard pageRedirect={'/insights/:id'} /> */}
         </div>
       </div>
     </>

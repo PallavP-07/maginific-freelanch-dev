@@ -1,10 +1,10 @@
-"use client";
+
 import Image from "next/image";
 import React from "react";
-import DOMPurify from "dompurify";
+
 const TextImageBox = ({ title, description, imageSrc, orientation }) => {
   const isTextLeft = orientation === "text-left-image-right";
-  const sanitizedContent = DOMPurify.sanitize(description);
+
   return (
     <div className="w-full grid grid-cols-2 items-center bg-[#F9F9F9]">
       {/* Text Section */}
@@ -18,7 +18,7 @@ const TextImageBox = ({ title, description, imageSrc, orientation }) => {
         </h1>
         <p
           className="text-[#737475] text-base md:text-sm lg:text-lg leading-6"
-          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+          dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>
 
