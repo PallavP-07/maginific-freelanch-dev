@@ -10,10 +10,10 @@ import { splitTextByWord } from "@/utils/splitText";
 import LatestInsightsCard from "@/components/latestInsightsCard";
 
 const InsightsPages = ({ banner, insightsData, insightsDetailPage }) => {
-  const [visibleCards, setVisibleCards] = useState(6);
+  const [visibleCards, setVisibleCards] = useState(8);
   const totalCards = Array.isArray(insightsDetailPage) ? insightsDetailPage.length : 0;
   const handleShowMore = () => {
-    setVisibleCards((prev) => Math.min(prev + 3, totalCards));
+    setVisibleCards((prev) => Math.min(prev + 2, totalCards));
   };
 
   const { background_img, title, description } = banner || {};
@@ -30,6 +30,7 @@ const InsightsPages = ({ banner, insightsData, insightsDetailPage }) => {
       <div className="lg:container mx-4 mt-12 lg:mx-auto">
         <DualColorHeader first={firstPart} second={secondPart} />
         <LatestInsightsCard data={insightsDetailPage[0]} />
+        {/* <LatestInsightsCard data={insightsDetailPage[insightsDetailPage.length - 1]} /> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 my-20">
           {(Array.isArray(insightsDetailPage)
             ? insightsDetailPage.slice(0, visibleCards)
