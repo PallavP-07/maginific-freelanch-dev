@@ -1,5 +1,5 @@
 import InsightsListData from "@/services/insightsListData";
-import InsightsPages from "./InsightsPage"; // Client Component
+import InsightsPages from "@/components/insightListPage/InsightsPage"; // Client Component
 import InsightsDetailsContent from "@/services/insightDetailsData";
 
 const Page = async () => {

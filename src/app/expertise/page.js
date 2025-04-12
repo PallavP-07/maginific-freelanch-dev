@@ -50,7 +50,7 @@ const ExpertisePage = async () => {
             <Link
               key={i}
               href={`/functions/${functions?.slug}`}
-              className="mr-2 mb-2 inline-block"
+              className="mr-5 mb-5  inline-block"
             >
               <Badge
                 variant="outline"
@@ -70,7 +70,7 @@ const ExpertisePage = async () => {
             <Link
               key={i}
               href={`/solutions/${solution?.slug}`}
-              className="mr-2 mb-2 inline-block"
+              className="mr-2 mb-2 inline-block "
             >
               <Badge
                 variant="outline"
