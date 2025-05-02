@@ -1,17 +1,23 @@
 import InsightsListData from "@/services/insightsListData";
-import InsightsPages from "@/components/insightListPage/InsightsPage"; // Client Component
 import InsightsDetailsContent from "@/services/insightDetailsData";
-
-const Page = async () => {
+import InsightsPages from "./InsightsPage";
+import ContactUs from "@/components/contact/Index";
+export default async function InsightWarper() {
   try {
-    const { bannerData, AllContent: insightsData } =  await InsightsListData();
-    const banner = bannerData?.banner || {};
-    const {InsightsSubPageContent} = await InsightsDetailsContent();
-    return <InsightsPages banner={banner} insightsData={insightsData || []} insightsDetailPage={InsightsSubPageContent} />;
+    const { bannerData, insightsData } = await InsightsListData();
+    const { InsightsSubPageContent } = await InsightsDetailsContent();
+    return (
+      <>
+        <InsightsPages
+          banner={bannerData?.banner}
+          insightsData={insightsData || []}
+          insightsDetailPage={InsightsSubPageContent}
+        />
+        <ContactUs />
+      </>
+    );
   } catch (error) {
     console.error("Error fetching insights:", error);
     return <p className="text-center text-red-500">Failed to load insights.</p>;
   }
-};
-
-export default Page;
+}
