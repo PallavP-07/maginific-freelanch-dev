@@ -1,22 +1,54 @@
-// formValidation.js
-import * as Yup from 'yup';
+import * as Yup from "yup";
+
+const SUPPORTED_FORMATS = [
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
 
 export const contactFormSchema = Yup.object().shape({
-  name: Yup.string().required('Name is required'),
-  email: Yup.string().email('Invalid email address').required('Email is required'),
+  name: Yup.string()
+    .trim()
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name cannot exceed 100 characters")
+    .required("Name is required"),
+
+  email: Yup.string()
+    .trim()
+    .email("Please enter a valid email address")
+    .required("Email is required"),
+
   phone: Yup.string()
-    .matches(/^[0-9]+$/, 'Phone must be a valid number')
-    .required('Phone is required'),
-  company: Yup.string(),
-  title: Yup.string(),
+    .trim()
+    .matches(
+      /^[0-9]{7,15}$/,
+      "Phone number must be numeric and between 7–15 digits"
+    )
+    .required("Phone number is required"),
+
+  company: Yup.string()
+    .trim()
+    .max(100, "Company name cannot exceed 100 characters")
+    .nullable(),
+
+  // title: Yup.string()
+  //   .trim()
+  //   .max(100, "Title cannot exceed 100 characters")
+  //   .nullable(),
+
+  message: Yup.string()
+    .trim()
+    .min(10, "Message must be at least 10 characters")
+    .max(1000, "Message cannot exceed 1000 characters")
+    .required("Message is required"),
+
   document: Yup.mixed()
     .nullable()
-    .required('File is required')
-    .test('fileType', 'Only PDF or DOC files are allowed', (value) => {
-      return value && ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(value.type);
+    .required("Document is required")
+    .test("fileType", "Only PDF, DOC, or DOCX files are allowed", (file) => {
+      return !file || (file && SUPPORTED_FORMATS.includes(file.type));
     })
-    .test('fileSize', 'File size must be less than 5MB', (value) => {
-      return value && value.size <= 5 * 1024 * 1024; // 5MB
+    .test("fileSize", "File must be less than 5MB", (file) => {
+      return !file || (file && file.size <= 5 * 1024 * 1024);
     }),
-  message: Yup.string().required('Message is required'),
 });

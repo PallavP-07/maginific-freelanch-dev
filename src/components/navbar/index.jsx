@@ -20,13 +20,14 @@ const RenderDropDownMenu = ({ positionLeft,data }) => {
           </h2>
           <div className="grid grid-cols-4 w-auto py-10 gap-5 ">
             {data.map((title, i) => (
-              <a
+
+              <Link
                 key={i}
-                href="#"
+                href={`/solutions/${title.id}`}
                 className="block text-[#737475] hover:text-[#01331A] font-normal text-sm leading-5"
               >
                 {title.title}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

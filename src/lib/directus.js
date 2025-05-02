@@ -1,5 +1,5 @@
 
-import { readItems,createDirectus, readItem, rest } from "@directus/sdk";
+import { readItems,createDirectus, readItem, rest, createItem, uploadFiles } from "@directus/sdk";
 
 const API_URL = process.env.NEXT_PUBLIC_DIRECTUS_API_URL;
 if (!API_URL) {
@@ -47,5 +47,32 @@ export const fetchCollectionDataBySlug = async (collection, slug, queryParams = 
   } catch (error) {
     console.error(`Error fetching ${collection} with slug ${slug}:`, error);
     return null;
+  }
+};
+
+
+export const createItemInCollection = async (collection, data) => {
+  try {
+    const response = await directus.request(createItem(collection, data));
+    return { response };
+  } catch (error) {
+    console.error(`Error creating item in ${collection}:`, error);
+    return { response: null, error };
+  }
+};
+
+
+
+export const uploadFileToCollection = async (file) => {
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+   
+    const uploadedFile = await directus.request(uploadFiles(formData));
+   
+    return { response: uploadedFile }; // Directus returns an array of files
+  } catch (error) {
+    console.error('Error uploading file to Directus:', error);
+    return { response: null, error };
   }
 };

@@ -92,7 +92,7 @@ const JobPostingCard = ({
       <Model
         isOpen={isOpen}
         closeModal={closeModal}
-        onSubmit={handleFormSubmit}
+        // onSubmit={handleFormSubmit}
       />
     </>
   );
