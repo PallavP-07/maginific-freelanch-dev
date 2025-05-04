@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import ProgressCircle from "@/components/circleProgress/Index";
 import HomePageData from "@/services/homePageData";
 import { splitTextByWord } from "@/utils/splitText";
+import ContactFormData from "@/services/contactFormData";
 
 const renderDiscoverInsight = (insightSectionData) => {
   const title = insightSectionData?.insights_section?.title || "";
@@ -370,7 +371,7 @@ export default async function Home() {
     testimonialsSection,
     resourcesSection,
   } = await HomePageData();
-
+  const { Contact_Form_data } = await ContactFormData();
   return (
     <>
       <LandingHeroBanner bannerData={bannerData.banner} />
@@ -391,7 +392,7 @@ export default async function Home() {
           />
         ))}
       </div>
-      <div className="lg:mx-10">{RenderContactUseComponent()}</div>
+      <div className="lg:mx-10">{RenderContactUseComponent(Contact_Form_data)}</div>
     </>
   );
 }

@@ -11,11 +11,11 @@ import FileUploadField from '../customInputs/UploadFile';
 import InputField from '../customInputs/InputField';
 import TextareaField from '../customInputs/TextAreaField';
 import { uploadFileToCollection, createItemInCollection } from '@/lib/directus';
-
+import { useToast } from "@/hooks/use-toast"
 const RenderContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-
+  const { toast } = useToast()
   const {
     handleSubmit,
     register,
@@ -29,7 +29,7 @@ const RenderContactForm = () => {
       email: '',
       phone: '',
       company: '',
-      // title: '',
+      title: '',
       message: '',
       document: null,
     },
@@ -39,27 +39,39 @@ const RenderContactForm = () => {
     setLoading(true);
     setSuccessMessage('');
     try {
-      let fileId = null;
-
+      let uploadedFileId = null;
+  
       if (formData.document) {
         const { response: fileUploadResponse } = await uploadFileToCollection(formData.document);
-        fileId = fileUploadResponse?.id;
+  
+        console.log("📂 File upload response:", fileUploadResponse);
+  
+        // ✅ Handle both single or array response correctly
+        uploadedFileId = Array.isArray(fileUploadResponse)
+          ? fileUploadResponse[0]?.id
+          : fileUploadResponse?.id;
       }
-
+  
       const dataToSend = {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         company: formData.company || null,
-        // title: formData.title || null,
+        title: formData.title || null,
         message: formData.message,
-        documents: fileId ? [fileId] : [],
+        documents: null, 
+        documents: uploadedFileId ? [parseInt(uploadedFileId)] : [], 
       };
-
+  
+      console.log("📨 Sending data to Directus:", dataToSend);
+  
       const { response } = await createItemInCollection('contact_form_data', dataToSend);
       console.log('✅ Contact form submitted:', response);
-
-      setSuccessMessage('🎉 Your message has been submitted successfully!');
+  
+      toast({
+        description: "Form Submitted Successfully",
+        duration: 4000,
+      });
       reset();
     } catch (error) {
       console.error('❌ Error submitting form:', error);
@@ -68,7 +80,6 @@ const RenderContactForm = () => {
       setLoading(false);
     }
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="my-12 space-y-6">
@@ -85,7 +96,7 @@ const RenderContactForm = () => {
           <InputField label="*Email" id="email" type="email" placeholder="Enter your email" register={register} error={errors.email} />
           <InputField label="*Phone" id="phone" type="text" placeholder="Enter your phone number" register={register} error={errors.phone} />
           <InputField label="Company" id="company" type="text" placeholder="Enter your company name" register={register} error={errors.company} />
-          {/* <InputField label="Title" id="title" type="text" placeholder="Enter your job title" register={register} error={errors.title} /> */}
+          <InputField label="Title" id="title" type="text" placeholder="Enter your job title" register={register} error={errors.title} />
           <FileUploadField label="Upload Document" id="document" control={control} error={errors.document} />
         </div>
 

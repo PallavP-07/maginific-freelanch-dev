@@ -30,15 +30,11 @@ const JobPostingCard = ({
   const closeModal = () => {
     setIsOpen(false);
   };
-  const handleFormSubmit = (formData) => {
-    console.log("Form submitted with data:", formData);
-    // Optionally reset the form or handle the data further
-    closeModal(); // Close modal after successful form submission
-  };
+
 
   return (
     <>
-      <div className="bg-[#F9F9F9]  rounded-md   flex flex-col  gap-4 md:gap-0 md:flex-row w-full justify-between items-center py-6 px-10">
+      <div className="bg-[#F9F9F9]  rounded-lg   flex flex-col  gap-4 md:gap-0 md:flex-row w-full justify-between items-center py-6 px-10">
         <div className="flex flex-col gap-2 md:border-r-2 md:border-[#D0D0D0] md:pr-[17px] w-full md:w-3/4  lg:w-2/4">
           <h2 className="text-xl font-bold leading-[36px] line-clamp-1">
             {title}
@@ -92,7 +88,6 @@ const JobPostingCard = ({
       <Model
         isOpen={isOpen}
         closeModal={closeModal}
-        // onSubmit={handleFormSubmit}
       />
     </>
   );

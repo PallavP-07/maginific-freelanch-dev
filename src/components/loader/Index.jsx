@@ -3,7 +3,7 @@ import './style.css'
 function Index() {
   return (
     <>
-      <div className="bg-[#9eef9e] overflow-hidden w-full flex justify-center items-center z-20 min-h-screen">
+      <div className="bg-[#4D5D53] overflow-hidden w-full flex justify-center items-center z-20 min-h-screen">
           <svg
             width="30%"
             height="30%"
