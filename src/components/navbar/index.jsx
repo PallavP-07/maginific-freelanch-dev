@@ -10,11 +10,10 @@ const RenderDropDownMenu = ({ positionLeft,data }) => {
 
   return (
     <div
-      className={`absolute top-[100%] border-b-lg transform -translate-x-1/2 shadow-inner  hidden group-hover:flex bg-white text-gray-800 w-screen `}
-      style={{ left: positionLeft }}
+      className={`absolute left-0 top-20 rounded-b-lg  w-full shadow-inner  hidden group-hover:flex bg-white text-gray-800 `}
     >
-      <div className="lg:container lg:mx-auto my-8">
-        <div className="w-full">
+      <div className="container mx-auto pt-10 max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="">
           <h2 className="text-[#01331A] pb-3 text-[20px] leading-8 font-semibold border-b-2 border-[#CCE0D6]">
             Solutions &gt;
           </h2>
@@ -101,29 +100,30 @@ const {AllContent,solutionSubPage,expertiseSubPage,FunctionsSubPage} = props;
   }, [pathname, isHovered, openDropdown]);
 
   return (
-    <nav
+    <div className="relative">
+  <header
       className={cn(
-        "fixed top-0 drop-shadow-md  z-10  w-full",
+        "fixed  top-0  drop-shadow-md  z-10  w-full",
         isScrolled || isHovered
           ? "bg-white text-black "
           : "bg-transparent text-white "
       )}
     >
       <div
-        className={`lg:container lg:mx-auto   flex items-center justify-between ml-6 `}
+        className={`lg:container lg:mx-auto  relative  flex items-center justify-between ml-6 `}
       >
         <Link href="/" className="lg:w-1/3 cursor-pointer">
           <MainLogo color={isScrolled || isHovered ? "dark" : "main"} />
         </Link>
         {/* Navigation Menu */}
-        <div className="lg:w-2/3 lg:flex lg:justify-between lg:items-center lg:gap-5">
-          <ul className="hidden lg:flex lg:justify-between lg:items-center lg:gap-6 lg:leading-[80px] ">
+        <nav className="lg:w-2/3  lg:justify-between lg:items-center lg:gap-5 hidden lg:flex">
+          <ul className="flex lg:justify-between lg:items-center lg:gap-6 lg:leading-[80px] ">
             {AllContent?.navigation_items
               .slice(0, 4)
               .map((item) => (
                 <li
                   key={item.sort}
-                  className={item.is_expandable ? "relative group" : ""}
+                  className={item.is_expandable ? "group" : ""}
                   onMouseEnter={() => item.is_expandable && setIsHovered(true)}
                   onMouseLeave={() => item.is_expandable && setIsHovered(false)}
                 >
@@ -155,7 +155,6 @@ const {AllContent,solutionSubPage,expertiseSubPage,FunctionsSubPage} = props;
                   </Link>
                   {item.is_expandable && isHovered && (
                     <RenderDropDownMenu
-                      positionLeft={item.name === "Solutions" ? "100%" : "-20%"}
                       data={
                         item.name === "Solutions"
                           ? solutionSubPage
@@ -170,7 +169,7 @@ const {AllContent,solutionSubPage,expertiseSubPage,FunctionsSubPage} = props;
                 </li>
               ))}
           </ul>
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="flex items-center gap-3">
             {AllContent?.navigation_items
               .slice(4, 6)
               .map((item) => (
@@ -197,7 +196,7 @@ const {AllContent,solutionSubPage,expertiseSubPage,FunctionsSubPage} = props;
                 </Link>
               ))}
           </div>
-        </div>
+        </nav>
         {/* mobile hamburger menu */}
         <div className="lg:hidden">
           <svg
@@ -227,7 +226,9 @@ const {AllContent,solutionSubPage,expertiseSubPage,FunctionsSubPage} = props;
           {renderMobileNavMenu()}
         </div>
       </div>
-    </nav>
+    </header>
+    </div>
+  
   );
 };
 export default CustomNavbar;

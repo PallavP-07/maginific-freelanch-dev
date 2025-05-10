@@ -60,7 +60,7 @@ const RenderContactForm = () => {
         title: formData.title || null,
         message: formData.message,
         documents: null, 
-        documents: uploadedFileId ? [parseInt(uploadedFileId)] : [], 
+        // documents: uploadedFileId ? [parseInt(uploadedFileId)] : [], 
       };
   
       console.log("📨 Sending data to Directus:", dataToSend);

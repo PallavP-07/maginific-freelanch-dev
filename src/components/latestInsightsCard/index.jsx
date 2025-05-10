@@ -39,7 +39,7 @@ const LatestInsightsCard = ({ data }) => {
 
           {/* Bottom Content */}
           <div className="absolute left-6 bottom-6 right-6 md:left-12 md:bottom-10 md:right-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-0">
-            <div>
+            <div className="w-[85%]">
               <p className="text-[24px] md:text-[32px] font-bold leading-[32px] md:leading-[44px]">
                 {data?.title}
               </p>
@@ -50,7 +50,7 @@ const LatestInsightsCard = ({ data }) => {
             </div>
             <Link
               href={`/insights/${data.id}`}
-              className="px-6 py-2 lg:w-[62%] text-[14px] md:text-[16px] font-semibold text-white border-2 border-white bg-opacity-15 bg-slate-100 rounded-md hover:bg-white hover:text-black"
+              className="px-6 py-2  text-[14px] md:text-[16px] font-semibold text-white border-2 border-white bg-opacity-15 bg-slate-100 rounded-md hover:bg-white hover:text-black"
             >
               Read More
             </Link>

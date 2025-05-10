@@ -79,8 +79,10 @@ const renderDiscoverInsight = (insightSectionData) => {
               ))}
             </div>
           </div>
-          <p className="text-[#01331A] font-semibold text-[20px] text-end leading-6 mt-8 ">
+          <p  className="text-[#01331A] font-semibold text-[20px] text-end leading-6 mt-8 ">
+          <Link href="/insights">
             Browse all Insights &gt;
+          </Link>
           </p>
         </div>
       </div>
