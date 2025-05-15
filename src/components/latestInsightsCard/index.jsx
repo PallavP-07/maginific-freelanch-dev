@@ -39,7 +39,7 @@ const LatestInsightsCard = ({ data }) => {
 
           {/* Bottom Content */}
           <div className="absolute left-6 bottom-6 right-6 md:left-12 md:bottom-10 md:right-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-0">
-            <div className="w-[85%]">
+            <div className="w-[80%]">
               <p className="text-[24px] md:text-[32px] font-bold leading-[32px] md:leading-[44px]">
                 {data?.title}
               </p>

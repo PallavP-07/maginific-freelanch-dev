@@ -30,7 +30,7 @@ export const RenderContactUseComponent = (contactForm) => {
 const ContactUs = async () => {
   const { bannerData,dunmyFormData } = await ContactPageData();
   const { Contact_Form_data } = await ContactFormData();
-console.log(dunmyFormData);
+
   return (
     <>
       <HeroBanner

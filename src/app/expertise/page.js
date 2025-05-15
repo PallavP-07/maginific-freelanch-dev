@@ -41,7 +41,7 @@ const ExpertisePage = async () => {
         <TypeSelection key={i} title={expertise.title} description={expertise.short_description} slug={`/expertise/${expertise.slug}`} />
       ))}
       <div className=" lg:my-20  lg:container lg:mx-auto">
-        <div>
+        <div className="mt-10">
         <HeaderWithCta
           heading={AllContent.functional_expertise_heading}
           cta={AllContent?.functional_expertise_call_to_action}
@@ -61,7 +61,7 @@ const ExpertisePage = async () => {
             </Link>
           ))}
         </div>
-        <div>
+        <div className="mt-10">
         <HeaderWithCta
           heading={AllContent.solutions_heading}
           cta={AllContent?.solutions_call_to_action}

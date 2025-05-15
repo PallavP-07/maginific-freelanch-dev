@@ -48,7 +48,7 @@ export const PaginatedJobList = ({ jobDetails, currentPage, pageSize, totalPages
   return (
     <div className="flex flex-col gap-6">
       {/* Job Listings */}
-      <div className="flex-col flex gap-6">
+      <div className="flex-col flex gap-6 mb-20">
         {currentJobs.map((jobDetails) => (
           <JobPostingCard
             id={jobDetails.id}
