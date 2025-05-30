@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { fetchCollectionDataBySlug } from "@/lib/directus";
 import ExpertiseDetails from "@/services/expertiseDetailsData";
 import FunctionsDetails from "@/services/functionsDetailsData";
+import InsightsDetailsContent from "@/services/insightDetailsData";
 import SolutionDetails from "@/services/solutionsDetails";
 import { splitTextByWord } from "@/utils/splitText";
 import Link from "next/link";
@@ -46,8 +47,12 @@ const RenderWhyChooseMagnific = ({ data }) => {
     </>
   );
 };
-const RelatedContentSection = ({ title }) => {
+const RelatedContentSection = ({ title, insightsDetails }) => {
   const [firstPart, secondPart] = splitTextByWord(title, "Content");
+  let topThreeInsights = [""];
+  if (insightsDetails.length > 3) {
+     topThreeInsights = insightsDetails.slice(0, 3);
+  }
   return (
     <>
       <div className="lg:container lg:mx-auto mx-4">
@@ -59,9 +64,13 @@ const RelatedContentSection = ({ title }) => {
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 mx-8 md:mx-0 my-8 md:my-8 gap-8 md:gap-5 md:pb-10 lg:pb-20">
-          {/* <ContentCard pageRedirect={"/insights/:id"} />
-          <ContentCard pageRedirect={"/insights/:id"} />
-          <ContentCard pageRedirect={"/insights/:id"} /> */}
+          {topThreeInsights.map((item) => (
+            <ContentCard
+              key={item.id}
+              pageRedirect={`/insights/${item.id}`}
+              data={item}
+            />
+          ))}
         </div>
       </div>
     </>
@@ -80,6 +89,7 @@ const SubPage = async ({ params }) => {
   const { SolutionDetailsContents } = await SolutionDetails();
   const { expertiseData } = await ExpertiseDetails();
   const { functionalDetailsData } = await FunctionsDetails();
+  const { InsightsSubPageContent } = await InsightsDetailsContent();
   return (
     <>
       <SubHeroBanner
@@ -98,7 +108,7 @@ const SubPage = async ({ params }) => {
       ))}
       <RenderWhyChooseMagnific data={SolutionDetailsContents?.section_2} />
       <div className=" lg:my-20  lg:container lg:mx-auto">
-        <div>
+        <div className="mb-10">
           <HeaderWithCta
             heading={SolutionDetailsContents.functional_expertise_heading}
             cta={SolutionDetailsContents?.functional_expertise_call_to_action}
@@ -119,7 +129,7 @@ const SubPage = async ({ params }) => {
           ))}
         </div>
 
-        <div>
+        <div className="mb-10">
           <HeaderWithCta
             heading={SolutionDetailsContents.industry_expertise_heading}
             cta={SolutionDetailsContents?.industry_expertise_call_to_action}
@@ -142,6 +152,7 @@ const SubPage = async ({ params }) => {
       </div>
       <RelatedContentSection
         title={SolutionDetailsContents?.releated_content_heading}
+        insightsDetails={InsightsSubPageContent}
       />
       <ContactUs />
     </>

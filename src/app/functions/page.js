@@ -46,7 +46,7 @@ const FunctionsPage = async () => {
         />
       ))}
       <div className=" lg:my-20  lg:container lg:mx-auto">
-      <div>
+      <div className="mb-10">
           <HeaderWithCta
             heading={AllContent?.indistry_expertise_heading}
             cta={AllContent?.industry_expertise_call_to_action}
@@ -66,7 +66,7 @@ const FunctionsPage = async () => {
             </Link>
           ))}
         </div>
-        <div>
+        <div className="mb-10">
           <HeaderWithCta
             heading={AllContent.solutions_heading}
             cta={AllContent?.solutions_call_to_action}
