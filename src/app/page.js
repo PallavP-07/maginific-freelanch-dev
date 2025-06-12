@@ -11,19 +11,20 @@ import HomePageData from "@/services/homePageData";
 import { splitTextByWord } from "@/utils/splitText";
 import ContactFormData from "@/services/contactFormData";
 import { cleanHTML } from "@/utils/cleanHTML";
-const LandingHeroBanner = dynamic(() =>
-  import("../components/LandingHeroBanner/Index")
+import InsightsDetailsContent from "@/services/insightDetailsData";
+const LandingHeroBanner = dynamic(
+  () => import("../components/LandingHeroBanner/Index")
 );
-const ResponsiveCarousel = dynamic(() =>
-  import("../components/carousel/Index")
+const ResponsiveCarousel = dynamic(
+  () => import("../components/carousel/Index")
 );
-const DualColorHeader = dynamic(() =>
-  import("../components/dualColorHeader/Index")
+const DualColorHeader = dynamic(
+  () => import("../components/dualColorHeader/Index")
 );
-const HomeJobSearchBar = dynamic(() =>
-  import("../components/HomeSearchBar/Index")
+const HomeJobSearchBar = dynamic(
+  () => import("../components/HomeSearchBar/Index")
 );
-const renderDiscoverInsight = (insightSectionData) => {
+const renderDiscoverInsight = (insightSectionData, latestInsights) => {
   const title = insightSectionData?.insights_section?.title || "";
   const [firstPart, secondPart] = title
     .split("Insights")
@@ -33,6 +34,7 @@ const renderDiscoverInsight = (insightSectionData) => {
     2
   );
   const lastTwoCards = insightSectionData?.insights_section?.cards?.slice(2, 4);
+  console.log(latestInsights);
   return (
     <>
       <div className=" lg:container lg:mx-auto w-full my-20  mb-20">
@@ -45,24 +47,39 @@ const renderDiscoverInsight = (insightSectionData) => {
           </p>
           <div className="grid grid-cols-2 gap-5 md:gap-8 ">
             <div className="flex flex-col gap-5 md:gap-7">
-              {firstTwoCards?.map((item, i) => (
+              {latestInsights.slice(0, 2)?.map((item, i) => (
                 <div
                   key={i}
-                  className={` ${
-                    item?.sort === 1
-                      ? "bg-[#CCE0D6] text-gray-800 h-[380px]"
-                      : "bg-[#2A2B2F] text-white  h-[450px]"
-                  }   text-center  px-5 py-20 md:px-10   w-full  rounded-md`}
+                  className="relative w-full h-[400px] md:h-[450px] rounded-2xl overflow-hidden"
                 >
-                  <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl lg:text-4xl mb-6">
-                    {item.title}
-                  </h2>
-                  <p className="font-normal leading-[28px] text-[16px]">
-                    {cleanHTML(item?.description)}
-                  </p>
+                  {/* Background Image */}
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${item?.img?.filename_disk}`}
+                    alt={item.title}
+                    fill
+                    className="object-cover w-full h-full"
+                    priority
+                  />
+
+                  {/* Overlay */}
+                  <div
+                    className={`absolute inset-0 ${
+                      item?.sort === 1
+                        ? "bg-[#CCE0D6]/80 text-gray-800"
+                        : "bg-black/60 text-white"
+                    } flex flex-col justify-end px-5 py-6 md:px-10 transition-all duration-300`}
+                  >
+                    <h2 className="font-semibold text-[20px] md:text-3xl lg:text-4xl mb-2">
+                      {item.title}
+                    </h2>
+                    <p className="font-normal leading-[26px] text-[15px] line-clamp-3">
+                      {cleanHTML(item?.details)}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
+
             <div className="flex flex-col w-full gap-5 md:gap-7">
               {lastTwoCards?.map((item, i) => (
                 <div
@@ -223,8 +240,6 @@ const progressSection = (matrixSectionData) => {
   );
 };
 
-
-
 const renderWhyChooseUs = (services) => {
   return (
     <>
@@ -312,6 +327,9 @@ export default async function Home() {
     resourcesSection,
   } = await HomePageData();
   const { Contact_Form_data } = await ContactFormData();
+  const { InsightsSubPageContent } = await InsightsDetailsContent();
+  const latestInsights = InsightsSubPageContent.slice(-4);
+
   return (
     <>
       <LandingHeroBanner bannerData={bannerData.banner} />
@@ -319,7 +337,7 @@ export default async function Home() {
       {progressSection(matrixSection)}
       {renderWhyChooseMagnific(whyMagnificSection, serviceSectionData)}
       <ResponsiveCarousel Data={testimonialsSection.testimonials} />
-      {renderDiscoverInsight(insightSection)}
+      {renderDiscoverInsight(insightSection, latestInsights)}
       <div>
         {resourcesSection?.resources_section?.rows.map((resource) => (
           <ResourceSection
