@@ -1,3 +1,4 @@
+import { cleanHTML } from '@/utils/cleanHTML';
 import Image from 'next/image'
 import React from 'react'
 
@@ -6,7 +7,7 @@ export default function ReviewCard({ testimonial }) {
   return (<>
     <div className='bg-white border-t-[15px]  w-full px-9 py-10 border-[#cce0d6] rounded-md  shadow-md'>
       <p className='text-wrap text-left font-medium text-lg leading-8 text-[#373A40] mb-10'>
-        {testimonial?.message?.replace(/<p>/g, '').replace(/<\/p>/g, '').replace(/&nbsp;/g, '')}
+        {cleanHTML(testimonial?.message)}
       </p>
       <div className='flex gap-6 items-center text-left'>
         <div className='w-20 h-20 rounded-full'>

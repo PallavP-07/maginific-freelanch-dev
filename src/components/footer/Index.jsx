@@ -19,6 +19,7 @@ const renderSocialContent = (socialContent) => {
               alt={`${platform}-logo`}
               width={30}
               height={30}
+              className="cursor-pointer"
             />
           )
         );

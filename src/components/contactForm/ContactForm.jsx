@@ -11,11 +11,10 @@ import FileUploadField from '../customInputs/UploadFile';
 import InputField from '../customInputs/InputField';
 import TextareaField from '../customInputs/TextAreaField';
 import { uploadFileToCollection, createItemInCollection } from '@/lib/directus';
-import { useToast } from "@/hooks/use-toast"
+import { toast } from "sonner";
 const RenderContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-  const { toast } = useToast()
   const {
     handleSubmit,
     register,
@@ -68,10 +67,7 @@ const RenderContactForm = () => {
       const { response } = await createItemInCollection('contact_form_data', dataToSend);
       console.log('✅ Contact form submitted:', response);
   
-      toast({
-        description: "Form Submitted Successfully",
-        duration: 4000,
-      });
+      toast.success("🎉 Form submitted successfully!");
       reset();
     } catch (error) {
       console.error('❌ Error submitting form:', error);

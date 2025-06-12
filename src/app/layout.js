@@ -3,7 +3,7 @@ import "./globals.css";
 import Footer from "@/components/footer/Index";
 import NavbarWrapper from "@/components/navbar/NavBarWrapper";
 import ScrollToTop from "@/components/scrollToTop";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "sonner"
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         <NavbarWrapper />
         {children}
         <Footer/>
-        <Toaster/>
+         <Toaster position="top-right" />
       </body>
     </html>
   );

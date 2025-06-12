@@ -5,6 +5,7 @@ import DualColorHeader from "@/components/dualColorHeader/Index";
 import ContactPageData from "@/services/contactPageData";
 import ContactFormData from "@/services/contactFormData";
 import { splitTextByWord } from "@/utils/splitText";
+import { cleanHTML } from "@/utils/cleanHTML";
 
 export const RenderContactUseComponent = (contactForm) => {
   const title = contactForm?.contact_form?.title || "";
@@ -17,10 +18,7 @@ export const RenderContactUseComponent = (contactForm) => {
         </div>
         <span className="text-[#2A2B2F] text-lg leading-5 ">
           {" "}
-          {contactForm?.contact_form?.description
-            .replace(/<p>/g, "")
-            .replace(/<\/p>/g, "")
-            .replace(/&nbsp;/g, "")}
+            {cleanHTML(contactForm?.contact_form?.description)}
         </span>
         <RenderContactForm formData={contactForm?.contact_form} />
       </div>
@@ -28,7 +26,7 @@ export const RenderContactUseComponent = (contactForm) => {
   );
 };
 const ContactUs = async () => {
-  const { bannerData,dunmyFormData } = await ContactPageData();
+  const { bannerData } = await ContactPageData();
   const { Contact_Form_data } = await ContactFormData();
 
   return (
