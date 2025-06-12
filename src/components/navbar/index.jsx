@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import MainLogo from "../logo";
-
+import { ChevronLeft, X } from "lucide-react";
 const RenderDropDownMenu = ({ data, submenuName }) => {
   return (
     <div
@@ -32,7 +32,74 @@ const RenderDropDownMenu = ({ data, submenuName }) => {
     </div>
   );
 };
-
+const menuData = [
+  {
+    id: "about",
+    label: "About",
+  },
+  {
+    id: "solutions",
+    label: "Solutions",
+    hasSubmenu: true,
+    submenu: [
+      { id: "executive-search", label: "Executive Search" },
+      { id: "professional-search", label: "Professional Search" },
+      { id: "rpo", label: "RPO" },
+      { id: "interim-talent", label: "Interim Talent" },
+      { id: "raas", label: "RaaS" },
+      { id: "projects-contracts", label: "Projects & Contracts" },
+      { id: "talent-strategy", label: "Talent Strategy & Advisory" },
+    ],
+  },
+  {
+    id: "expertise",
+    label: "Expertise",
+    hasSubmenu: true,
+    submenu: [
+      { id: "financial-services", label: "Financial Services" },
+      { id: "technology", label: "Technology" },
+      { id: "professional-services", label: "Professional Services" },
+      { id: "healthcare", label: "Healthcare" },
+      { id: "pharmaceuticals", label: "Pharmaceuticals" },
+      { id: "medical-devices", label: "Medical Devices" },
+      { id: "non-profit", label: "Non Profit" },
+      { id: "consumer", label: "Consumer" },
+      { id: "private-equity", label: "Private Equity" },
+      { id: "real-estate", label: "Real Estate" },
+    ],
+  },
+  {
+    id: "functions",
+    label: "Functions",
+    hasSubmenu: true,
+    submenu: [
+      { id: "legal-compliance", label: "Legal & Compliance" },
+      { id: "human-resources", label: "Human Resources" },
+      { id: "accounting-finance", label: "Accounting, Finance & Tax" },
+      { id: "data-procurement", label: "Data Procurement & Supply Chain" },
+      { id: "pharmaceuticals-func", label: "Pharmaceuticals" },
+      { id: "sales", label: "Sales" },
+      { id: "marketing", label: "Marketing" },
+      { id: "customer-success", label: "Customer Success" },
+      { id: "business-development", label: "Business Development" },
+      { id: "technology-engineering", label: "Technology & Engineering" },
+      { id: "product", label: "Product" },
+      { id: "cyber-security", label: "Cyber Security" },
+    ],
+  },
+  {
+    id: "insights",
+    label: "Insights",
+  },
+  {
+    id: "browse-jobs",
+    label: "Browse Jobs",
+  },
+  {
+    id: "contact",
+    label: "Contact",
+  },
+];
 const CustomNavbar = (props) => {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isHovered, setIsHovered] = React.useState(false);
@@ -43,30 +110,91 @@ const CustomNavbar = (props) => {
   const { AllContent, solutionSubPage, expertiseSubPage, FunctionsSubPage } =
     props;
   const renderMobileNavMenu = () => {
-    return (
-      <>
-        <div
-          className={clsx(
-            "fixed min-h-screen inset-0 z-50 overflow-y-auto bg-gray-100 w-full md:w-1/2 top-[80px] left-0 transition-transform ease-in-out duration-500 flex flex-col justify-between",
+    const [currentMenu, setCurrentMenu] = React.useState(menuData);
+    const [menuHistory, setMenuHistory] = React.useState([]);
+    const [currentTitle, setCurrentTitle] = React.useState("");
 
-            showMobileMenu
-              ? "translate-x-0 md:w-1/2"
-              : "-translate-x-full md:w-1/2"
-          )}
-        >
-          <div className="px-8 py-10  ">
-            <ul className="text-[24px] leading-10 text-[#01331A] font-semibold flex flex-col gap-[57px]">
-              <li>About</li>
-              <li>Solution &gt; </li>
-              <li>Expertise &gt; </li>
-              <li>Functions &gt; </li>
-              <li>Insights</li>
-              <li>Browse Jobs</li>
-              <li>Contact</li>
-            </ul>
+    const handleMenuItemClick = (item) => {
+      if (item.hasSubmenu && item.submenu) {
+        setMenuHistory((prev) => [...prev, currentMenu]);
+        setCurrentMenu(item.submenu);
+        setCurrentTitle(item.label);
+      } else {
+        console.log(`Navigate to: ${item.label}`);
+      }
+    };
+
+    const handleBackClick = () => {
+      if (menuHistory.length > 0) {
+        const previousMenu = menuHistory[menuHistory.length - 1];
+        setMenuHistory((prev) => prev.slice(0, -1));
+        setCurrentMenu(previousMenu);
+
+        if (menuHistory.length === 1) {
+          setCurrentTitle("");
+        } else {
+          setCurrentTitle("");
+        }
+      }
+    };
+
+    const resetMenu = () => {
+      setCurrentMenu(menuData);
+      setMenuHistory([]);
+      setCurrentTitle("");
+    };
+
+    const handleClose = () => {
+      resetMenu();
+      onClose();
+    };
+
+    const isMainMenu = menuHistory.length === 0;
+
+    return (
+      <div
+        className={clsx(
+          "fixed min-h-screen inset-0 z-50 overflow-y-auto bg-gray-100 w-full md:w-1/2 top-[80px] left-0 transition-transform ease-in-out duration-500 flex flex-col justify-between",
+
+          showMobileMenu
+            ? "translate-x-0 md:w-1/2"
+            : "-translate-x-full md:w-1/2"
+        )}
+      >
+        <div className="flex items-center justify-between px-8 py-4 border-b border-gray-200">
+          <div className="flex items-center gap-4">
+            {!isMainMenu && (
+              <button
+                onClick={handleBackClick}
+                className="p-1 hover:bg-gray-200 rounded-full transition-colors"
+              >
+                <ChevronLeft className="w-6 h-6 text-[#01331A]" />
+              </button>
+            )}
+            {currentTitle && (
+              <h2 className="text-lg font-semibold text-[#01331A]">
+                {currentTitle}
+              </h2>
+            )}
           </div>
         </div>
-      </>
+        {/* Menu Content */}
+        <div className="px-8 py-10 flex-1">
+          <ul className="text-[24px] leading-10 text-[#01331A] font-semibold flex flex-col gap-[57px]">
+            {currentMenu.map((item) => (
+              <li key={item.id}>
+                <button
+                  onClick={() => handleMenuItemClick(item)}
+                  className="flex items-center justify-between w-full text-left hover:text-[#01331A]/80 transition-colors"
+                >
+                  <span>{item.label}</span>
+                  {item.hasSubmenu && <span>&gt;</span>}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     );
   };
 
@@ -113,9 +241,9 @@ const CustomNavbar = (props) => {
             : "bg-transparent text-white "
         )}
       >
-        <div className={` flex relative justify-center `}>
-          <div className="container mx-auto   flex items-center justify-between">
-            <Link href="/" className="lg:w-1/3 cursor-pointer">
+        <div className={` lg:flex relative  lg:justify-center `}>
+          <div className="lg:container lg:mx-auto   flex items-center justify-between ">
+            <Link href="/" className="lg:w-1/3 cursor-pointer pl-4 lg:pl-0">
               <MainLogo color={isScrolled || isHovered ? "dark" : "main"} />
             </Link>
             {/* Navigation Menu */}

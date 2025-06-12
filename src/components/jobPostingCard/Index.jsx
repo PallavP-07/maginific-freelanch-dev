@@ -31,13 +31,14 @@ const JobPostingCard = ({
     setIsOpen(false);
   };
 
-
   return (
     <>
       <div className="bg-[#F9F9F9] drop-shadow-sm rounded-lg   flex flex-col  gap-4 md:gap-0 md:flex-row w-full justify-between items-center py-6 px-10">
         <div className="flex flex-col gap-2 md:border-r-2 md:border-[#D0D0D0] md:pr-[17px] w-full md:w-3/4  lg:w-2/4">
-          <h2 className="text-xl font-bold leading-[36px] line-clamp-1">
-            {title}
+          <h2 className="text-xl font-bold leading-[36px] line-clamp-1 hover:text-[#026534] cursor-pointer">
+            <Link passHref href={`/browse-jobs/${id}`}>
+              {title}
+            </Link>
           </h2>
           <span className="text-lg font-light leading-[36px]">
             {department}
@@ -77,18 +78,15 @@ const JobPostingCard = ({
             Apply
           </Button>
           <Link
-          passHref
-            href={`/browse-jobs/${id}` }
+            passHref
+            href={`/browse-jobs/${id}`}
             className="px-2 py-2 text-center bg-transparent text-[#01331A] w-full md:w-40 border-[#01331A] border  rounded-[3px] text-[18px] leading-5 font-normal"
           >
             View Details
           </Link>
         </div>
       </div>
-      <Model
-        isOpen={isOpen}
-        closeModal={closeModal}
-      />
+      <Model isOpen={isOpen} closeModal={closeModal} />
     </>
   );
 };
