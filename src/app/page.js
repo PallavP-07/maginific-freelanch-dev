@@ -1,18 +1,28 @@
-import LandingHeroBanner from "@/components/LandingHeroBanner/Index";
-import ResponsiveCarousel from "@/components/carousel/Index";
-import  {RenderContactUseComponent}  from "./contact/page";
-import DualColorHeader from "@/components/dualColorHeader/Index";
+// import LandingHeroBanner from "@/components/LandingHeroBanner/Index";
+// import ResponsiveCarousel from "@/components/carousel/Index";
+import dynamic from "next/dynamic";
+import { RenderContactUseComponent } from "./contact/page";
+// import DualColorHeader from "@/components/dualColorHeader/Index";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import ProgressCircle from "@/components/circleProgress/Index";
 import HomePageData from "@/services/homePageData";
 import { splitTextByWord } from "@/utils/splitText";
 import ContactFormData from "@/services/contactFormData";
-
+import { cleanHTML } from "@/utils/cleanHTML";
+const LandingHeroBanner = dynamic(() =>
+  import("../components/LandingHeroBanner/Index")
+);
+const ResponsiveCarousel = dynamic(() =>
+  import("../components/carousel/Index")
+);
+const DualColorHeader = dynamic(() =>
+  import("../components/dualColorHeader/Index")
+);
+const HomeJobSearchBar = dynamic(() =>
+  import("../components/HomeSearchBar/Index")
+);
 const renderDiscoverInsight = (insightSectionData) => {
   const title = insightSectionData?.insights_section?.title || "";
   const [firstPart, secondPart] = title
@@ -48,10 +58,7 @@ const renderDiscoverInsight = (insightSectionData) => {
                     {item.title}
                   </h2>
                   <p className="font-normal leading-[28px] text-[16px]">
-                    {item.description
-                      .replace(/<p>/g, "")
-                      .replace(/<\/p>/g, "")
-                      .replace(/&nbsp;/g, "")}
+                    {cleanHTML(item?.description)}
                   </p>
                 </div>
               ))}
@@ -70,19 +77,14 @@ const renderDiscoverInsight = (insightSectionData) => {
                     {item.title}
                   </h2>
                   <p className="font-normal leading-[28px] text-[16px]">
-                    {item.description
-                      .replace(/<p>/g, "")
-                      .replace(/<\/p>/g, "")
-                      .replace(/&nbsp;/g, "")}
+                    {cleanHTML(item?.description)}
                   </p>
                 </div>
               ))}
             </div>
           </div>
-          <p  className="text-[#01331A] font-semibold text-[20px] text-end leading-6 mt-8 ">
-          <Link href="/insights">
-            Browse all Insights &gt;
-          </Link>
+          <p className="text-[#01331A] font-semibold text-[20px] text-end leading-6 mt-8 ">
+            <Link href="/insights">Browse all Insights &gt;</Link>
           </p>
         </div>
       </div>
@@ -194,10 +196,13 @@ const progressSection = (matrixSectionData) => {
                 {secondPart}
               </span>
             </p>
-            <span className="text-lg leading-[26px] font-normal break-words"
-              dangerouslySetInnerHTML={{ __html: matrixSectionData?.metrics?.data_metrics_section_description }}
+            <span
+              className="text-lg leading-[26px] font-normal break-words"
+              dangerouslySetInnerHTML={{
+                __html:
+                  matrixSectionData?.metrics?.data_metrics_section_description,
+              }}
             />
-          
           </div>
           <div className="flex  justify-center flex-wrap md:flex-nowrap gap-4   md:justify-between md:gap-1 ">
             {matrixSectionData?.metrics?.data_metrics_section_metrics_items.map(
@@ -206,10 +211,7 @@ const progressSection = (matrixSectionData) => {
                   key={item.sort}
                   value={item.name}
                   text={item.suffix}
-                  subtext={item.description
-                    .replace(/<p>/g, "")
-                    .replace(/<\/p>/g, "")
-                    .replace(/&nbsp;/g, "")}
+                  subtext={cleanHTML(item?.description)}
                   percentage={item.percentage}
                 />
               )
@@ -221,68 +223,7 @@ const progressSection = (matrixSectionData) => {
   );
 };
 
-const renderJobSearchBar = (jobSearchSectionData) => {
-  const title = jobSearchSectionData?.job_search_section?.title || "";
-      const[firstPart,secondPart]= splitTextByWord(title, 'Today');
-  return (
-    <>
-      <div className="lg:container px-6 py-12 md:py-16 lg:py-20 lg:mx-auto w-full">
-        <div className="pb-6">
-          <DualColorHeader first={firstPart} second={`${secondPart}.`} />
-        </div>
-        <div className="flex flex-col md:flex-row items-start gap-4 mt-8 w-full">
-          <div className="w-full">
-            <Label
-              htmlFor="Job Title"
-              className="font-bold text-lg leading-5 text-[#2A2B2F] pb-3"
-            >
-              {jobSearchSectionData?.job_search_section?.form_items[0]?.title}
-            </Label>
-            <Input
-              type="text"
-              placeholder={
-                jobSearchSectionData?.job_search_section?.form_items[0]
-                  ?.placeholder
-              }
-              className="placeholder:text-[#D0D0D0] w-full mt-2 p-5"
-            />
-          </div>
-          <div className="w-full">
-            <Label
-              htmlFor="Location"
-              className="font-bold text-lg leading-5 text-[#2A2B2F] pb-3"
-            >
-              {jobSearchSectionData?.job_search_section?.form_items[1]?.title}
-            </Label>
-            <Input
-              type="text"
-              placeholder={
-                jobSearchSectionData?.job_search_section?.form_items[1]?.title
-              }
-              className="placeholder:text-[#D0D0D0] w-full mt-2 p-5"
-            />
-          </div>
-          <div className="flex flex-col md:gap-2 gap-5 md:w-1/3 w-full mt-8">
-            <div>
-              <Button className="px-8 py-5 bg-[#026534] text-white w-full md:w-40 rounded-[3px] text-[18px] leading-5 font-semibold">
-                {jobSearchSectionData?.job_search_section?.submit_btn?.title}
-              </Button>
-            </div>
-            <Link
-              href="/browse-jobs"
-              className="font-semibold text-[20px] leading-7 border-b-2 border-[#006633] text-center py-1 text-[#006633] mx-auto"
-            >
-              {
-                jobSearchSectionData?.job_search_section?.call_to_actions[0]
-                  ?.title
-              }
-            </Link>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+
 
 const renderWhyChooseUs = (services) => {
   return (
@@ -336,7 +277,7 @@ const renderWhyChooseMagnific = (
   serviceSectionData
 ) => {
   const title = whyMagnificSectionData?.why_magnific_section?.title || "";
-  const[firstPart,secondPart]=splitTextByWord(title, 'Magnific?');
+  const [firstPart, secondPart] = splitTextByWord(title, "Magnific?");
 
   return (
     <div className=" w-full h-full bg-[url('/circle-bg.svg')] bg-no-repeat bg-right ">
@@ -345,10 +286,7 @@ const renderWhyChooseMagnific = (
           <DualColorHeader first={firstPart} second={secondPart} />
         </div>
         <p className="mt-4 text-[#373A40] font-normal  text-lg leading-6">
-          {whyMagnificSectionData?.why_magnific_section?.description
-            ?.replace(/<p>/g, "")
-            .replace(/<\/p>/g, "")
-            .replace(/&nbsp;/g, "")}
+          {cleanHTML(whyMagnificSectionData?.why_magnific_section?.description)}
         </p>
         <h2 className="text-[#D0D0D0] font-bold text-[46px] leading-[54px] my-20">
           {serviceSectionData?.services_section?.title}
@@ -377,7 +315,7 @@ export default async function Home() {
   return (
     <>
       <LandingHeroBanner bannerData={bannerData.banner} />
-      {renderJobSearchBar(jobSearchSection)}
+      <HomeJobSearchBar jobSearchSectionData={jobSearchSection} />
       {progressSection(matrixSection)}
       {renderWhyChooseMagnific(whyMagnificSection, serviceSectionData)}
       <ResponsiveCarousel Data={testimonialsSection.testimonials} />
@@ -394,7 +332,9 @@ export default async function Home() {
           />
         ))}
       </div>
-      <div className="lg:mx-10">{RenderContactUseComponent(Contact_Form_data)}</div>
+      <div className="lg:mx-10">
+        {RenderContactUseComponent(Contact_Form_data)}
+      </div>
     </>
   );
 }
