@@ -105,7 +105,6 @@ const CustomNavbar = (props) => {
   const [isHovered, setIsHovered] = React.useState(false);
   const [openDropdown, setOpenDropdown] = React.useState(null);
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
-
   const [currentMenu, setCurrentMenu] = React.useState(menuData);
   const [menuHistory, setMenuHistory] = React.useState([]);
   const [currentTitle, setCurrentTitle] = React.useState("");

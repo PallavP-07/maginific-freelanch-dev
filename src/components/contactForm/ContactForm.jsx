@@ -43,12 +43,10 @@ const RenderContactForm = () => {
       if (formData.document) {
         const { response: fileUploadResponse } = await uploadFileToCollection(formData.document);
   
-        console.log("📂 File upload response:", fileUploadResponse);
+        console.log("📂 File upload response:", fileUploadResponse?.id);
   
         // ✅ Handle both single or array response correctly
-        uploadedFileId = Array.isArray(fileUploadResponse)
-          ? fileUploadResponse[0]?.id
-          : fileUploadResponse?.id;
+        uploadedFileId = fileUploadResponse?.id
       }
   
       const dataToSend = {
@@ -58,8 +56,8 @@ const RenderContactForm = () => {
         company: formData.company || null,
         title: formData.title || null,
         message: formData.message,
+        // documents:uploadedFileId ? [{ id: uploadedFileId }] : [], 
         documents: null, 
-        // documents: uploadedFileId ? [parseInt(uploadedFileId)] : [], 
       };
   
       console.log("📨 Sending data to Directus:", dataToSend);
