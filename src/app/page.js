@@ -29,12 +29,6 @@ const renderDiscoverInsight = (insightSectionData, latestInsights) => {
   const [firstPart, secondPart] = title
     .split("Insights")
     .map((part, i) => (i === 0 ? part.trim() : "Insights"));
-  const firstTwoCards = insightSectionData?.insights_section?.cards?.slice(
-    0,
-    2
-  );
-  const lastTwoCards = insightSectionData?.insights_section?.cards?.slice(2, 4);
-  console.log(latestInsights);
   return (
     <>
       <div className=" lg:container lg:mx-auto w-full my-20  mb-20">
@@ -45,49 +39,85 @@ const renderDiscoverInsight = (insightSectionData, latestInsights) => {
           <p className="font-semibold text-[44px] leading-[54px] text-[#026534] mb-12 ">
             {secondPart}
           </p>
-          <div className="grid grid-cols-2 gap-5 md:gap-8 ">
-            <div className="flex flex-col gap-5 md:gap-7">
+          <div className="grid grid-cols-2 gap-5 md:gap-8 h-full">
+            <div className="flex flex-col gap-5 md:gap-7 h-[820px]">
               {latestInsights.slice(0, 2)?.map((item, i) => (
                 <div
                   key={i}
-                  className="relative w-full h-[400px] md:h-[450px] rounded-2xl overflow-hidden"
+                  className={`${i === 1 ? "h-[55%]" : "h-[45%]"} relative w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-[1.01] hover:drop-shadow-md cursor-pointer`}
                 >
-                  {/* Background Image */}
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${item?.img?.filename_disk}`}
-                    alt={item.title}
-                    fill
-                    className="object-cover w-full h-full"
-                    priority
-                  />
+                  <Link href={`/insights/${item.id}`}>
+                    {/* Background Image */}
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${item?.img?.filename_disk}`}
+                      alt={item.title}
+                      fill
+                      className="object-cover w-full h-full"
+                      priority
+                    />
 
-                  {/* Overlay */}
-                  <div
-                    className={`absolute inset-0 ${
-                      item?.sort === 1
-                        ? "bg-[#CCE0D6]/80 text-gray-800"
-                        : "bg-black/60 text-white"
-                    } flex flex-col justify-end px-5 py-6 md:px-10 transition-all duration-300`}
-                  >
-                    <h2 className="font-semibold text-[20px] md:text-3xl lg:text-4xl mb-2">
-                      {item.title}
-                    </h2>
-                    <p className="font-normal leading-[26px] text-[15px] line-clamp-3">
-                      {cleanHTML(item?.details)}
-                    </p>
-                  </div>
+                    {/* Overlay */}
+                    <div
+                      className={`absolute inset-0 ${
+                        i === 1
+                          ? "bg-[#CCE0D6]/60 text-gray-800"
+                          : "bg-black/60 text-white"
+                      } flex flex-col justify-start items-center text-center px-5 py-12 md:px-10 transition-all duration-300`}
+                    >
+                      <h2 className="font-semibold text-[20px] md:text-3xl lg:text-4xl mb-2">
+                        {item.title}
+                      </h2>
+                      <p className="font-normal leading-[26px] text-[15px] line-clamp-3 max-w-xl">
+                        {cleanHTML(item?.details)}
+                      </p>
+                    </div>
+                  </Link>
                 </div>
               ))}
             </div>
+            <div className="flex flex-col gap-5 md:gap-7 h-[820px]">
+              {latestInsights.slice(-2)?.map((item, i) => (
+                <div
+                  key={i}
+                  className={`${i === 1 ? "h-[45%]" : "h-[55%]"} relative w-full rounded-2xl overflow-hidden transform transition-transform duration-300 hover:scale-[1.01] hover:drop-shadow-md cursor-pointer`}
+                >
+                  <Link href={`/insights/${item.id}`}>
+                    {/* Background Image */}
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${item?.img?.filename_disk}`}
+                      alt={item.title}
+                      fill
+                      className="object-cover w-full h-full"
+                      priority
+                    />
 
-            <div className="flex flex-col w-full gap-5 md:gap-7">
+                    {/* Overlay */}
+                    <div
+                      className={`absolute inset-0 ${
+                        i === 1
+                          ? "bg-black/70 text-white"
+                          : "bg-[#D0D0D0]/60 text-slate-800"
+                      } flex flex-col justify-start items-center text-center px-5 py-12 md:px-10 transition-all duration-300`}
+                    >
+                      <h2 className="font-semibold text-[20px] md:text-3xl lg:text-4xl mb-2">
+                        {item.title}
+                      </h2>
+                      <p className="font-normal leading-[26px] text-[15px] line-clamp-3 max-w-xl">
+                        {cleanHTML(item?.details)}
+                      </p>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+            {/* <div className="flex flex-col w-full gap-5 md:gap-7">
               {lastTwoCards?.map((item, i) => (
                 <div
                   key={i}
                   className={` ${
                     item?.sort === 2
-                      ? "bg-[#D0D0D0] text-[#373A40] h-[380px]"
-                      : "bg-[#2A2B2F] text-white h-[450px]"
+                      ? "bg-[#D0D0D0] text-[#373A40]"
+                      : "bg-[#2A2B2F] text-white "
                   }   text-center  px-5 py-20 md:px-10   w-full  rounded-md`}
                 >
                   <h2 className="font-semibold leading-4 md:leading-7 text-[20px] md:text-3xl lg:text-4xl mb-6">
@@ -98,7 +128,7 @@ const renderDiscoverInsight = (insightSectionData, latestInsights) => {
                   </p>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
           <p className="text-[#01331A] font-semibold text-[20px] text-end leading-6 mt-8 ">
             <Link href="/insights">Browse all Insights &gt;</Link>
