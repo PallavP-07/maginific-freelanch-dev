@@ -105,15 +105,14 @@ const CustomNavbar = (props) => {
   const [isHovered, setIsHovered] = React.useState(false);
   const [openDropdown, setOpenDropdown] = React.useState(null);
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
-  const [showMobileSubMenu, setShowMobileSubMenu] = React.useState(false);
+
+  const [currentMenu, setCurrentMenu] = React.useState(menuData);
+  const [menuHistory, setMenuHistory] = React.useState([]);
+  const [currentTitle, setCurrentTitle] = React.useState("");
   const pathname = usePathname();
   const { AllContent, solutionSubPage, expertiseSubPage, FunctionsSubPage } =
     props;
   const renderMobileNavMenu = () => {
-    const [currentMenu, setCurrentMenu] = React.useState(menuData);
-    const [menuHistory, setMenuHistory] = React.useState([]);
-    const [currentTitle, setCurrentTitle] = React.useState("");
-
     const handleMenuItemClick = (item) => {
       if (item.hasSubmenu && item.submenu) {
         setMenuHistory((prev) => [...prev, currentMenu]);
@@ -292,10 +291,10 @@ const CustomNavbar = (props) => {
                           item.name === "Solutions"
                             ? solutionSubPage
                             : item.name === "Expertise"
-                            ? expertiseSubPage
-                            : item.name === "Services"
-                            ? FunctionsSubPage
-                            : defaultData // Provide a default fallback if needed
+                              ? expertiseSubPage
+                              : item.name === "Services"
+                                ? FunctionsSubPage
+                                : defaultData // Provide a default fallback if needed
                         }
                         submenuName={item.name}
                       />
