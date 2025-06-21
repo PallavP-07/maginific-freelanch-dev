@@ -37,7 +37,7 @@ export async function POST(request) {
 
     const data = await resend.emails.send({
       from: 'Acme <onboarding@resend.dev>', // must be verified
-      to: ['pallav811@gmail.com'],
+      to: ['aaranbains@gmail.com'],
       subject: `New Job Application - ${name}`,
       html: `
         <h2>New Application Received</h2>
