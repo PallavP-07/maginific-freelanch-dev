@@ -1,5 +1,3 @@
-// File: src/app/api/send-mail/route.js
-
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -18,12 +16,27 @@ export async function POST(request) {
     } = await request.json();
 
     const resumeUrl = `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${resumeFileId}`;
+    console.log('Resume URL:', resumeUrl);
 
+    // Fetch file from Directus
     const fileRes = await fetch(resumeUrl);
+    console.log('File status:', fileRes.status);
+
+    if (!fileRes.ok) {
+      throw new Error(`Failed to fetch resume: ${fileRes.status}`);
+    }
+
     const fileBuffer = await fileRes.arrayBuffer();
+    console.log('File buffer length:', fileBuffer.byteLength);
+
+    const base64Content = Buffer.from(fileBuffer).toString('base64');
+    console.log('Base64 content size:', base64Content.length);
+
+    const contentType = fileRes.headers.get('content-type') || 'application/pdf';
+    console.log('Detected content type:', contentType);
 
     const data = await resend.emails.send({
-      from: 'pallav@webiknows.com', // must be a verified sender
+      from: 'Acme <onboarding@resend.dev>', // must be verified
       to: ['pallav811@gmail.com'],
       subject: `New Job Application - ${name}`,
       html: `
@@ -34,15 +47,21 @@ export async function POST(request) {
         <p><strong>Company:</strong> ${company}</p>
         <p><strong>Title:</strong> ${title}</p>
         <p><strong>Message:</strong><br/> ${message}</p>
+         <p><strong>Resume Link:</strong> <a href="${resumeUrl}">Download Resume</a></p>
       `,
-      attachments: [
-        {
-          filename: resumeFileName || 'resume.pdf',
-          content: Buffer.from(fileBuffer).toString('base64'),
-          type: 'application/pdf',
-        },
-      ],
+      // attachments: [
+      //   {
+      //     filename: resumeFileName || 'resume.pdf',
+      //     content: base64Content,
+      //     type: contentType,
+      //   },
+      // ],
     });
+
+    if (data.error) {
+      console.error('Resend API error:', data.error);
+      throw new Error(data.error.message);
+    }
 
     return new Response(JSON.stringify({ success: true, data }), {
       status: 200,
@@ -50,9 +69,10 @@ export async function POST(request) {
     });
 
   } catch (error) {
-    console.error('Error sending email:', error);
-    return new Response(JSON.stringify({ error: 'Failed to send email' }), {
+    console.error('Error sending email:', error.message);
+    return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 }
