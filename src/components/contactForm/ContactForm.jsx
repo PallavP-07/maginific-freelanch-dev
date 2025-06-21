@@ -70,12 +70,12 @@ const RenderContactForm = () => {
       );
       console.log("✅ Contact form submitted:", response);
       const mailPayload = {
-      name: directusResponse.name,
-      email: directusResponse.email,
-      phone: directusResponse.phone,
-      company: directusResponse.company,
-      title: directusResponse.title,
-      message: directusResponse.message,
+      name: response?.name,
+      email: response?.email,
+      phone: response?.phone,
+      company: response?.company,
+      title: response?.title,
+      message: response?.message,
       resumeFileId: uploadedFileId,
       resumeFileName: formData.document?.name || 'resume.pdf',
     };
