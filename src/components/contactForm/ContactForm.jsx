@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { contactFormSchema } from '../../helper/formValidation';
-import { Button } from '@/components/ui/button';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Loader2 } from 'lucide-react';
-import FileUploadField from '../customInputs/UploadFile';
-import InputField from '../customInputs/InputField';
-import TextareaField from '../customInputs/TextAreaField';
-import { uploadFileToCollection, createItemInCollection } from '@/lib/directus';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { contactFormSchema } from "../../helper/formValidation";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Loader2 } from "lucide-react";
+import FileUploadField from "../customInputs/UploadFile";
+import InputField from "../customInputs/InputField";
+import TextareaField from "../customInputs/TextAreaField";
+import { uploadFileToCollection, createItemInCollection } from "@/lib/directus";
 import { toast } from "sonner";
 const RenderContactForm = () => {
   const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState("");
   const {
     handleSubmit,
     register,
@@ -24,31 +24,33 @@ const RenderContactForm = () => {
   } = useForm({
     resolver: yupResolver(contactFormSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      title: '',
-      message: '',
+      name: "",
+      email: "",
+      phone: "",
+      company: "",
+      title: "",
+      message: "",
       document: null,
     },
   });
 
   const onSubmit = async (formData) => {
     setLoading(true);
-    setSuccessMessage('');
+    setSuccessMessage("");
     try {
       let uploadedFileId = null;
-  
+
       if (formData.document) {
-        const { response: fileUploadResponse } = await uploadFileToCollection(formData.document);
-  
+        const { response: fileUploadResponse } = await uploadFileToCollection(
+          formData.document
+        );
+
         console.log("📂 File upload response:", fileUploadResponse?.id);
-  
+
         // ✅ Handle both single or array response correctly
-        uploadedFileId = fileUploadResponse?.id
+        uploadedFileId = fileUploadResponse?.id;
       }
-  
+
       const dataToSend = {
         name: formData.name,
         email: formData.email,
@@ -56,20 +58,46 @@ const RenderContactForm = () => {
         company: formData.company || null,
         title: formData.title || null,
         message: formData.message,
-        // documents:uploadedFileId ? [{ id: uploadedFileId }] : [], 
-        documents: null, 
+        // documents:uploadedFileId ? [{ id: uploadedFileId }] : [],
+        documents: null,
       };
-  
+
       console.log("📨 Sending data to Directus:", dataToSend);
-  
-      const { response } = await createItemInCollection('contact_form_data', dataToSend);
-      console.log('✅ Contact form submitted:', response);
-  
+
+      const { response } = await createItemInCollection(
+        "contact_form_data",
+        dataToSend
+      );
+      console.log("✅ Contact form submitted:", response);
+      const mailPayload = {
+      name: directusResponse.name,
+      email: directusResponse.email,
+      phone: directusResponse.phone,
+      company: directusResponse.company,
+      title: directusResponse.title,
+      message: directusResponse.message,
+      resumeFileId: uploadedFileId,
+      resumeFileName: formData.document?.name || 'resume.pdf',
+    };
+
+      const emailRes = await fetch("/api/send-mail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(mailPayload),
+      });
+
+      const emailResData = await emailRes.json();
+
+      if (!emailRes.ok) {
+        throw new Error(emailResData?.error || "Email failed to send");
+      }
+
+      console.log("📨 Email sent:", emailResData);
       toast.success("🎉 Form submitted successfully!");
       reset();
     } catch (error) {
-      console.error('❌ Error submitting form:', error);
-      alert('Something went wrong. Please try again.');
+      console.error("❌ Error submitting form:", error);
+      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -77,24 +105,73 @@ const RenderContactForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="my-12 space-y-6">
-
         {successMessage && (
-          <Alert variant="success" className="bg-green-100 border-green-400 text-green-700">
+          <Alert
+            variant="success"
+            className="bg-green-100 border-green-400 text-green-700"
+          >
             <AlertTitle>Success</AlertTitle>
             <AlertDescription>{successMessage}</AlertDescription>
           </Alert>
         )}
 
         <div className="grid lg:grid-cols-2 gap-8">
-          <InputField label="*Name" id="name" type="text" placeholder="Enter your name" register={register} error={errors.name} />
-          <InputField label="*Email" id="email" type="email" placeholder="Enter your email" register={register} error={errors.email} />
-          <InputField label="*Phone" id="phone" type="text" placeholder="Enter your phone number" register={register} error={errors.phone} />
-          <InputField label="Company" id="company" type="text" placeholder="Enter your company name" register={register} error={errors.company} />
-          <InputField label="Title" id="title" type="text" placeholder="Enter your job title" register={register} error={errors.title} />
-          <FileUploadField label="Upload Document" id="document" control={control} error={errors.document} />
+          <InputField
+            label="*Name"
+            id="name"
+            type="text"
+            placeholder="Enter your name"
+            register={register}
+            error={errors.name}
+          />
+          <InputField
+            label="*Email"
+            id="email"
+            type="email"
+            placeholder="Enter your email"
+            register={register}
+            error={errors.email}
+          />
+          <InputField
+            label="*Phone"
+            id="phone"
+            type="text"
+            placeholder="Enter your phone number"
+            register={register}
+            error={errors.phone}
+          />
+          <InputField
+            label="Company"
+            id="company"
+            type="text"
+            placeholder="Enter your company name"
+            register={register}
+            error={errors.company}
+          />
+          <InputField
+            label="Title"
+            id="title"
+            type="text"
+            placeholder="Enter your job title"
+            register={register}
+            error={errors.title}
+          />
+          <FileUploadField
+            label="Upload Document"
+            id="document"
+            control={control}
+            error={errors.document}
+          />
         </div>
 
-        <TextareaField label="*Message" id="message" rows={5} placeholder="Type your message here" register={register} error={errors.message} />
+        <TextareaField
+          label="*Message"
+          id="message"
+          rows={5}
+          placeholder="Type your message here"
+          register={register}
+          error={errors.message}
+        />
 
         <div className="mt-6">
           <Button
@@ -108,7 +185,7 @@ const RenderContactForm = () => {
                 Submitting...
               </span>
             ) : (
-              'Submit'
+              "Submit"
             )}
           </Button>
         </div>
