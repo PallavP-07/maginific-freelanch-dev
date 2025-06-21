@@ -36,7 +36,7 @@ export async function POST(request) {
     console.log('Detected content type:', contentType);
 
     const data = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>', // must be verified
+      from: 'contact.magnificsearch.com', // must be verified
       to: ['pallav811@gmail.com'],
       subject: `New Job Application - ${name}`,
       html: `
