@@ -51,7 +51,7 @@ const RelatedContentSection = ({ title, insightsDetails }) => {
   const [firstPart, secondPart] = splitTextByWord(title, "Content");
   let topThreeInsights = [""];
   if (insightsDetails.length > 3) {
-     topThreeInsights = insightsDetails.slice(0, 3);
+     topThreeInsights =  [...insightsDetails].sort(() => Math.random() - 0.5).slice(0, 3);
   }
   return (
     <>

@@ -11,7 +11,9 @@ import { fetchCollectionDataBySlug } from "@/lib/directus";
 import ExpertiseDetails from "@/services/expertiseDetailsData";
 import FunctionListData from "@/services/functionalExpertiseListData";
 import FunctionsDetails from "@/services/functionsDetailsData";
+import InsightsDetailsContent from "@/services/insightDetailsData";
 import SolutionDetails from "@/services/solutionsDetails";
+import { splitTextByWord } from "@/utils/splitText";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -37,21 +39,30 @@ const RenderParaSection = ({ bgColor, title, discription, titleColor }) => {
   );
 };
 
-const RelatedContentSection = () => {
+const RelatedContentSection = ({ title, insightsDetails }) => {
+  const [firstPart, secondPart] = splitTextByWord(title, "Content");
+  let topThreeInsights = [""];
+  if (insightsDetails.length > 3) {
+     topThreeInsights =  [...insightsDetails].sort(() => Math.random() - 0.5).slice(0, 3);
+  }
   return (
     <>
       <div className="lg:container lg:mx-auto mx-4">
         <div className="text-center md:text-left lg:mb-10">
           <DualColorHeader
-            first={"Related "}
-            second={"Content"}
+            first={firstPart}
+            second={secondPart}
             style={"text-5xl"}
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 mx-8 md:mx-0 my-8 md:my-8 gap-8 md:gap-5 md:pb-10 lg:pb-20">
-          {/* <ContentCard pageRedirect={'/insights/:id'} />
-          <ContentCard pageRedirect={'/insights/:id'} />
-          <ContentCard pageRedirect={'/insights/:id'} /> */}
+          {topThreeInsights.map((item) => (
+            <ContentCard
+              key={item.id}
+              pageRedirect={`/insights/${item.id}`}
+              data={item}
+            />
+          ))}
         </div>
       </div>
     </>
@@ -180,6 +191,7 @@ const SubPage = async ({ params }) => {
   const { AllContent } = await FunctionListData();
   const { SoluDetails } = await SolutionDetails();
   const { expertiseData } = await ExpertiseDetails();
+   const { InsightsSubPageContent } = await InsightsDetailsContent();
   return (
     <>
       <SubHeroBanner
@@ -248,7 +260,10 @@ const SubPage = async ({ params }) => {
           ))}
         </div>
       </div>
-      <RelatedContentSection />
+        <RelatedContentSection
+        title={AllContent?.releated_content_heading}
+        insightsDetails={InsightsSubPageContent}
+      />
       <ContactUs />
     </>
   );

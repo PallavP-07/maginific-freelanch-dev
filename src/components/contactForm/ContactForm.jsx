@@ -44,9 +44,6 @@ const RenderContactForm = () => {
         const { response: fileUploadResponse } = await uploadFileToCollection(
           formData.document
         );
-
-        console.log("📂 File upload response:", fileUploadResponse?.id);
-
         // ✅ Handle both single or array response correctly
         uploadedFileId = fileUploadResponse?.id;
       }
@@ -62,7 +59,7 @@ const RenderContactForm = () => {
         documents: null,
       };
 
-      console.log("📨 Sending data to Directus:", dataToSend);
+ 
 
       const { response } = await createItemInCollection(
         "contact_form_data",
@@ -91,8 +88,6 @@ const RenderContactForm = () => {
       if (!emailRes.ok) {
         throw new Error(emailResData?.error || "Email failed to send");
       }
-
-      console.log("📨 Email sent:", emailResData);
       toast.success("🎉 Form submitted successfully!");
       reset();
     } catch (error) {
