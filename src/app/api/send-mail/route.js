@@ -1,4 +1,4 @@
-import { Resend } from 'resend';
+import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -13,7 +13,7 @@ export async function POST(request) {
       title,
       message,
       resumeFileId,
-      resumeFileName
+      resumeFileName,
     } = await request.json();
 
     // Optional resume fetching (only for job applications with a file)
@@ -25,17 +25,19 @@ export async function POST(request) {
       resumeUrl = `${process.env.NEXT_PUBLIC_DIRECTUS_API_URL}/assets/${resumeFileId}`;
 
       const fileRes = await fetch(resumeUrl);
-      if (!fileRes.ok) throw new Error(`Failed to fetch resume: ${fileRes.status}`);
+      if (!fileRes.ok)
+        throw new Error(`Failed to fetch resume: ${fileRes.status}`);
 
       const fileBuffer = await fileRes.arrayBuffer();
       const fileSizeMB = fileBuffer.byteLength / (1024 * 1024);
-      const base64Content = Buffer.from(fileBuffer).toString('base64');
-      const contentType = fileRes.headers.get('content-type') || 'application/pdf';
+      const base64Content = Buffer.from(fileBuffer).toString("base64");
+      const contentType =
+        fileRes.headers.get("content-type") || "application/pdf";
 
       shouldAttach = fileSizeMB <= 5;
       if (shouldAttach) {
         attachment = {
-          filename: resumeFileName || 'resume.pdf',
+          filename: resumeFileName || "resume.pdf",
           content: base64Content,
           type: contentType,
         };
@@ -45,7 +47,7 @@ export async function POST(request) {
     // Dynamic subject
     const subjectMap = {
       contact: `New Contact Form Submission from ${name}`,
-      job: `💼 New Job Application - ${name}${title ? ` (${title})` : ''}`
+      job: `💼 New Job Application - ${name}${title ? ` (${title})` : ""}`,
     };
     const emailSubject = subjectMap[type] || `New Message from ${name}`;
 
@@ -64,13 +66,17 @@ export async function POST(request) {
 
         ${message ? `<p><strong>Message:</strong><br/>${message.replace(/\n/g, "<br/>")}</p>` : ""}
 
-        ${type === "job" ? `
+        ${
+          type === "job"
+            ? `
           <p><strong>Resume:</strong> ${
             shouldAttach
-              ? 'Attached to this email'
+              ? "Attached to this email"
               : `<a href="${resumeUrl}" style="color:#2E86DE;">Download Resume</a>`
           }</p>
-        ` : ""}
+        `
+            : ""
+        }
 
         <hr style="margin-top: 20px; border: none; border-top: 1px solid #ddd;" />
         <p style="font-size: 12px; color: #888; text-align: center;">This email was sent via the Magnific Search website.</p>
@@ -79,8 +85,8 @@ export async function POST(request) {
 
     // Send email
     const emailOptions = {
-      from: 'aaran@magnificsearch.com', // verified sender
-      to: ['demoacc6272@gmail.com'], // update as needed
+      from: `"Magnific Search" <aaran@magnificsearch.com>`,
+      to: ["demoacc6272@gmail.com"], 
       subject: emailSubject,
       html: emailHtml,
     };
@@ -92,20 +98,19 @@ export async function POST(request) {
     const data = await resend.emails.send(emailOptions);
 
     if (data.error) {
-      console.error('Resend API error:', data.error);
+      console.error("Resend API error:", data.error);
       throw new Error(data.error.message);
     }
 
     return new Response(JSON.stringify({ success: true, data }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
     });
-
   } catch (error) {
-    console.error('Error sending email:', error.message);
+    console.error("Error sending email:", error.message);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
     });
   }
 }

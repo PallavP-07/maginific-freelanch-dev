@@ -11,13 +11,44 @@ import { toast } from "sonner"
 import * as yup from "yup"
 import { uploadFileToCollection, createItemInCollection } from '@/lib/directus';
 // Form validation schema
-const contactFormSchema = yup.object().shape({
-  name: yup.string().required("Name is required"),
-  email: yup.string().email("Invalid email").required("Email is required"),
-  phone: yup.string().required("Phone is required"),
-  document: yup.mixed().required("Document is required"),
-})
+const FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const SUPPORTED_FORMATS = [
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
 
+const contactFormSchema = yup.object().shape({
+  name: yup
+    .string()
+    .required("Name is required")
+    .matches(/^[A-Za-z\s]+$/, "Name can only contain letters and spaces")
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name must be at most 50 characters"),
+
+  email: yup
+    .string()
+    .email("Invalid email format")
+    .required("Email is required"),
+
+  phone: yup
+    .string()
+    .required("Phone number is required")
+    .matches(/^[0-9]{10}$/, "Phone number must be exactly 10 digits"),
+
+  document: yup
+    .mixed()
+    .required("Document is required")
+    .test("fileRequired", "Please upload a document", (value) => {
+      return value && value.length > 0;
+    })
+    .test("fileSize", "File size must be less than 5MB", (value) => {
+      return value && value[0] && value[0].size <= FILE_SIZE;
+    })
+    .test("fileType", "Only PDF, DOC, and DOCX files are allowed", (value) => {
+      return value && value[0] && SUPPORTED_FORMATS.includes(value[0].type);
+    }),
+});
 // Mock Directus functions - replace with your actual implementations
 
 
@@ -46,39 +77,68 @@ const ContactModal = ({ isOpen, closeModal }) => {
     if (!isOpen) reset()
   }, [isOpen, reset])
 
-  const onSubmitForm = async (formData) => {
-   
-    setLoading(true)
+const onSubmitForm = async (formData) => {
+  setLoading(true);
 
-    try {
-      let fileId = null
+  try {
+    let uploadedFileId = null;
 
-      if (formData.document && formData.document[0]) {
-        const { response: fileUploadResponse } = await uploadFileToCollection(formData.document[0])
-        fileId = Array.isArray(fileUploadResponse) ? fileUploadResponse[0]?.id : fileUploadResponse?.id
-        if (!fileId) throw new Error("File upload failed.")
-      }
-
-      const dataToSend = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        documents: null,
-      }
-
-      const { response } = await createItemInCollection("contact_form_data", dataToSend)
-    
-
-      toast.success("🎉 Form submitted successfully!")
-      reset()
-      closeModal()
-    } catch (error) {
-      console.error("❌ Error submitting form:", error)
-      toast.error("Something went wrong. Please try again.")
-    } finally {
-      setLoading(false)
+    // ✅ File Upload (if exists)
+    if (formData.document && formData.document[0]) {
+      const { response: fileUploadResponse } = await uploadFileToCollection(formData.document[0]);
+      uploadedFileId = Array.isArray(fileUploadResponse)
+        ? fileUploadResponse[0]?.id
+        : fileUploadResponse?.id;
+      if (!uploadedFileId) throw new Error("File upload failed.");
     }
+
+    // ✅ Save to Directus
+    const dataToSend = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: null,
+      title: null,
+      message: null,
+      documents: null, // or [{ id: uploadedFileId }] if you want to link it directly
+    };
+
+    const { response } = await createItemInCollection("contact_form_data", dataToSend);
+
+    // ✅ Prepare Mail Payload (same as first component)
+    const mailPayload = {
+      type: "job",
+      name: response?.name,
+      email: response?.email,
+      phone: response?.phone,
+      company: response?.company,
+      title: response?.title,
+      message: response?.message,
+      resumeFileId: uploadedFileId,
+      resumeFileName: formData.document?.[0]?.name || "resume.pdf",
+    };
+
+    // ✅ Send Email
+    const emailRes = await fetch("/api/send-mail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(mailPayload),
+    });
+
+    const emailResData = await emailRes.json();
+    if (!emailRes.ok) throw new Error(emailResData?.error || "Email failed to send");
+
+    toast.success("🎉 Form submitted successfully!");
+    reset();
+    closeModal();
+  } catch (error) {
+    console.error("❌ Error submitting form:", error);
+    toast.error("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
   }
+};
+
 
   const handleClose = () => {
     reset()
