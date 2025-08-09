@@ -47,7 +47,7 @@ const ContactModal = ({ isOpen, closeModal }) => {
   }, [isOpen, reset])
 
   const onSubmitForm = async (formData) => {
-    console.log("Form Data Submitted:", formData)
+   
     setLoading(true)
 
     try {
@@ -67,7 +67,7 @@ const ContactModal = ({ isOpen, closeModal }) => {
       }
 
       const { response } = await createItemInCollection("contact_form_data", dataToSend)
-      console.log("API Response:", response)
+    
 
       toast.success("🎉 Form submitted successfully!")
       reset()

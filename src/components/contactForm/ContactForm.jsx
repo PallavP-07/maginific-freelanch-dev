@@ -59,23 +59,22 @@ const RenderContactForm = () => {
         documents: null,
       };
 
- 
-
       const { response } = await createItemInCollection(
         "contact_form_data",
         dataToSend
       );
-      console.log("✅ Contact form submitted:", response);
+
       const mailPayload = {
-      name: response?.name,
-      email: response?.email,
-      phone: response?.phone,
-      company: response?.company,
-      title: response?.title,
-      message: response?.message,
-      resumeFileId: uploadedFileId,
-      resumeFileName: formData.document?.name || 'resume.pdf',
-    };
+        type: "contact",
+        name: response?.name,
+        email: response?.email,
+        phone: response?.phone,
+        company: response?.company,
+        title: response?.title,
+        message: response?.message,
+        resumeFileId: uploadedFileId,
+        resumeFileName: formData.document?.name || "resume.pdf",
+      };
 
       const emailRes = await fetch("/api/send-mail", {
         method: "POST",
